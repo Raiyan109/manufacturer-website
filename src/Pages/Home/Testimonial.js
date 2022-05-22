@@ -32,15 +32,18 @@ const Testimonial = () => {
     return (
         <div className='my-20'>
             <div className='flex justify-between'>
-                <div>
-                    <h1 className='text-xl text-primary font-bold'> Testimonials</h1>
-                    <h1 className='text-xl'>What our Patients say</h1>
-                </div>
-                <div>
-                    {/* <img src={quote} className="w-24 lg:w-48" alt="" /> */}
-                </div>
+
+
+                {/* <div>
+                    
+                </div> */}
+                {/* <div> */}
+                {/* <img src={quote} className="w-24 lg:w-48" alt="" /> */}
+                {/* </div> */}
             </div>
 
+            <h1 className='text-5xl text-primary font-bold text-center'> Testimonials</h1>
+            <h1 className='text-2xl text-center mt-2'>What our Customers say</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     reviews.map(review => <TestimonialReview

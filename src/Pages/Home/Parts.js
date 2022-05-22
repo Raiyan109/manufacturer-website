@@ -11,7 +11,7 @@ const Parts = () => {
             .then(data => setParts(data))
     }, [])
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 m-10'>
             {
                 parts.map(part => <Part
                     key={part._id}

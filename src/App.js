@@ -9,6 +9,13 @@ import Parts from './Pages/Home/Parts';
 import RequiredAuth from './Pages/Auth/RequiredAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import AdminRoute from './Pages/Auth/AdminRoute';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import AddReview from './Pages/Dashboard/AddReview';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
+import AddAProduct from './Pages/Dashboard/AddAProduct';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 
 function App() {
   useEffect(() => {
@@ -27,10 +34,17 @@ function App() {
             </RequiredAuth>
           }></Route>
           <Route path='/dashboard' element={
-            <RequiredAuth>
+            <AdminRoute>
               <Dashboard />
-            </RequiredAuth>}>
+            </AdminRoute>}>
 
+            <Route path='/dashboard/my-profile' element={<MyProfile />}></Route>
+            <Route path='/dashboard/add-review' element={<AddReview />}></Route>
+            <Route path='/dashboard/my-orders' element={<MyOrders />}></Route>
+            <Route path='/dashboard/manage-orders' element={<ManageAllOrders />}></Route>
+            <Route path='/dashboard/add-product' element={<AddAProduct />}></Route>
+            <Route path='/dashboard/make-admin' element={<MakeAdmin />}></Route>
+            <Route path='/dashboard/manage-products' element={<ManageProducts />}></Route>
           </Route>
           <Route path='/' element={<Home />}></Route>
         </Routes>
