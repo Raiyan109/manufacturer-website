@@ -1,0 +1,56 @@
+[
+    {
+        "_id": 1,
+        "name": "Pressure hull",
+        "price": 10000,
+        "img": "https://i.ibb.co/8KLSVmx/pressure-hull.jpg",
+        "description": "The term pressure hull is used to describe the inner hull of a submarine, which holds the difference between outside and inside pressure.",
+        "minimum order quantity": 100,
+        "available quantity": 200
+    },
+    {
+        "_id": 2,
+        "name": "Ballast Tanks",
+        "price": 10700,
+        "img": "https://i.ibb.co/BGMVdTJ/pexels-cottonbro-5532845.jpg",
+        "description": "Ballast on a submarine is essentially weight, in the form of water, which controls the depth and trim (angle) of the boat. Filling the main ballast tanks at the bow and stern of the boat with water allows the submarine to surface or dive.",
+        "minimum order quantity": 100,
+        "available quantity": 300
+    },
+    {
+        "_id": 3,
+        "name": "Rudder",
+        "price": 20000,
+        "img": "https://i.ibb.co/jhpmwgh/jametlene-reskp-a-EJv-Ad-Qm-QTU-unsplash.jpg",
+        "description": "A rudder is a primary control surface used to steer a ship, boat, submarine, hovercraft, aircraft, or other conveyance that moves through a fluid medium (generally air or water).",
+        "minimum order quantity": 100,
+        "available quantity": 400
+    },
+    {
+        "_id": 4,
+        "name": "Diving Planes",
+        "price": 4000,
+        "img": "https://i.ibb.co/S6SmWXg/diving-planes.jpg",
+        "description": "Diving planes, also known as hydroplanes, are control surfaces found on a submarine which allow the vessel to pitch its bow and stern up or down to assist in the process of submerging or surfacing the boat.",
+        "minimum order quantity": 100,
+        "available quantity": 500
+    },
+    {
+        "_id": 5,
+        "name": "Engine",
+        "price": 22500,
+        "img": "https://i.ibb.co/6wMzZfY/damon-janis-hp-BESFIlmyo-unsplash.jpg",
+        "description": "Submarines have been powered by mtu diesel engines for more than 50 years. Globally.",
+        "minimum order quantity": 100,
+        "available quantity": 600
+    },
+    {
+        "_id": 1,
+        "name": "Sail",
+        "price": 8000,
+        "img": "https://i.ibb.co/sJ2spGb/sail.jpg",
+        "description": "In naval parlance, the sail or fin (also known as a fair water) of a submarine is the tower-like structure found on the dorsal (topside) surface of submarines.",
+        "minimum order quantity": 100,
+        "available quantity": 700
+    }
+]
