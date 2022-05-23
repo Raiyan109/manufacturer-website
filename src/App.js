@@ -18,6 +18,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Signup from './Pages/Auth/Signup';
 import NotFound from './Pages/Shared/NotFound';
+import Purchase from './Pages/Home/Purchase';
 
 function App() {
   useEffect(() => {
@@ -33,7 +34,7 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/part/:id' element={
             <RequiredAuth>
-              <Parts />
+              <Purchase />
             </RequiredAuth>
           }></Route>
           <Route path='/dashboard' element={

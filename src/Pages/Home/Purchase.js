@@ -5,26 +5,56 @@ import Loading from '../Shared/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
-    // const [purchase, setPurchase] = useState()
+    const [purchase, setPurchase] = useState([])
 
-    // useEffect( () => {
-    //     fetch(`http://localhost:5000/part/${id}`)
-    // },[])
+    useEffect(() => {
+        fetch(`http://localhost:5000/part/${id}`)
+            .then(res => res.json())
+            .then(data => setPurchase(data))
+    }, [])
 
-    const url = `http://localhost:5000/part/${id}`
-    const { data, isloading } = useQuery(['part', id], () => fetch(url, {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json'
-        }
-    }).then(res => res.json()))
+    // const url = `http://localhost:5000/part/${id}`
+    // const { data, isloading } = useQuery(['part', id], () => fetch(url, {
+    //     method: 'GET',
+    //     headers: {
+    //         'content-type': 'application/json'
+    //     }
+    // }).then(res => res.json()))
 
-    if (isloading) {
-        return <Loading></Loading>
-    }
+    // if (isloading) {
+    //     return <Loading></Loading>
+    // }
     return (
         <div>
-            <p>{data.name}</p>
+            <div className='absolute'>
+                <img
+                    alt="Modded Bike"
+                    src={purchase.img}
+                    class=" inset-0 object-cover w-full h-full transition-opacity group-hover:opacity-90"
+                />
+            </div>
+
+            <div
+                class="relative w-full p-6 tracking-widest text-center text-white transition-colors bg-red-700 sm:w-2/3 group-hover:bg-black"
+            >
+                <strong class="text-lg uppercase">
+                    {purchase.name}
+                </strong>
+
+                <p class="mt-1 text-xs font-medium uppercase">
+                    {purchase.description}
+                </p>
+                <p class="mt-1 text-xs font-medium uppercase">
+                    Price: {purchase.price}
+                </p>
+                <p class="mt-1 text-xs font-medium uppercase">
+                    Available Quantity: {purchase.availableQuantity}
+                </p>
+                <p class="mt-1 text-xs font-medium uppercase">
+                    Min. Order Quantity: {purchase.minimumOrderQuantity}
+                </p>
+            </div>
+
         </div>
     );
 };
