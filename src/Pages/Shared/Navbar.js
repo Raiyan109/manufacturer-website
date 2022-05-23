@@ -36,7 +36,7 @@ const Navbar = ({ children }) => {
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             )}
                             <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li>
+                            {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
                             <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>
                             <li class="dropdown dropdown-hover dropdown-end">
                                 <label tabindex="0" class="btn btn-primary btn-outline rounded-lg m-1">Hover</label>
@@ -58,7 +58,7 @@ const Navbar = ({ children }) => {
                     <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
                     <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                     <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
-                    <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li>
+                    {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
                     <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>
 
                     <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
