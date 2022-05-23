@@ -19,6 +19,7 @@ import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Signup from './Pages/Auth/Signup';
 import NotFound from './Pages/Shared/NotFound';
 import Purchase from './Pages/Home/Purchase';
+import MyPortfolio from './Pages/Home/MyPortfolio';
 
 function App() {
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
           <Route path='/blogs' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
           <Route path='/part/:id' element={
             <RequiredAuth>
               <Purchase />
