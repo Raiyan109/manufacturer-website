@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import Loading from '../Shared/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
@@ -11,7 +12,7 @@ const Purchase = () => {
     // },[])
 
     const url = `http://localhost:5000/part/${id}`
-    const { isloading, data } = useQuery(['part', id], () => fetch(url, {
+    const { data, isloading } = useQuery(['part', id], () => fetch(url, {
         method: 'GET',
         headers: {
             'content-type': 'application/json'
@@ -19,7 +20,7 @@ const Purchase = () => {
     }).then(res => res.json()))
 
     if (isloading) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
     return (
         <div>

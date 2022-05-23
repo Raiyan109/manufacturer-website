@@ -1,11 +1,20 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useLocation } from 'react-router-dom';
+import auth from '../../firebase.init';
 import UseAdmin from '../../hooks/UseAdmin';
 
 const Navbar = ({ children }) => {
+    const [user] = useAuthState(auth);
 
     const [admin] = UseAdmin()
     const { pathname } = useLocation()
+
+    const logout = () => {
+        signOut(auth);
+        // localStorage.removeItem('accessToken')
+    };
 
 
     return (
@@ -37,7 +46,7 @@ const Navbar = ({ children }) => {
                             )}
                             <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                            <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>
+                            <li>{user ? <button class="btn btn-ghost" onClick={logout}>Signout</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
                             <li class="dropdown dropdown-hover dropdown-end">
                                 <label tabindex="0" class="btn btn-primary btn-outline rounded-lg m-1">Hover</label>
                                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -59,7 +68,7 @@ const Navbar = ({ children }) => {
                     <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                     <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
                     {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                    <li><NavLink className='rounded-lg' to='/login'>Login</NavLink></li>
+                    <li>{user ? <button class="btn btn-ghost" onClick={logout}>Signout</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
 
                     <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                         <div class="collapse-title text-xl font-medium">

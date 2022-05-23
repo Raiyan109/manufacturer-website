@@ -16,6 +16,8 @@ import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import AddAProduct from './Pages/Dashboard/AddAProduct';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
+import Signup from './Pages/Auth/Signup';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   useEffect(() => {
@@ -28,6 +30,7 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/blogs' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
           <Route path='/part/:id' element={
             <RequiredAuth>
               <Parts />
@@ -38,15 +41,15 @@ function App() {
               <Dashboard />
             </AdminRoute>}>
 
-            <Route path='/dashboard/my-profile' element={<MyProfile />}></Route>
-            <Route path='/dashboard/add-review' element={<AddReview />}></Route>
-            <Route path='/dashboard/my-orders' element={<MyOrders />}></Route>
-            <Route path='/dashboard/manage-orders' element={<ManageAllOrders />}></Route>
-            <Route path='/dashboard/add-product' element={<AddAProduct />}></Route>
-            <Route path='/dashboard/make-admin' element={<MakeAdmin />}></Route>
-            <Route path='/dashboard/manage-products' element={<ManageProducts />}></Route>
+            <Route path='my-profile' element={<MyProfile />}></Route>
+            <Route path='add-review' element={<AddReview />}></Route>
+            <Route path='my-orders' element={<MyOrders />}></Route>
+            <Route path='manage-orders' element={<ManageAllOrders />}></Route>
+            <Route path='add-product' element={<AddAProduct />}></Route>
+            <Route path='make-admin' element={<MakeAdmin />}></Route>
+            <Route path='manage-products' element={<ManageProducts />}></Route>
           </Route>
-          <Route path='/' element={<Home />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </Navbar>
     </div>

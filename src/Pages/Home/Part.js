@@ -5,10 +5,10 @@ const Part = ({ part }) => {
     const navigate = useNavigate()
 
     const goToPurchase = () => {
-        navigate('/part/:id')
+        navigate(`/part/${_id}`)
     }
 
-    const { name, img, price, description, availableQuantity, minimumOrderQuantity } = part
+    const { _id, name, img, price, description, availableQuantity, minimumOrderQuantity } = part
     return (
         <div class="card w-96 bg-base-100 shadow-xl image-full">
             <figure><img src={img} alt="Shoes" /></figure>

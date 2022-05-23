@@ -24,8 +24,8 @@ const Login = () => {
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
 
-    if (user) {
-        console.log(user);
+    if (user || gUser) {
+        console.log(user || gUser);
     }
 
     if (loading || gLoading) {
