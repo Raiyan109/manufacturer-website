@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
     const [purchase, setPurchase] = useState([])
+
+    const [user, loading, error] = useAuthState(auth);
+
+    const userInfo = {
+        userName: user.displayName,
+        email: user.email
+    }
 
     useEffect(() => {
         fetch(`http://localhost:5000/part/${id}`)
@@ -53,6 +62,8 @@ const Purchase = () => {
                 <p class="mt-1 text-xs font-medium uppercase">
                     Min. Order Quantity: {purchase.minimumOrderQuantity}
                 </p>
+                <p className='text-xl mt-2'>User's Name: {user?.displayName}</p>
+                <p className='text-xl mt-2'>User's Email: {user?.email}</p>
             </div>
 
         </div>
