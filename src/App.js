@@ -5,7 +5,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Login from './Pages/Auth/Login';
-import Parts from './Pages/Home/Parts';
 import RequiredAuth from './Pages/Auth/RequiredAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import AdminRoute from './Pages/Auth/AdminRoute';
@@ -20,6 +19,7 @@ import Signup from './Pages/Auth/Signup';
 import NotFound from './Pages/Shared/NotFound';
 import Purchase from './Pages/Home/Purchase';
 import MyPortfolio from './Pages/Home/MyPortfolio';
+import Blogs from './Pages/Home/Blogs';
 
 function App() {
   useEffect(() => {
@@ -30,7 +30,7 @@ function App() {
       <Navbar>
         <Routes>
           <Route path='/' element={<Home />}></Route>
-          <Route path='/blogs' element={<Home />}></Route>
+          <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
