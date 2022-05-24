@@ -6,7 +6,7 @@ const Blogs = () => {
             <details class="p-6 border-l-4 border-green-500 bg-gray-50 group" open>
                 <summary class="flex items-center justify-between cursor-pointer">
                     <h5 class="text-lg font-medium text-gray-900">
-                        Lorem ipsum dolor sit amet consectetur adipisicing?
+                        How will you improve the performance of a React Application?
                     </h5>
 
                     <span
