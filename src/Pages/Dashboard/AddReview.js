@@ -1,12 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import fetcher from '../../api';
 
 const AddReview = () => {
 
     const { register, handleSubmit, reset } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const res = await fetcher.post('review', data)
+        console.log(res);
+        reset()
     }
     return (
 

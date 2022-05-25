@@ -37,7 +37,7 @@ const Purchase = () => {
         <div>
             <div className=''>
                 <img
-                    alt="Modded Bike"
+                    alt=""
                     src={purchase.img}
                     class=" inset-0 object-cover w-full h-full transition-opacity group-hover:opacity-90"
                 />
