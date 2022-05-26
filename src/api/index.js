@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const fetcher = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://stormy-sea-79672.herokuapp.com',
 });
 
 export default fetcher

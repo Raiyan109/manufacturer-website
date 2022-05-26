@@ -20,6 +20,7 @@ import NotFound from './Pages/Shared/NotFound';
 import Purchase from './Pages/Home/Purchase';
 import MyPortfolio from './Pages/Home/MyPortfolio';
 import Blogs from './Pages/Home/Blogs';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   useEffect(() => {
@@ -54,6 +55,7 @@ function App() {
           </Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
+        <ToastContainer />
       </Navbar>
     </div>
   );

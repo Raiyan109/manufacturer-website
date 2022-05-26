@@ -1,26 +1,70 @@
+import { async } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import fetcher from '../../api';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
 
-const Purchase = () => {
+const Purchase = ({ refetch }) => {
     const { id } = useParams()
     const [purchase, setPurchase] = useState([])
+    console.log(purchase);
 
     const [user, loading, error] = useAuthState(auth);
 
-    const userInfo = {
+    const { register, handleSubmit, reset } = useForm();
+
+    const userOrders = {
         userName: user.displayName,
         email: user.email
     }
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/part/${id}`)
-            .then(res => res.json())
-            .then(data => setPurchase(data))
-    }, [])
+    // useEffect(() => {
+
+    //     fetch(`https://stormy-sea-79672.herokuapp.com/part/${id}`)
+    //         .then(res => res.json())
+    //         .then(data => setPurchase(data))
+    // }, [])
+
+    // const [increaseQuantity, setIncreaseQuantity] = useState('')
+
+    const onSubmit = async (event, data) => {
+        const res = await fetcher.post(`part/${id}`, data)
+        console.log(res);
+        setPurchase(user)
+        // const minimumOrderQuantity = 100
+        // let updatedQuantity = parseInt(event.target.value)
+        // const availableQuantity = minimumOrderQuantity + updatedQuantity
+        // reset()
+    }
+
+
+    fetch('https://stormy-sea-79672.herokuapp.com/userOrders', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(userOrders)
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                toast(`Dear ${user.name}, Your Order has been placed successfully`)
+            }
+            else {
+                toast.error('You already have this order')
+            }
+            refetch()
+
+        })
+
+    // useEffect(() => {
+
+    // }, [])
 
     // const url = `http://localhost:5000/part/${id}`
     // const { data, isloading } = useQuery(['part', id], () => fetch(url, {
@@ -79,7 +123,7 @@ const Purchase = () => {
                         </div>
 
                         <div class="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
-                            <form action="" class="space-y-4">
+                            <form onSubmit={handleSubmit(onSubmit)} class="space-y-4">
                                 <div>
                                     <label class="sr-only" for="name">Name</label>
                                     <input class="w-full p-3 text-sm border-gray-200 rounded-lg" placeholder="Name" type="text" id="name" />
@@ -114,6 +158,18 @@ const Purchase = () => {
                     </div>
                 </div>
             </section>
+
+            <div className='flex justify-center mt-10 bg-secondary'>
+
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <label className='text-xl mr-4' for="quantity">Quantity : </label>
+                    <input placeholder='Quantity' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3' type="number" value={'100'}
+                        // {
+                        //     value ===> minimumOrderQuantity ? error.message
+                        // }
+                        {...register("quantity")} />
+                </form>
+            </div>
         </div>
 
 

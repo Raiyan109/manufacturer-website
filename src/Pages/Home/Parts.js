@@ -22,12 +22,20 @@ const Parts = () => {
         })()
     }, [])
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 m-10'>
+        <div>
+
+            <h1 className='text-4xl text-secondary text-center my-12 font-bold'>Our Fragments</h1>
+            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 m-10'>
+                {
+                    parts?.map(part => <Part
+                        key={part._id}
+                        part={part}
+                    />)
+                }
+            </div>
+
             {
-                parts?.map(part => <Part
-                    key={part._id}
-                    part={part}
-                />)
+
             }
         </div>
     );

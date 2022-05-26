@@ -1,10 +1,21 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import fetcher from '../../api';
 import auth from '../../firebase.init';
 
 const MyProfile = () => {
 
     const [user, loading, error] = useAuthState(auth);
+
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = async (data) => {
+        const res = await fetcher.post('userInfo', data)
+        console.log(res);
+        reset()
+    }
+
     return (
         <div>
             <section class="bg-gray-100">
@@ -18,7 +29,9 @@ const MyProfile = () => {
                         </div>
 
                         <div class="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
-                            <form class="space-y-4">
+                            <form
+                                onSubmit={handleSubmit(onSubmit)}
+                                class="space-y-4">
                                 <div>
                                     <label class="sr-only" for="name">Name</label>
                                     <input class="w-full p-3 text-sm border-gray-200 rounded-lg"
@@ -47,6 +60,7 @@ const MyProfile = () => {
                                             placeholder="Phone Number"
                                             type="tel"
                                             id="phone"
+                                            {...register("phone")}
                                         />
                                     </div>
                                 </div>
@@ -58,6 +72,7 @@ const MyProfile = () => {
                                             placeholder="Education"
                                             type="text"
                                             id="education"
+                                            {...register("education")}
                                         />
                                     </div>
 
@@ -68,6 +83,7 @@ const MyProfile = () => {
                                             placeholder="Location"
                                             type="text"
                                             id="location"
+                                            {...register("location")}
                                         />
                                     </div>
                                 </div>
