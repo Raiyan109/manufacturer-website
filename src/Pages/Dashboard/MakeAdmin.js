@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import MakeAdminRow from './MakeAdminRow';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('user', () => fetch('https://stormy-sea-79672.herokuapp.com/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://stormy-sea-79672.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -29,13 +29,13 @@ const MakeAdmin = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {/* {
                             users.map(user => <MakeAdminRow
                                 key={user._id}
                                 user={user}
                                 refetch={refetch}
                             ></MakeAdminRow>)
-                        }
+                        } */}
                     </tbody>
                 </table>
             </div>

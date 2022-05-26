@@ -9,7 +9,7 @@ const Review = ({ review }) => {
                     <div className="max-w-xs h-64 flex flex-col justify-between bg-white dark:bg-gray-800 rounded-lg border border-gray-400 mb-6 py-5 px-4">
                         <div>
                             <h4 className="text-gray-800 dark:text-gray-100 font-bold mb-3">{review.name}</h4>
-                            <p className="text-gray-800 dark:text-gray-100 text-sm">Probabo, inquit, sic agam, ut labore et voluptatem sequi nesciunt, neque porro quisquam est, quid malum, sensu iudicari, sed ut alterum.</p>
+                            <p className="text-gray-800 dark:text-gray-100 text-sm">good job</p>
                         </div>
                         <div>
                             <div className="flex items-center justify-between text-gray-800">
