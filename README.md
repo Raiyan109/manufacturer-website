@@ -1,6 +1,6 @@
 # Leviathan
 
-[Leviathan](https://github.com/facebook/create-react-app).
+[Leviathan](https://assignment-12-e077a.web.app/).
 
 - React
 - Firebase
