@@ -4,7 +4,7 @@
         "name": "Pressure hull",
         "price": 10000,
         "img": "https://i.ibb.co/8KLSVmx/pressure-hull.jpg",
-        "description": "The term pressure hull is used to describe the inner hull of a submarine, which holds the difference between outside and inside pressure.",
+        "description": "The term pressure hull is used to describe the inner hull of a submarine, which holds the difference between outside and inside pressurefdfdf.",
         "minimum order quantity": 100,
         "available quantity": 200
     },
