@@ -17,7 +17,7 @@ const AddAProduct = () => {
             image: imageUrl,
 
         }
-        const res = await fetcher.post('part', productData)
+        const res = await fetcher.post('api/parts', productData)
         console.log(res);
         reset()
         setImageUrl('')

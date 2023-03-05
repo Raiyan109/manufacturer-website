@@ -23,17 +23,17 @@ const Purchase = ({ refetch }) => {
         email: user.email
     }
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     fetch(`https://stormy-sea-79672.herokuapp.com/part/${id}`)
-    //         .then(res => res.json())
-    //         .then(data => setPurchase(data))
-    // }, [])
+        fetch(`https://manufacturer-app-server.vercel.app/api/parts/${id}`)
+            .then(res => res.json())
+            .then(data => setPurchase(data))
+    }, [])
 
     // const [increaseQuantity, setIncreaseQuantity] = useState('')
 
     const onSubmit = async (event, data) => {
-        const res = await fetcher.post(`part/${id}`, data)
+        const res = await fetcher.post(`api/parts/${id}`, data)
         console.log(res);
         setPurchase(user)
         // const minimumOrderQuantity = 100
