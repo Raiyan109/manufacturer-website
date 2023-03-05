@@ -11,13 +11,17 @@ const Reviews = () => {
             .then(data => setReviews(data))
     }, [])
     return (
-        <div>
-            {
-                reviews.map(review => <Review
-                    key={review._id}
-                    review={review}
-                ></Review>)
-            }
+        <div className='mt-14'>
+            <h1 className='text-center text-6xl mb-14'>Clients Reviews</h1>
+            <div className='flex justify-center items-center'></div>
+            <div className='grid gap-x-8 gap-y-4  grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                {
+                    reviews.map(review => <Review
+                        key={review._id}
+                        review={review}
+                    ></Review>)
+                }
+            </div>
         </div>
     );
 };
