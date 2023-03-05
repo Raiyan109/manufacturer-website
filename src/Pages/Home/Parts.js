@@ -9,7 +9,8 @@ const Parts = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetcher.get('/part')
+            const res = await fetcher.get('api/parts')
+            console.log(res);
             setParts(res.data)
         })()
     }, [])

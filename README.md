@@ -7,3 +7,6 @@
 - Mongodb
 - Payment system by stripe
 - Awesome UI
+
+
+Design : [Inspiration](https://ohm.studio/)

@@ -9,11 +9,11 @@ const Review = ({ review }) => {
                     <div className="max-w-xs h-64 flex flex-col justify-between bg-white dark:bg-gray-800 rounded-lg border border-gray-400 mb-6 py-5 px-4">
                         <div>
                             <h4 className="text-gray-800 dark:text-gray-100 font-bold mb-3">{review.name}</h4>
-                            <p className="text-gray-800 dark:text-gray-100 text-sm">good job</p>
+                            <p className="text-gray-800 dark:text-gray-100 text-sm">{review.review}</p>
                         </div>
                         <div>
                             <div className="flex items-center justify-between text-gray-800">
-                                <p className="text-sm dark:text-gray-100">March 28, 2020</p>
+                                <p className="text-sm dark:text-gray-100">{review.createdAt}</p>
                                 <div className="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pencil" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
