@@ -10,7 +10,7 @@ const Testimonial = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetcher.get('/testimonial')
+            const res = await fetcher.get('/api/testimonials')
             setTestimonials(res.data)
         })()
     }, [])
