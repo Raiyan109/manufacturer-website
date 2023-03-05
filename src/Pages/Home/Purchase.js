@@ -97,13 +97,13 @@ const Purchase = ({ refetch }) => {
                 <p class="mt-1 text-xs font-medium uppercase">
                     {purchase.description}
                 </p>
-                <p class="mt-1 text-xs font-medium uppercase">
+                <p class="mt-1 text-xs font-medium ">
                     Price: {purchase.price}
                 </p>
-                <p class="mt-1 text-xs font-medium uppercase">
+                <p class="mt-1 text-xs font-medium ">
                     Available Quantity: {purchase.availableQuantity}
                 </p>
-                <p class="mt-1 text-xs font-medium uppercase">
+                <p class="mt-1 text-xs font-medium ">
                     Min. Order Quantity: {purchase.minimumOrderQuantity}
                 </p>
                 <p className='text-xl mt-2'>User's Name: {user?.displayName}</p>
