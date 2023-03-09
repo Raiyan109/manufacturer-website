@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import bg from '../../assets/images/DrawKit Larry Character Illustration (3).png'
 
 
@@ -17,7 +18,9 @@ const Banner = () => {
                         <p className="mb-8 leading-relaxed">Delivering Precision-Crafted Submarine Parts with Quality, Durability, and Performance Built to Withstand the Depths of the Ocean - Providing Safe and Reliable Solutions for Your Submarine Needs.</p>
                     </div>
                     <div className="flex justify-center">
-                        <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Learn More</button>
+                        <Link to='#part'>
+                            <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg">Learn More</button>
+                        </Link>
 
                     </div>
                 </div>

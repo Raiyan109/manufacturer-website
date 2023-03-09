@@ -49,7 +49,7 @@ const Navbar = ({ children }) => {
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
                             <li>{user ? <button class="btn btn-ghost" onClick={logout}>Signout</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
                             <li class="dropdown dropdown-hover dropdown-end">
-                                <label tabindex="0" class="btn btn-primary btn-outline rounded-lg m-1">Hover</label>
+                                <label tabindex="0" class="btn btn-primary btn-outline rounded-lg m-1">Shop now</label>
                                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                     <li><a>Item 1</a></li>
                                     <li><a>Item 2</a></li>

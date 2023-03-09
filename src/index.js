@@ -8,17 +8,21 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
+import { AuthContextProvider } from './context/AuthContext';
 
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <AuthContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </AuthContextProvider>
+
   </React.StrictMode>
 );
 

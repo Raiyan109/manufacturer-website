@@ -15,7 +15,7 @@ const Parts = () => {
         })()
     }, [])
     return (
-        <div>
+        <div id='parts'>
 
             <h1 className='text-4xl text-secondary text-center my-12 font-bold'>Our Fragments</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 m-10'>
