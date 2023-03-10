@@ -99,7 +99,7 @@ const Login = () => {
                                     },
                                     minLength: {
                                         value: 6,
-                                        message: 'Must be 6 charachters or longer'
+                                        message: 'Must be 6 characters or longer'
                                     }
                                 })}
                             />
