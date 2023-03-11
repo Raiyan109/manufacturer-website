@@ -7,6 +7,7 @@ import Parts from './Parts';
 import Reviews from './Reviews';
 import StayConnected from './StayConnected';
 import Testimonial from './Testimonial';
+import Video from './Video';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <Banner />
             <Parts />
             <ListOfIndustries />
+            <Video />
             <BusinessSummary />
             <Reviews />
             <Testimonial />

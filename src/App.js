@@ -21,6 +21,8 @@ import Purchase from './Pages/Home/Purchase';
 import MyPortfolio from './Pages/Home/MyPortfolio';
 import Blogs from './Pages/Home/Blogs';
 import { ToastContainer } from 'react-toastify';
+// import Cookies from './Pages/Cookies';
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   useEffect(() => {
@@ -57,7 +59,19 @@ function App() {
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
         <ToastContainer />
+
       </Navbar>
+      <CookieConsent
+        location="bottom"
+        buttonText="Sure man!!"
+        cookieName="myAwesomeCookieName2"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+
+      >
+        This website uses cookies to enhance the user experience.{" "}
+        <span style={{ fontSize: "10px" }}>This bit of text is smaller :O</span>
+      </CookieConsent>
     </div>
   );
 }
