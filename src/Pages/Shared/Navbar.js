@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import UseAdmin from '../../hooks/UseAdmin';
 
@@ -48,13 +48,12 @@ const Navbar = ({ children }) => {
                             <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
                             <li>{user ? <button class="btn btn-ghost" onClick={logout}>Signout</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
-                            <li class="dropdown dropdown-hover dropdown-end">
-                                <label tabindex="0" class="btn btn-primary btn-outline rounded-lg m-1">Shop now</label>
-                                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><a>Item 1</a></li>
-                                    <li><a>Item 2</a></li>
-                                </ul>
-                            </li>
+                            <div className="flex justify-center">
+                                <Link to='/getQuote'>
+                                    <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg">Get A Quote</button>
+                                </Link>
+
+                            </div>
                         </ul>
                     </div>
                 </div>

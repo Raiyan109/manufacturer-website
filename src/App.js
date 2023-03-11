@@ -23,6 +23,7 @@ import Blogs from './Pages/Home/Blogs';
 import { ToastContainer } from 'react-toastify';
 // import Cookies from './Pages/Cookies';
 import CookieConsent from "react-cookie-consent";
+import GetQuote from './Pages/GetQuote/GetQuote';
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/getQuote' element={<GetQuote />}></Route>
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
           <Route path='/part' element={<Purchase />}></Route>
           <Route path='api/parts/:id' element={
