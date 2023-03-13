@@ -46,18 +46,18 @@ const Signup = () => {
 
 
     };
-    
+
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Sign up</h2>
+                    <h2 className="text-center text-2xl font-bold font-Montserrat">Sign up</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div class="form-control w-full max-w-xs">
                             <label class="label">
-                                <span class="label-text">Name</span>
+                                <span class="label-text font-Montserrat">Name</span>
 
                             </label>
                             <input
@@ -79,7 +79,7 @@ const Signup = () => {
 
                         <div class="form-control w-full max-w-xs">
                             <label class="label">
-                                <span class="label-text">Email </span>
+                                <span class="label-text font-Montserrat">Email </span>
 
                             </label>
                             <input
@@ -105,7 +105,7 @@ const Signup = () => {
 
                         <div class="form-control w-full max-w-xs">
                             <label class="label">
-                                <span class="label-text">Password</span>
+                                <span class="label-text font-Montserrat">Password</span>
 
                             </label>
                             <input
@@ -133,11 +133,11 @@ const Signup = () => {
                         <input className='btn w-full max-w-xs' value='Sign up' type="submit" />
                     </form>
 
-                    <p><small>Already have an Account? <Link className='text-primary' to='/login'>PLease Login</Link></small></p>
-                    <div className="divider">OR</div>
+                    <p className='font-Montserrat'><small>Already have an Account? <Link className='text-primary font-Montserrat' to='/login'>PLease Login</Link></small></p>
+                    <div className="divider font-Montserrat">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}
-                        className="btn btn-outline"
+                        className="btn btn-outline font-OpenSans"
                     >Continue with google</button>
                 </div>
             </div>

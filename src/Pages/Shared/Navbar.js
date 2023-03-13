@@ -18,7 +18,7 @@ const Navbar = ({ children }) => {
 
 
     return (
-        <div class="drawer drawer-end">
+        <div class="drawer drawer-end font-Montserrat">
             <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex flex-col">
 

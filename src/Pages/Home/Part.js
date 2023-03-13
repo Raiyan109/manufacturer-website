@@ -23,7 +23,7 @@ const Part = ({ part }) => {
                         <div className='tooltip' data-tip="Available Quantity">
                             <span className="font-bold text-gray-800 dark:text-gray-200">{availableQuantity}</span>
                         </div>
-                        <button className="px-2 py-1 text-xs font-semibold  text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none" onClick={goToPurchase}>Purchase</button>
+                        <button className="px-2 py-1 text-xs font-semibold font-OpenSans text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none" onClick={goToPurchase}>Purchase</button>
                     </div>
                 </div>
             </div>

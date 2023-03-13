@@ -7,6 +7,10 @@ const UploadFiles = () => {
             <div className='border-dashed border-2 border-red-400 w-46 h-28 flex justify-center items-center'>
                 <input type="file" className="file-input file-input-bordered file-input-error w-full max-w-xs" />
             </div>
+
+
+
+
         </div>
     );
 };
