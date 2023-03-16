@@ -70,11 +70,19 @@ const GetQuote = () => {
                                                     className="btn btn-secondary ml-9"
                                                 >Back</button>
                                                 <button
-                                                    disabled={page === formTitles.length - 1}
-                                                    onClick={() => { setPage((prevPage) => prevPage + 1) }}
+                                                    onClick={() => {
+                                                        if (page === formTitles.length - 1) {
+                                                            alert('Form Submitted')
+                                                        }
+                                                        else {
+                                                            setPage((prevPage) => prevPage + 1)
+                                                        }
+                                                    }}
                                                     type='submit'
                                                     value="Send"
-                                                    className="btn btn-secondary ml-9">Next</button>
+                                                    className="btn btn-secondary ml-9">
+                                                    {page === formTitles.length - 1 ? 'Submit' : 'Next'}
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
