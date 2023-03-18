@@ -24,6 +24,7 @@ import { ToastContainer } from 'react-toastify';
 // import Cookies from './Pages/Cookies';
 import CookieConsent from "react-cookie-consent";
 import GetQuote from './Pages/GetQuote/GetQuote';
+import CheckoutSuccess from './Pages/CheckoutSuccess';
 
 function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/getQuote' element={<GetQuote />}></Route>
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
           <Route path='/part' element={<Purchase />}></Route>
+          <Route path='checkout-success' element={<CheckoutSuccess />}></Route>
           <Route path='api/parts/:id' element={
             <RequiredAuth>
               <Purchase />
