@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { AuthContext } from '../../context/AuthContext';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
@@ -13,7 +15,8 @@ const Signup = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useContext(AuthContext)
+    const [signUpError, setSignUpError] = useState('')
 
     // const [
     //     createUserWithEmailAndPassword,
@@ -44,12 +47,23 @@ const Signup = () => {
 
     const onSubmit = async data => {
         console.log(data);
+        setSignUpError('')
         createUser(data.email, data.password)
             .then(res => {
                 const user = res.user
                 console.log(user);
+                toast("Successfully Signed up!");
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => console.log(err))
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                setSignUpError(error.message)
+            })
         // await createUserWithEmailAndPassword(data.email, data.password)
         // await updateProfile({ displayName: data.name });
         // console.log('update done');
@@ -138,8 +152,8 @@ const Signup = () => {
                                 {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500 ">{errors.password.message}</span>}
                             </label>
                         </div>
-                        {signInError}
-
+                        {/* {signInError} */}
+                        {signUpError && <p className='text-red-600'>{signUpError}</p>}
                         <input className='btn w-full max-w-xs' value='Sign up' type="submit" />
                     </form>
 
@@ -151,6 +165,7 @@ const Signup = () => {
                     >Continue with google</button>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -26,9 +26,9 @@ const Login = () => {
 
     let signInError
 
-    // const navigate = useNavigate()
-    // const location = useLocation()
-    // let from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
 
     // useEffect(() => {
     //     if (token) {
@@ -51,6 +51,7 @@ const Login = () => {
             .then(res => {
                 const user = res.user
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(err => console.log(err))
     };

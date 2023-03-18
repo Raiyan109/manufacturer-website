@@ -1,13 +1,16 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import auth from '../../firebase.init';
 import UseAdmin from '../../hooks/UseAdmin';
 
 const Navbar = ({ children }) => {
-    const [user] = useAuthState(auth);
 
+    const { user } = useContext(AuthContext)
+
+    // const [user] = useAuthState(auth);
     const [admin] = UseAdmin()
     const { pathname } = useLocation()
 
@@ -47,7 +50,7 @@ const Navbar = ({ children }) => {
                             )}
                             <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                            <li>{user ? <button class="btn btn-ghost" onClick={logout}>Signout</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
+                            <li>{user ? <button class="btn btn-ghost" onClick={logout}>Sign out</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
                             <div className="flex justify-center">
                                 <Link to='/getQuote'>
                                     <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg">Get A Quote</button>
