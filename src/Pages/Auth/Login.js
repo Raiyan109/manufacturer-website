@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
 
@@ -12,39 +13,46 @@ const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+    const { signIn } = useContext(AuthContext)
 
-    const [token] = useToken(user || gUser)
+    // const [
+    //     signInWithEmailAndPassword,
+    //     user,
+    //     loading,
+    //     error,
+    // ] = useSignInWithEmailAndPassword(auth);
+
+    // const [token] = useToken(user || gUser)
 
     let signInError
 
-    const navigate = useNavigate()
-    const location = useLocation()
-    let from = location.state?.from?.pathname || "/";
+    // const navigate = useNavigate()
+    // const location = useLocation()
+    // let from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        if (token) {
-            // navigate(from, { replace: true })
-            navigate('/')
-        }
-    }, [token, from, navigate])
+    // useEffect(() => {
+    //     if (token) {
+    //         // navigate(from, { replace: true })
+    //         navigate('/')
+    //     }
+    // }, [token, from, navigate])
 
-    if (loading || gLoading) {
-        return <Loading></Loading>
-    }
+    // if (loading || gLoading) {
+    //     return <Loading></Loading>
+    // }
 
-    if (error || gError) {
-        signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
-    }
+    // if (error || gError) {
+    //     signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    // }
 
     const onSubmit = data => {
         console.log(data)
-        signInWithEmailAndPassword(data.email, data.password)
+        signIn(data.email, data.password)
+            .then(res => {
+                const user = res.user
+                console.log(user);
+            })
+            .catch(err => console.log(err))
     };
 
 

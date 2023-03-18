@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
@@ -12,37 +13,46 @@ const Signup = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const { createUser } = useContext(AuthContext)
 
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    // const [
+    //     createUserWithEmailAndPassword,
+    //     user,
+    //     loading,
+    //     error,
+    // ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [token] = useToken(user || gUser)
+    // const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    const navigate = useNavigate()
+    // const [token] = useToken(user || gUser)
+
+    // const navigate = useNavigate()
 
     let signInError
 
-    if (token) {
-        navigate('/part')
-    }
+    // if (token) {
+    //     navigate('/part')
+    // }
 
-    if (loading || gLoading || updating) {
-        return <Loading></Loading>
-    }
+    // if (loading || gLoading || updating) {
+    //     return <Loading></Loading>
+    // }
 
-    if (error || gError || updateError) {
-        signInError = <p className='text-red-500'><small>{error?.message || gError?.message || updateError?.message}</small></p>
-    }
+    // if (error || gError || updateError) {
+    //     signInError = <p className='text-red-500'><small>{error?.message || gError?.message || updateError?.message}</small></p>
+    // }
 
     const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName: data.name });
-        console.log('update done');
+        console.log(data);
+        createUser(data.email, data.password)
+            .then(res => {
+                const user = res.user
+                console.log(user);
+            })
+            .catch(error => console.log(error))
+        // await createUserWithEmailAndPassword(data.email, data.password)
+        // await updateProfile({ displayName: data.name });
+        // console.log('update done');
 
 
     };
