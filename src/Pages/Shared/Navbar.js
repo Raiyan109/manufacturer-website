@@ -53,7 +53,7 @@ const Navbar = ({ children }) => {
                             <li>{user ? <button class="btn btn-ghost" onClick={logout}>Sign out</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
                             <div className="flex justify-center">
                                 <Link to='/getQuote'>
-                                    <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg">Get A Quote</button>
+                                    <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans">Get A Quote</button>
                                 </Link>
 
                             </div>

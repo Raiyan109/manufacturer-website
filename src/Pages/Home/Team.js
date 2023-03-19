@@ -2,12 +2,12 @@ export const Team = () => {
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-                <div>
+                {/* <div>
                     <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
                         Dream Team
                     </p>
-                </div>
-                <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+                </div> */}
+                <h2 className="text-5xl text-primary font-bold text-center">
                     <span className="relative inline-block">
                         <svg
                             viewBox="0 0 52 24"
@@ -31,16 +31,16 @@ export const Team = () => {
                                 height="24"
                             />
                         </svg>
-                        <span className="relative">Welcome</span>
+                        <span className="relative">Our</span>
                     </span>{' '}
-                    our talented team of professionals
+                    Professionals
                 </h2>
-                <p className="text-base text-gray-700 md:text-lg">
+                {/* <p className="text-base text-gray-700 md:text-lg">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                     accusantium doloremque rem aperiam, eaque ipsa quae.
-                </p>
+                </p> */}
             </div>
-            <div className="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3 mt-5">
                 <div className="flex">
                     <img
                         className="object-cover w-20 h-20 mr-4 rounded-full shadow"

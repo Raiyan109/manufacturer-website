@@ -17,7 +17,7 @@ const Parts = () => {
     return (
         <div id='parts' className='mt-6'>
 
-            <h1 className='sm:text-3xl lg:text-5xl text-primary text-center my-12 font-bold font-Montserrat'>Our Fragments</h1>
+            <h1 className='text-5xl text-primary font-bold text-center font-Montserrat'> Our Fragments</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 m-10'>
                 {
                     parts?.map(part => <Part

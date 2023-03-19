@@ -1,0 +1,32 @@
+#spin {}
+
+#spin:after {
+    content: "";
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        content: "Submarine"
+    }
+
+    20% {
+        content: "HOV Alvin"
+    }
+
+    40% {
+        content: "ROV Jason"
+    }
+
+    60% {
+        content: "AUVs"
+    }
+
+    80% {
+        content: "HROV"
+    }
+
+    100% {
+        content: "CAMPER"
+    }
+}
