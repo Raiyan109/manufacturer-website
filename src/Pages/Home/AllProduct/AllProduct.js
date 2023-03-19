@@ -6,7 +6,7 @@ const AllProduct = ({ part }) => {
     const navigate = useNavigate()
 
     const goToPurchase = () => {
-        navigate(`api/parts/${_id}`)
+        navigate(`/api/parts/${_id}`)
     }
 
     const { _id, name, img, price, description, availableQuantity, minimumOrderQuantity } = part
