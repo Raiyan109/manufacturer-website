@@ -1,9 +1,17 @@
 import React from 'react';
-
+import { Triangle } from 'react-loader-spinner';
 const Loading = () => {
     return (
-        <div class="flex items-center justify-center mx-auto">
-            <div class="w-16 h-16 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+        <div className="flex items-center justify-center min-h-screen">
+            <Triangle
+                height="80"
+                width="80"
+                color="#5f4d5d"
+                ariaLabel="triangle-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+            />
         </div>
     );
 };

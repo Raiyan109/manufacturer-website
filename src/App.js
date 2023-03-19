@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 import CookieConsent from "react-cookie-consent";
 import GetQuote from './Pages/GetQuote/GetQuote';
 import CheckoutSuccess from './Pages/CheckoutSuccess';
+import AllProducts from './Pages/Home/AllProduct/AllProducts';
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/getQuote' element={<GetQuote />}></Route>
+          <Route path='/allProduct' element={<AllProducts />}></Route>
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
           <Route path='/part' element={<Purchase />}></Route>
           <Route path='checkout-success' element={<CheckoutSuccess />}></Route>

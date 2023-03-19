@@ -46,6 +46,7 @@ const Navbar = ({ children }) => {
                     <div class="flex-none hidden lg:block">
                         <ul class="menu menu-horizontal gap-x-2">
                             <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
+                            <li><NavLink className='rounded-lg' to='/allProduct'>Products</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/myPortfolio'>My Portfolio</NavLink></li> */}
                             {user && (
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
