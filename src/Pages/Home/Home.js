@@ -6,6 +6,7 @@ import ListOfIndustries from './ListOfIndustries';
 import Parts from './Parts';
 import Reviews from './Reviews';
 import StayConnected from './StayConnected';
+import { Team } from './Team';
 import Testimonial from './Testimonial';
 import Video from './Video';
 
@@ -17,7 +18,8 @@ const Home = () => {
             <ListOfIndustries />
             <Video />
             <BusinessSummary />
-            <Reviews />
+            {/* <Reviews /> */}
+            <Team />
             <Testimonial />
             <StayConnected />
             <Footer />

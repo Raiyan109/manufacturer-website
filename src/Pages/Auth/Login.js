@@ -13,7 +13,7 @@ const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const { signIn } = useContext(AuthContext)
+    const { signIn, loading } = useContext(AuthContext)
 
     // const [
     //     signInWithEmailAndPassword,
@@ -37,9 +37,9 @@ const Login = () => {
     //     }
     // }, [token, from, navigate])
 
-    // if (loading || gLoading) {
-    //     return <Loading></Loading>
-    // }
+    if (loading || gLoading) {
+        return <Loading></Loading>
+    }
 
     // if (error || gError) {
     //     signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>

@@ -7,7 +7,7 @@ const AddReview = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
-        const res = await fetcher.post('review', data)
+        const res = await fetcher.post('api/testimonials', data)
         console.log(res);
         reset()
     }
