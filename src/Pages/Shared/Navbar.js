@@ -5,6 +5,8 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import auth from '../../firebase.init';
 import UseAdmin from '../../hooks/UseAdmin';
+import { RxAvatar } from "react-icons/rx";
+
 
 const Navbar = ({ children }) => {
 
@@ -50,13 +52,24 @@ const Navbar = ({ children }) => {
                             )}
                             <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                            <li>{user ? <button class="btn btn-ghost" onClick={logout}>Sign out</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
-                            <div className="flex justify-center">
+                            {user ? '' : <li>{user ? <button class="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
+                            {/* <div className="flex justify-center">
                                 <Link to='/getQuote'>
                                     <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans">Get A Quote</button>
                                 </Link>
 
-                            </div>
+                            </div> */}
+                            {user && (<div className="dropdown">
+                                <div className="avatar cursor-pointer">
+                                    <div className=" rounded-xl" tabIndex={0}>
+                                        <RxAvatar className='w-12 h-12' />
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li>{user ? <button class="btn btn-ghost" onClick={logout}>Sign out</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
+                                    <li><a>Item 2</a></li>
+                                </ul>
+                            </div>)}
                         </ul>
                     </div>
                 </div>
