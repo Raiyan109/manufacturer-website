@@ -119,15 +119,19 @@ const Login = () => {
                         </div>
                         {signInError}
 
-                        <input className='btn w-full max-w-xs' value='login' type="submit" />
+                        <input className='btn w-full max-w-xs font-OpenSans' value='login' type="submit" />
                     </form>
 
-                    <p><small>New to Leviathan? <Link className='text-primary' to='/signup'>Create New Account</Link></small></p>
+                    <p><small>New to Leviathan? <Link className='text-secondary font-semibold' to='/signup'>Create New Account</Link></small></p>
                     <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline"
                     >Continue with google</button>
+
+                    <div className="mt-3">
+                        <Link to="/resetPass" className="hover:text-secondary transition-all">Forgot password?</Link>
+                    </div>
                 </div>
             </div>
         </div>

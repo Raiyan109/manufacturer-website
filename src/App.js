@@ -26,6 +26,7 @@ import CookieConsent from "react-cookie-consent";
 import GetQuote from './Pages/GetQuote/GetQuote';
 import CheckoutSuccess from './Pages/CheckoutSuccess';
 import AllProducts from './Pages/Home/AllProduct/AllProducts';
+import ResetPass from './Pages/Auth/ResetPass';
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
           <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/resetPass' element={<ResetPass />}></Route>
           <Route path='/getQuote' element={<GetQuote />}></Route>
           <Route path='/allProduct' element={<AllProducts />}></Route>
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>

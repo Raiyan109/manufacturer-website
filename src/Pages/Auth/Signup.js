@@ -156,15 +156,17 @@ const Signup = () => {
                         </div>
                         {/* {signInError} */}
                         {signUpError && <p className='text-red-600'>{signUpError}</p>}
-                        <input className='btn w-full max-w-xs' value='Sign up' type="submit" />
+                        <input className='btn w-full max-w-xs font-OpenSans' value='Sign up' type="submit" />
                     </form>
 
-                    <p className='font-Montserrat'><small>Already have an Account? <Link className='text-primary font-Montserrat' to='/login'>PLease Login</Link></small></p>
+                    <p className='font-Montserrat'><small>Already have an Account? <Link className='text-secondary font-semibold font-Montserrat' to='/login'>PLease Login</Link></small></p>
                     <div className="divider font-Montserrat">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline font-OpenSans"
                     >Continue with google</button>
+
+
                 </div>
             </div>
             <ToastContainer />
