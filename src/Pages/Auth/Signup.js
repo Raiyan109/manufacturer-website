@@ -29,7 +29,7 @@ const Signup = () => {
 
     // const [token] = useToken(user || gUser)
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     let signInError
 
@@ -57,7 +57,9 @@ const Signup = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        navigate('/')
+                    })
                     .catch(err => console.log(err))
             })
             .catch(error => {

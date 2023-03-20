@@ -23,28 +23,28 @@ const Navbar = ({ children }) => {
 
 
     return (
-        <div class="drawer drawer-end font-Montserrat">
-            <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col">
+        <div className="drawer drawer-end font-Montserrat">
+            <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content flex flex-col">
 
-                <div class="w-full navbar bg-base-100 px-20">
+                <div className="w-full navbar bg-base-100 px-20">
 
                     {/* Drawer button is here */}
 
-                    {pathname.includes('dashboard') && (<label tabindex="0" for="my-drawer-2" class="btn btn-ghost btn-circle lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                    {pathname.includes('dashboard') && (<label tabindex="0" for="my-drawer-2" className="btn btn-ghost btn-circle lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>)}
 
-                    <div class="flex-1 px-2 mx-2 text-2xl">Leviathan</div>
-                    <div class="flex-none lg:hidden">
-                        <label for="my-drawer-3" class="btn btn-square btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <div className="flex-1 px-2 mx-2 text-2xl">Leviathan</div>
+                    <div className="flex-none lg:hidden">
+                        <label for="my-drawer-3" className="btn btn-square btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                         </label>
                     </div>
 
-                    <div class="flex-none hidden lg:block">
-                        <ul class="menu menu-horizontal gap-x-2">
+                    <div className="flex-none hidden lg:block">
+                        <ul className="menu menu-horizontal gap-x-2">
                             <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/allProduct'>Products</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/myPortfolio'>My Portfolio</NavLink></li> */}
@@ -53,22 +53,24 @@ const Navbar = ({ children }) => {
                             )}
                             <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                            {user ? '' : <li>{user ? <button class="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
+                            {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
                             {/* <div className="flex justify-center">
                                 <Link to='/getQuote'>
                                     <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans">Get A Quote</button>
                                 </Link>
 
                             </div> */}
-                            {user && (<div className="dropdown">
+                            {user && (<div className="dropdown dropdown-bottom dropdown-end">
                                 <div className="avatar cursor-pointer">
                                     <div className=" rounded-xl" tabIndex={0}>
                                         <RxAvatar className='w-12 h-12' />
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li>{user ? <button class="btn btn-ghost" onClick={logout}>Sign out</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
-                                    <li><a>Item 2</a></li>
+                                    <li>{user ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
+                                    <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-profile'>My Profile</NavLink></li>
+                                    <li><NavLink className='w-[190px] mb-1' to='/dashboard/add-review'>Add a review</NavLink></li>
+                                    <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-orders'>My Orders</NavLink></li>
                                 </ul>
                             </div>)}
                         </ul>
@@ -78,25 +80,27 @@ const Navbar = ({ children }) => {
                 {children}
 
             </div>
-            <div class="drawer-side">
-                <label for="my-drawer-3" class="drawer-overlay"></label>
-                <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
-                    <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
-                    <li><NavLink className='rounded-lg' to='/myPortfolio'>My Portfolio</NavLink></li>
-                    <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
-                    <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
+            <div className="drawer-side">
+                <label for="my-drawer-3" className="drawer-overlay"></label>
+                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
+                    <li><NavLink className='rounded-lg mb-1' to='/'>Home</NavLink></li>
+                    <li><NavLink className='rounded-lg mb-1' to='/allProduct'>Products</NavLink></li>
+                    {user && (
+                        <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
+                    )}
+                    <li><NavLink className='rounded-lg mb-1' to='/blogs'>Blogs</NavLink></li>
                     {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                    <li>{user ? <button class="btn btn-ghost" onClick={logout}>Signout</button> : <NavLink className='rounded-lg' to='/login'>Login</NavLink>}</li>
+                    <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200  rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>
 
-                    <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                        <div class="collapse-title text-xl font-medium">
+                    {/* <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                        <div className="collapse-title text-xl font-medium">
                             Book now
                         </div>
-                        <div class="collapse-content">
+                        <div className="collapse-content">
                             <li><NavLink className='rounded-lg' to='/contact'>Quick book</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/services'>Pre book</NavLink></li>
                         </div>
-                    </div>
+                    </div> */}
                 </ul>
 
             </div>

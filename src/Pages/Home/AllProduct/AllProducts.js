@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import fetcher from '../../../api';
+import { AuthContext } from '../../../context/AuthContext';
+import Loading from '../../Shared/Loading';
 import AllProduct from './AllProduct';
 
 const AllProducts = () => {
 
+    const { loading } = useContext(AuthContext)
     const [parts, setParts] = useState([])
 
     useEffect(() => {
@@ -13,6 +16,10 @@ const AllProducts = () => {
             setParts(res.data)
         })()
     }, [])
+
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div className='container mx-auto  px-5 py-16 '>
             {/* Title */}
