@@ -23,8 +23,8 @@ const AllProducts = () => {
     return (
         <div className='container mx-auto  px-5 py-16 '>
             {/* Title */}
-            <div class="pt-5 bg-white">
-                <h1 class="text-center text-5xl font-bold font-Montserrat text-primary">All Products</h1>
+            <div className="pt-5 bg-white">
+                <h1 className="text-center text-5xl font-bold font-Montserrat text-primary">All Products</h1>
             </div>
 
             {/* Products */}

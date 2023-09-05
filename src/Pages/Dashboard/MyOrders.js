@@ -53,7 +53,7 @@ const MyOrders = ({ isloading }) => {
                                 </label>
                             </th>
                             <th>Product Name</th>
-                            <th>Job</th>
+                            <th>Price</th>
                             <th>Favorite Color</th>
                             <th></th>
                         </tr>

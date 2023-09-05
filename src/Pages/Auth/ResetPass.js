@@ -17,7 +17,7 @@ const ResetPass = () => {
                     <div className="card-body">
                         <h2 className="text-center text-primary text-2xl font-bold">Forgot Password?</h2>
 
-                        <p class="mb-4 pt-5 text-sm text-gray-700">
+                        <p className="mb-4 pt-5 text-sm text-gray-700">
                             We get it, stuff happens. Just enter your email address below and we'll send you a
                             link to reset your password!
                         </p>
@@ -26,15 +26,15 @@ const ResetPass = () => {
                             className='pt-20'
                         >
 
-                            <div class="form-control w-full max-w-xs">
-                                <label class="label">
-                                    <span class="label-text">Email </span>
+                            <div className="form-control w-full max-w-xs">
+                                <label className="label">
+                                    <span className="label-text">Email </span>
 
                                 </label>
                                 <input
                                     type="email"
                                     placeholder="Your email"
-                                    class="input input-bordered w-full max-w-xs"
+                                    className="input input-bordered w-full max-w-xs"
                                     {...register("email", {
                                         required: {
                                             value: true,
@@ -46,9 +46,9 @@ const ResetPass = () => {
                                         }
                                     })}
                                 />
-                                <label class="label">
-                                    {errors.email?.type === 'required' && <span class="label-text-alt text-red-500 ">{errors.email.message}</span>}
-                                    {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500 ">{errors.email.message}</span>}
+                                <label className="label">
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
+                                    {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
                                 </label>
                             </div>
 

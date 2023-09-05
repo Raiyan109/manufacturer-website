@@ -15,7 +15,7 @@ const Video = () => {
                         className="embed-responsive embed-responsive-21by9 relative w-full overflow-hidden"
                         style={{ paddingTop: '42.857143%' }}>
 
-                        <iframe className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full" src="https://www.youtube.com/embed/5SomOy90aL8" title="How to Build A Nuclear Submarine Full BBC Documentary Eng Sub" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe className="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full" src="https://www.youtube.com/embed/5SomOy90aL8" title="How to Build A Nuclear Submarine Full BBC Documentary Eng Sub" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                 </div>
             </section>

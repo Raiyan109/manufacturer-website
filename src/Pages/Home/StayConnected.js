@@ -55,7 +55,7 @@ const StayConnected = () => {
                         name="message"
                         rows={6}
                     ></textarea>
-                    <button type='submit' value="Send" class="btn btn-secondary font-OpenSans">Send</button>
+                    <button type='submit' value="Send" className="btn btn-secondary font-OpenSans">Send</button>
                 </div>
             </form>
         </div>
