@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import fetcher from '../../api';
@@ -6,15 +6,52 @@ import auth from '../../firebase.init';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 const MyProfile = () => {
-
+    const [userFromServer, setUserFromServer] = useState()
+    const [phoneNum, setPhoneNum] = useState('')
+    const [education, setEducation] = useState('')
+    const [location, setLocation] = useState('')
     const [user, loading, error] = useAuthState(auth);
+
+    const id = localStorage.getItem("userId")
 
     const { register, handleSubmit, reset } = useForm();
 
     const { updateUser } = useContext(AuthContext)
+
     const navigate = useNavigate()
+
+    const getSingleUser = async () => {
+        const res = await axios.get(`http://localhost:5000/api/users/${id}`)
+            .catch((err) => console.log(err))
+
+        const data = await res.data.user
+        return data
+    }
+
+    useEffect(() => {
+        getSingleUser()
+            .then((data) => setUserFromServer(data))
+    }, [])
+    console.log(userFromServer);
+
+    const handleUpdate = async (e) => {
+        e.preventDefault()
+        const res = await axios.put(`http://localhost:5000/api/users/update/${id}`, {
+            phone: phoneNum,
+            education: education,
+            location: location
+        })
+            .catch((err) => console.log(err))
+        console.log(res);
+        const data = await res.data.user
+        console.log(data);
+        return data
+    }
+
+
 
     const onSubmit = async (data) => {
         // const res = await fetcher.post('userInfo', data)
@@ -30,7 +67,20 @@ const MyProfile = () => {
                 toast("Successfully Signed up!");
             })
             .catch(err => console.log(err))
-        reset()
+
+        // const res = await axios.put('http://localhost:5000/api/users/update/', {
+        //     name: data.name,
+        //     email: data.email,
+        //     password: data.password,
+
+        // })
+
+
+        // const result = await res.result
+        // console.log(data);
+        // localStorage.getItem('userId')
+        // return result
+        // reset()
     }
 
     return (
@@ -47,14 +97,18 @@ const MyProfile = () => {
 
                         <div className="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
                             <form
-                                onSubmit={handleSubmit(onSubmit)}
+                                // onSubmit={handleSubmit(onSubmit)}
+                                onSubmit={handleUpdate}
                                 className="space-y-4">
                                 <div>
                                     <label className="sr-only" for="name">Name</label>
                                     <input className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                         disabled
-                                        value={user?.displayName || ''}
-                                        placeholder="Name" type="text" id="name" />
+                                        // value={user?.displayName || ''}
+                                        // placeholder="Name" type="text" id="name"
+                                        value={userFromServer?.name || ''}
+                                        placeholder="Name" type="text" id="name"
+                                    />
                                 </div>
 
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -64,7 +118,10 @@ const MyProfile = () => {
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Email address"
                                             disabled
-                                            value={user?.email || ''}
+                                            // value={user?.email || ''}
+                                            // type="email"
+                                            // id="email"
+                                            value={userFromServer?.email || ''}
                                             type="email"
                                             id="email"
                                         />
@@ -77,7 +134,9 @@ const MyProfile = () => {
                                             placeholder="Phone Number"
                                             type="tel"
                                             id="phone"
-                                            {...register("phone")}
+                                            // {...register("phone")}
+                                            value={userFromServer?.phone || phoneNum}
+                                            onChange={(e) => setPhoneNum(e.target.value)}
                                         />
                                     </div>
                                 </div>
@@ -89,7 +148,9 @@ const MyProfile = () => {
                                             placeholder="Education"
                                             type="text"
                                             id="education"
-                                            {...register("education")}
+                                            // {...register("education")}
+                                            value={userFromServer?.education || education}
+                                            onChange={(e) => setEducation(e.target.value)}
                                         />
                                     </div>
 
@@ -100,7 +161,9 @@ const MyProfile = () => {
                                             placeholder="Location"
                                             type="text"
                                             id="location"
-                                            {...register("location")}
+                                            // {...register("location")}
+                                            value={userFromServer?.location || location}
+                                            onChange={(e) => setLocation(e.target.value)}
                                         />
                                     </div>
                                 </div>

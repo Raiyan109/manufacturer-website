@@ -1,15 +1,18 @@
 import { signOut } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import auth from '../../firebase.init';
 import UseAdmin from '../../hooks/UseAdmin';
 import { RxAvatar } from "react-icons/rx";
+import axios from 'axios';
 
 
 const Navbar = ({ children }) => {
-
+    const [userFromServer, setUserFromServer] = useState()
+    const navigate = useNavigate()
+    const id = localStorage.getItem("userId")
     const { user } = useContext(AuthContext)
 
     // const [user] = useAuthState(auth);
@@ -18,9 +21,22 @@ const Navbar = ({ children }) => {
 
     const logout = () => {
         signOut(auth);
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem('userId')
+        navigate('/login')
     };
 
+    const getSingleUser = async () => {
+        const res = await axios.get(`http://localhost:5000/api/users/${id}`)
+            .catch((err) => console.log(err))
+
+        const data = await res.data.user
+        return data
+    }
+
+    useEffect(() => {
+        getSingleUser()
+            .then((data) => setUserFromServer(data))
+    }, [])
 
     return (
         <div className="drawer drawer-end font-Montserrat">
@@ -47,13 +63,20 @@ const Navbar = ({ children }) => {
                         <ul className="menu menu-horizontal gap-x-2">
                             <li><NavLink className='rounded-lg' to='/'>Home</NavLink></li>
                             <li><NavLink className='rounded-lg' to='/allProduct'>Products</NavLink></li>
-                            {/* <li><NavLink className='rounded-lg' to='/myPortfolio'>My Portfolio</NavLink></li> */}
-                            {user && (
+
+                            {/* {user && (
+                                <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
+                            )} */}
+
+                            {userFromServer && (
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             )}
-                            {/* <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li> */}
-                            {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                            {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
+
+
+                            {/* {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>} */}
+
+                            {userFromServer ? '' : <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
+
                             {/* <div className="flex justify-center">
                                 <Link to='/getQuote'>
                                     <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg font-OpenSans">Get A Quote</button>
@@ -85,22 +108,16 @@ const Navbar = ({ children }) => {
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
                     <li><NavLink className='rounded-lg mb-1' to='/'>Home</NavLink></li>
                     <li><NavLink className='rounded-lg mb-1' to='/allProduct'>Products</NavLink></li>
-                    {user && (
+                    {/* {user && (
                         <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
+                    )} */}
+                    {userFromServer && (
+                        <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                     )}
-                    {/* <li><NavLink className='rounded-lg mb-1' to='/blogs'>Blogs</NavLink></li> */}
-                    {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
-                    <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>
 
-                    {/* <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                        <div className="collapse-title text-xl font-medium">
-                            Book now
-                        </div>
-                        <div className="collapse-content">
-                            <li><NavLink className='rounded-lg' to='/contact'>Quick book</NavLink></li>
-                            <li><NavLink className='rounded-lg' to='/services'>Pre book</NavLink></li>
-                        </div>
-                    </div> */}
+                    {/* <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li> */}
+
+                    <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>
                 </ul>
 
             </div>

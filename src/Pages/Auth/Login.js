@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
@@ -6,8 +6,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
 import { AuthContext } from '../../context/AuthContext';
+import axios from 'axios';
 
 const Login = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
@@ -45,16 +49,33 @@ const Login = () => {
     //     signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     // }
 
-    const onSubmit = data => {
-        console.log(data.email)
-        signIn(data.email, data.password)
-            .then(res => {
-                const user = res.user
-                console.log(user);
-                navigate(from, { replace: true })
-            })
-            .catch(err => console.log(err))
-    };
+    // const onSubmit = data => {
+    //     console.log(data.email)
+    //     signIn(data.email, data.password)
+    //         .then(res => {
+    //             const user = res.user
+    //             console.log(user);
+    //             navigate(from, { replace: true })
+    //         })
+    //         .catch(err => console.log(err))
+    // };
+
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        const res = await axios.post('http://localhost:5000/api/users/login', {
+            email,
+            password,
+        })
+        // .then(() => {
+        //     navigate('/')
+        // })
+
+        const data = await res.data.existingUser
+        console.log(data._id);
+        localStorage.setItem('userId', data._id)
+        return data
+    }
+
 
 
 
@@ -64,7 +85,10 @@ const Login = () => {
                 <div className="card-body">
                     <h2 className="text-center text-2xl font-bold">Login</h2>
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form
+                        // onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={handleLogin}
+                    >
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
@@ -75,16 +99,18 @@ const Login = () => {
                                 type="email"
                                 placeholder="Your email"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("email", {
-                                    required: {
-                                        value: true,
-                                        message: 'Email is Required'
-                                    },
-                                    pattern: {
-                                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                        message: 'Provide a valid email'
-                                    }
-                                })}
+                                // {...register("email", {
+                                //     required: {
+                                //         value: true,
+                                //         message: 'Email is Required'
+                                //     },
+                                //     pattern: {
+                                //         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                //         message: 'Provide a valid email'
+                                //     }
+                                // })}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <label className="label">
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
@@ -101,16 +127,18 @@ const Login = () => {
                                 type="password"
                                 placeholder="Your password"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("password", {
-                                    required: {
-                                        value: true,
-                                        message: 'password is Required'
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: 'Must be 6 characters or longer'
-                                    }
-                                })}
+                                // {...register("password", {
+                                //     required: {
+                                //         value: true,
+                                //         message: 'password is Required'
+                                //     },
+                                //     minLength: {
+                                //         value: 6,
+                                //         message: 'Must be 6 characters or longer'
+                                //     }
+                                // })}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <label className="label">
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}
