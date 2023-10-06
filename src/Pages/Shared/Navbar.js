@@ -36,7 +36,7 @@ const Navbar = ({ children }) => {
                             fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>)}
 
-                    <div className="flex-1 px-2 mx-2 text-2xl">Leviathan</div>
+                    <Link to='/' className="flex-1 px-2 mx-2 text-2xl">Leviathan</Link>
                     <div className="flex-none lg:hidden">
                         <label for="my-drawer-3" className="btn btn-square btn-ghost">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -51,7 +51,7 @@ const Navbar = ({ children }) => {
                             {user && (
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             )}
-                            <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li>
+                            {/* <li><NavLink className='rounded-lg' to='/blogs'>Blogs</NavLink></li> */}
                             {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
                             {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
                             {/* <div className="flex justify-center">
@@ -88,7 +88,7 @@ const Navbar = ({ children }) => {
                     {user && (
                         <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
                     )}
-                    <li><NavLink className='rounded-lg mb-1' to='/blogs'>Blogs</NavLink></li>
+                    {/* <li><NavLink className='rounded-lg mb-1' to='/blogs'>Blogs</NavLink></li> */}
                     {/* <li><NavLink className='rounded-lg' to='/part'>Purchase</NavLink></li> */}
                     <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>
 

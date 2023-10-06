@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import fetcher from '../../api';
 import auth from '../../firebase.init';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const MyProfile = () => {
 
@@ -10,9 +13,23 @@ const MyProfile = () => {
 
     const { register, handleSubmit, reset } = useForm();
 
+    const { updateUser } = useContext(AuthContext)
+    const navigate = useNavigate()
+
     const onSubmit = async (data) => {
-        const res = await fetcher.post('userInfo', data)
-        console.log(res);
+        // const res = await fetcher.post('userInfo', data)
+        // console.log(res);
+        const userOtherInfo = {
+            education: data.education,
+            location: data.location
+        }
+        updateUser(userOtherInfo)
+            .then(() => {
+                console.log(userOtherInfo);
+                console.log(user);
+                toast("Successfully Signed up!");
+            })
+            .catch(err => console.log(err))
         reset()
     }
 
@@ -95,6 +112,7 @@ const MyProfile = () => {
                     </div>
                 </div>
             </section>
+            <ToastContainer />
         </div>
     );
 };

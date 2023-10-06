@@ -8,6 +8,7 @@ import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const Signup = () => {
 
@@ -66,6 +67,19 @@ const Signup = () => {
                 console.log(error)
                 setSignUpError(error.message)
             })
+
+        const res = await axios.post('http://localhost:5000/api/users/signup', {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+
+        })
+
+
+        const result = await res.result
+        console.log(data);
+        // localStorage.setItem('userId', data.user._id)
+        return result
         // await createUserWithEmailAndPassword(data.email, data.password)
         // await updateProfile({ displayName: data.name });
         // console.log('update done');
