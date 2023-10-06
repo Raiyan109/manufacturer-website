@@ -13,8 +13,7 @@ import PayButton from '../PayButton';
 const Purchase = ({ refetch }) => {
     const { id } = useParams()
     const [purchase, setPurchase] = useState([])
-    // console.log(purchase);
-
+    const [quantityValue, setQuantityValue] = useState(1)
     const [user, loading, error] = useAuthState(auth);
 
     const { register, handleSubmit, reset } = useForm();
@@ -89,9 +88,10 @@ const Purchase = ({ refetch }) => {
                         <img alt={purchase.name} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={purchase.img} />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
 
-                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{purchase.name}</h1>
+                            <h1 className="text-gray-900 text-3xl title-font font-bold mb-1">{purchase.name}</h1>
+                            <h2 className="title-font font-medium text-2xl text-gray-900 mt-3">${purchase.price}</h2>
 
-                            <p className="leading-relaxed">{purchase.description}</p>
+                            <p className="leading-relaxed my-5">{purchase.desc}</p>
 
                             <div className="flex border-t border-gray-200 py-2">
                                 <span className="text-gray-500">Min. Order Quantity: </span>
@@ -101,9 +101,22 @@ const Purchase = ({ refetch }) => {
                                 <span className="text-gray-500">Available Quantity</span>
                                 <span className="ml-auto text-gray-900">{purchase.availableQuantity}</span>
                             </div>
+
+                            {/* Quantity */}
+                            <div className='flex  mt-10'>
+
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <label className='text-xl mr-4' for="quantity">Quantity : </label>
+                                    <input placeholder='Quantity' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3' type="number" value={quantityValue}
+                                        // {
+                                        //     value ===> minimumOrderQuantity ? error.message
+                                        // }
+                                        {...register("quantity")} />
+                                </form>
+                            </div>
                             <div className="flex">
-                                <span className="title-font font-medium text-2xl text-gray-900">${purchase.price}</span>
-                                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Checkout</button>
+
+                                <button className="flex ml-auto text-primary bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded uppercase">Add to cart ${purchase.price}</button>
 
                             </div>
                         </div>
@@ -160,17 +173,7 @@ const Purchase = ({ refetch }) => {
                 </div>
             </section>
 
-            <div className='flex justify-center mt-10 bg-secondary'>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <label className='text-xl mr-4' for="quantity">Quantity : </label>
-                    <input placeholder='Quantity' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3' type="number" value={'100'}
-                        // {
-                        //     value ===> minimumOrderQuantity ? error.message
-                        // }
-                        {...register("quantity")} />
-                </form>
-            </div>
         </div>
 
 

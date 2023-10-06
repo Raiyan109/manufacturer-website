@@ -44,7 +44,7 @@ const Banner = () => {
                     <p className="mb-8 leading-relaxed opacity-50 font-Montserrat ">Delivering Precision-Crafted Submarine Parts with Quality, Durability, and Performance Built to Withstand the Depths of the Ocean - Providing Safe and Reliable Solutions for Your Submarine Needs. </p>
                     <div className="flex justify-center">
                         <Link to='/getQuote'>
-                            <button className="inline-flex text-primary font-OpenSans btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded text-lg">Get Quote</button>
+                            <button className="inline-flex text-primary font-OpenSans btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg">Get Quote</button>
                         </Link>
 
                     </div>
