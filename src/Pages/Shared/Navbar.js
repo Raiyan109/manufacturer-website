@@ -75,7 +75,9 @@ const Navbar = ({ children }) => {
 
                             {/* {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>} */}
 
-                            {userFromServer ? '' : <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>}
+                            <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 mt-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
+                                <NavLink to='/login'>Login</NavLink>
+                            </button>}</li>
 
                             {/* <div className="flex justify-center">
                                 <Link to='/getQuote'>
@@ -83,7 +85,7 @@ const Navbar = ({ children }) => {
                                 </Link>
 
                             </div> */}
-                            {user && (<div className="dropdown dropdown-bottom dropdown-end">
+                            {userFromServer && (<div className="dropdown dropdown-bottom dropdown-end">
                                 <div className="avatar cursor-pointer">
                                     <div className=" rounded-xl" tabIndex={0}>
                                         <RxAvatar className='w-12 h-12' />
@@ -93,7 +95,7 @@ const Navbar = ({ children }) => {
                                     <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-profile'>My Profile</NavLink></li>
                                     <li><NavLink className='w-[190px] mb-1' to='/dashboard/add-review'>Add a review</NavLink></li>
                                     <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-orders'>My Orders</NavLink></li>
-                                    <li>{user ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
+                                    <li>{userFromServer ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
                                 </ul>
                             </div>)}
                         </ul>

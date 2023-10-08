@@ -1,14 +1,17 @@
 import React from 'react';
 
-const MakeAdminRow = ({ user }) => {
+const MakeAdminRow = ({ user, index, setRole }) => {
 
     return (
         <tr>
-            <th>1</th>
+            <th>{index + 1}</th>
             <td>{user.name}</td>
             <td>{user.email}</td>
             {/* <td>{role !== 'admin' && <button className="btn btn-xs" onClick={makeAdmin}>Make Admin</button>}</td> */}
-            <td><button className="btn btn-xs">Remove User</button></td>
+            <td>User</td>
+            <td><button
+                onClick={() => setRole(1)}
+                className="btn btn-xs">Make Admin</button></td>
         </tr>
     );
 };

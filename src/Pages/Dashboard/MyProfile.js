@@ -9,11 +9,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 const MyProfile = () => {
-    const [userFromServer, setUserFromServer] = useState()
+    // const [userFromServer, setUserFromServer] = useState()
+    const [name, setName] = useState('')
     const [phoneNum, setPhoneNum] = useState('')
     const [education, setEducation] = useState('')
     const [location, setLocation] = useState('')
     const [user, loading, error] = useAuthState(auth);
+
+    const { userFromServer } = useContext(AuthContext)
 
     const id = localStorage.getItem("userId")
 
@@ -23,31 +26,31 @@ const MyProfile = () => {
 
     const navigate = useNavigate()
 
-    const getSingleUser = async () => {
-        const res = await axios.get(`http://localhost:5000/api/users/${id}`)
-            .catch((err) => console.log(err))
+    // const getSingleUser = async () => {
+    //     const res = await axios.get(`http://localhost:5000/api/users/${id}`)
+    //         .catch((err) => console.log(err))
 
-        const data = await res.data.user
-        return data
-    }
+    //     const data = await res.data.user
+    //     return data
+    // }
 
-    useEffect(() => {
-        getSingleUser()
-            .then((data) => setUserFromServer(data))
-    }, [])
-    console.log(userFromServer);
+    // useEffect(() => {
+    //     getSingleUser()
+    //         .then((data) => setUserFromServer(data))
+    // }, [])
 
     const handleUpdate = async (e) => {
         e.preventDefault()
         const res = await axios.put(`http://localhost:5000/api/users/update/${id}`, {
+            name: name,
             phone: phoneNum,
             education: education,
             location: location
         })
             .catch((err) => console.log(err))
-        console.log(res);
+        toast("Profile Updated successfully!");
         const data = await res.data.user
-        console.log(data);
+        // console.log(data);
         return data
     }
 
@@ -103,10 +106,11 @@ const MyProfile = () => {
                                 <div>
                                     <label className="sr-only" for="name">Name</label>
                                     <input className="w-full p-3 text-sm border-gray-200 rounded-lg"
-                                        disabled
+                                        // disabled
                                         // value={user?.displayName || ''}
                                         // placeholder="Name" type="text" id="name"
-                                        value={userFromServer?.name || ''}
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                         placeholder="Name" type="text" id="name"
                                     />
                                 </div>
@@ -135,7 +139,7 @@ const MyProfile = () => {
                                             type="tel"
                                             id="phone"
                                             // {...register("phone")}
-                                            value={userFromServer?.phone || phoneNum}
+                                            value={phoneNum}
                                             onChange={(e) => setPhoneNum(e.target.value)}
                                         />
                                     </div>
@@ -149,7 +153,7 @@ const MyProfile = () => {
                                             type="text"
                                             id="education"
                                             // {...register("education")}
-                                            value={userFromServer?.education || education}
+                                            value={education}
                                             onChange={(e) => setEducation(e.target.value)}
                                         />
                                     </div>
@@ -162,13 +166,13 @@ const MyProfile = () => {
                                             type="text"
                                             id="location"
                                             // {...register("location")}
-                                            value={userFromServer?.location || location}
+                                            value={location}
                                             onChange={(e) => setLocation(e.target.value)}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-control">
-                                    <button type='submit' className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Confirm</button>
+                                    <button type='submit' className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Update</button>
                                 </div>
                             </form>
                         </div>

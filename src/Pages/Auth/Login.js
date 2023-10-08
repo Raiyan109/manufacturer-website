@@ -71,7 +71,7 @@ const Login = () => {
         // })
 
         const data = await res.data.existingUser
-        console.log(data._id);
+        console.log(data);
         localStorage.setItem('userId', data._id)
         return data
     }

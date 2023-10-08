@@ -1,27 +1,32 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { createContext, useEffect, useReducer, useState } from "react";
-
+import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
+import axios from "axios";
 
 
 export const AuthContext = createContext()
 
-
-
-// export const authReducer = (state, action) => {
-//     switch (action.type) {
-//         case 'LOGIN':
-//             return { user: action.payload }
-//         case 'LOGOUT':
-//             return { user: null }
-//         default:
-//             return state
-//     }
-// }
-
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+
+    const [userFromServer, setUserFromServer] = useState()
+    const id = localStorage.getItem("userId")
+
+    const getSingleUser = async () => {
+        const res = await axios.get(`http://localhost:5000/api/users/${id}`)
+            .catch((err) => console.log(err))
+
+        const data = await res.data.user
+        return data
+    }
+
+    useEffect(() => {
+        getSingleUser()
+            .then((data) => setUserFromServer(data))
+    }, [])
+
+
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -47,18 +52,16 @@ export const AuthContextProvider = ({ children }) => {
         return updateProfile(auth.currentUser, userInfo)
     }
 
-    // const [state, dispatch] = useReducer(authReducer, {
-    //     user: null
-    // })
-    // console.log('AuthContext state: ', state);
 
     const authInfo = {
         createUser,
         signIn,
         user,
         loading,
-        updateUser
+        updateUser,
+        userFromServer
     }
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
