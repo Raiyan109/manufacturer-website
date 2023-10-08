@@ -46,11 +46,13 @@ function App() {
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
           <Route path='/part' element={<Purchase />}></Route>
           <Route path='checkout-success' element={<CheckoutSuccess />}></Route>
+
           <Route path='api/parts/:id' element={
             <RequiredAuth>
               <Purchase />
             </RequiredAuth>
           }></Route>
+
           <Route path='/dashboard' element={
             <AdminRoute>
               <Dashboard />

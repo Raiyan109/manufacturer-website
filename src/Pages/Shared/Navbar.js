@@ -47,14 +47,14 @@ const Navbar = ({ children }) => {
 
                     {/* Drawer button is here */}
 
-                    {pathname.includes('dashboard') && (<label tabindex="0" for="my-drawer-2" className="btn btn-ghost btn-circle lg:hidden">
+                    {pathname.includes('dashboard') && (<label tabindex="0" htmlFor="my-drawer-2" className="btn btn-ghost btn-circle lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>)}
 
                     <Link to='/' className="flex-1 px-2 mx-2 text-2xl">Leviathan</Link>
                     <div className="flex-none lg:hidden">
-                        <label for="my-drawer-3" className="btn btn-square btn-ghost">
+                        <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                         </label>
                     </div>
@@ -106,7 +106,7 @@ const Navbar = ({ children }) => {
 
             </div>
             <div className="drawer-side">
-                <label for="my-drawer-3" className="drawer-overlay"></label>
+                <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
                     <li><NavLink className='rounded-lg mb-1' to='/'>Home</NavLink></li>
                     <li><NavLink className='rounded-lg mb-1' to='/allProduct'>Products</NavLink></li>
@@ -119,7 +119,9 @@ const Navbar = ({ children }) => {
 
                     {/* <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li> */}
 
-                    <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>
+                    <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
+                        <NavLink to='/login'>Login</NavLink>
+                    </button>}</li>
                 </ul>
 
             </div>

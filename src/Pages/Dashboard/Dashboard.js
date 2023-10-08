@@ -9,7 +9,7 @@ import { HiLocationMarker } from 'react-icons/hi'
 
 const Dashboard = () => {
     const { userFromServer } = useContext(AuthContext)
-
+    console.log(userFromServer);
     const id = localStorage.getItem("userId")
     return (
         <div className="drawer drawer-mobile mt-16">
@@ -34,7 +34,7 @@ const Dashboard = () => {
                                     <div className='flex justify-center items-center'>
                                         <BsFillPersonFill />
                                         <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                            {userFromServer?.name}
+                                            {userFromServer?.data.name}
                                         </div>
                                     </div>
 
@@ -42,14 +42,14 @@ const Dashboard = () => {
                                         <div className='flex justify-center items-center'>
                                             <AiFillMail />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.email}
+                                                {userFromServer?.data.email}
                                             </div>
                                         </div>
 
                                         <div className='flex justify-center items-center'>
                                             <BsFillTelephoneFill />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.phone}
+                                                {userFromServer?.data.phone}
                                             </div>
                                         </div>
                                     </div>
@@ -57,14 +57,14 @@ const Dashboard = () => {
                                         <div className='flex justify-center items-center'>
                                             <FaGraduationCap />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.education}
+                                                {userFromServer?.data.education}
                                             </div>
                                         </div>
 
                                         <div className='flex justify-center items-center'>
                                             <HiLocationMarker />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.location}
+                                                {userFromServer?.data.location}
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@ const Dashboard = () => {
 
             </div>
             <div className="drawer-side">
-                <label for="my-drawer-2" className="drawer-overlay"></label>
+                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
 
                     <li><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>

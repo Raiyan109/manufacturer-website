@@ -10,6 +10,11 @@ export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    const [mernAuth, setMernAuth] = useState({
+        user: null,
+        token: ''
+    })
+
     const [userFromServer, setUserFromServer] = useState()
     const id = localStorage.getItem("userId")
 
@@ -18,12 +23,16 @@ export const AuthContextProvider = ({ children }) => {
             .catch((err) => console.log(err))
 
         const data = await res.data.user
+        setUserFromServer({
+            ...userFromServer,
+            data
+        })
         return data
     }
 
     useEffect(() => {
         getSingleUser()
-            .then((data) => setUserFromServer(data))
+        // .then((data) => setUserFromServer(data))
     }, [])
 
 
@@ -59,7 +68,8 @@ export const AuthContextProvider = ({ children }) => {
         user,
         loading,
         updateUser,
-        userFromServer
+        userFromServer,
+        mernAuth, setMernAuth
     }
 
     return (

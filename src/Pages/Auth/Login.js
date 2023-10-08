@@ -69,9 +69,9 @@ const Login = () => {
         // .then(() => {
         //     navigate('/')
         // })
-
+        console.log(res.data);
         const data = await res.data.existingUser
-        console.log(data);
+
         localStorage.setItem('userId', data._id)
         return data
     }

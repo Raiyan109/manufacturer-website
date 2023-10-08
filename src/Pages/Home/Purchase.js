@@ -106,7 +106,7 @@ const Purchase = ({ refetch }) => {
                             <div className='flex  mt-10'>
 
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <label className='text-xl mr-4' for="quantity">Quantity : </label>
+                                    <label className='text-xl mr-4' htmlFor="quantity">Quantity : </label>
                                     <input placeholder='Quantity' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3' type="number" value={quantityValue}
                                         // {
                                         //     value ===> minimumOrderQuantity ? error.message
@@ -137,13 +137,13 @@ const Purchase = ({ refetch }) => {
                         <div className="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
                             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                                 <div>
-                                    <label className="sr-only" for="name">Name</label>
+                                    <label className="sr-only" htmlFor="name">Name</label>
                                     <input className="w-full p-3 text-sm border-gray-200 rounded-lg" placeholder="Name" type="text" id="name" />
                                 </div>
 
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <div>
-                                        <label className="sr-only" for="email">Email</label>
+                                        <label className="sr-only" htmlFor="email">Email</label>
                                         <input
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Email address"
@@ -153,7 +153,7 @@ const Purchase = ({ refetch }) => {
                                     </div>
 
                                     <div>
-                                        <label className="sr-only" for="phone">Phone</label>
+                                        <label className="sr-only" htmlFor="phone">Phone</label>
                                         <input
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Phone Number"

@@ -41,7 +41,7 @@ const MyProfile = () => {
 
     const handleUpdate = async (e) => {
         e.preventDefault()
-        const res = await axios.put(`http://localhost:5000/api/users/update/${id}`, {
+        const res = await axios.patch(`http://localhost:5000/api/users/update/${id}`, {
             name: name,
             phone: phoneNum,
             education: education,
@@ -104,7 +104,7 @@ const MyProfile = () => {
                                 onSubmit={handleUpdate}
                                 className="space-y-4">
                                 <div>
-                                    <label className="sr-only" for="name">Name</label>
+                                    <label className="sr-only" htmlFor="name">Name</label>
                                     <input className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                         // disabled
                                         // value={user?.displayName || ''}
@@ -117,7 +117,7 @@ const MyProfile = () => {
 
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <div>
-                                        <label className="sr-only" for="email">Email</label>
+                                        <label className="sr-only" htmlFor="email">Email</label>
                                         <input
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Email address"
@@ -132,7 +132,7 @@ const MyProfile = () => {
                                     </div>
 
                                     <div>
-                                        <label className="sr-only" for="phone">Phone</label>
+                                        <label className="sr-only" htmlFor="phone">Phone</label>
                                         <input
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Phone Number"
@@ -146,7 +146,7 @@ const MyProfile = () => {
                                 </div>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <div>
-                                        <label className="sr-only" for="education">Education</label>
+                                        <label className="sr-only" htmlFor="education">Education</label>
                                         <input
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Education"
@@ -159,7 +159,7 @@ const MyProfile = () => {
                                     </div>
 
                                     <div>
-                                        <label className="sr-only" for="location">location</label>
+                                        <label className="sr-only" htmlFor="location">location</label>
                                         <input
                                             className="w-full p-3 text-sm border-gray-200 rounded-lg"
                                             placeholder="Location"
