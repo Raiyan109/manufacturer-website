@@ -10,33 +10,38 @@ import axios from 'axios';
 
 
 const Navbar = ({ children }) => {
-    const [userFromServer, setUserFromServer] = useState()
+    // const [userFromServer, setUserFromServer] = useState()
     const navigate = useNavigate()
-    const id = localStorage.getItem("userId")
-    const { user } = useContext(AuthContext)
-
+    // const id = localStorage.getItem("userId")
+    const { mernAuth, setMernAuth } = useContext(AuthContext)
     // const [user] = useAuthState(auth);
-    const [admin] = UseAdmin()
+    // const [admin] = UseAdmin()
     const { pathname } = useLocation()
 
     const logout = () => {
-        signOut(auth);
+        // signOut(auth);
+        setMernAuth({
+            ...mernAuth,
+            user: null,
+            token: ''
+        })
         localStorage.removeItem('userId')
+        localStorage.removeItem('auth')
         navigate('/login')
     };
 
-    const getSingleUser = async () => {
-        const res = await axios.get(`http://localhost:5000/api/users/${id}`)
-            .catch((err) => console.log(err))
+    // const getSingleUser = async () => {
+    //     const res = await axios.get(`http://localhost:5000/api/users/${id}`)
+    //         .catch((err) => console.log(err))
 
-        const data = await res.data.user
-        return data
-    }
+    //     const data = await res.data.user
+    //     return data
+    // }
 
-    useEffect(() => {
-        getSingleUser()
-            .then((data) => setUserFromServer(data))
-    }, [])
+    // useEffect(() => {
+    //     getSingleUser()
+    //         .then((data) => setUserFromServer(data))
+    // }, [])
 
     return (
         <div className="drawer drawer-end font-Montserrat">
@@ -68,14 +73,14 @@ const Navbar = ({ children }) => {
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             )} */}
 
-                            {userFromServer && (
+                            {mernAuth.user && (
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             )}
 
 
                             {/* {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>} */}
 
-                            <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 mt-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
+                            <li>{mernAuth.user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 mt-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
                                 <NavLink to='/login'>Login</NavLink>
                             </button>}</li>
 
@@ -85,7 +90,7 @@ const Navbar = ({ children }) => {
                                 </Link>
 
                             </div> */}
-                            {userFromServer && (<div className="dropdown dropdown-bottom dropdown-end">
+                            {mernAuth.user && (<div className="dropdown dropdown-bottom dropdown-end">
                                 <div className="avatar cursor-pointer">
                                     <div className=" rounded-xl" tabIndex={0}>
                                         <RxAvatar className='w-12 h-12' />
@@ -95,7 +100,7 @@ const Navbar = ({ children }) => {
                                     <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-profile'>My Profile</NavLink></li>
                                     <li><NavLink className='w-[190px] mb-1' to='/dashboard/add-review'>Add a review</NavLink></li>
                                     <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-orders'>My Orders</NavLink></li>
-                                    <li>{userFromServer ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
+                                    <li>{mernAuth.user ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
                                 </ul>
                             </div>)}
                         </ul>
@@ -113,13 +118,13 @@ const Navbar = ({ children }) => {
                     {/* {user && (
                         <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
                     )} */}
-                    {userFromServer && (
+                    {mernAuth.user && (
                         <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                     )}
 
                     {/* <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li> */}
 
-                    <li>{userFromServer ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
+                    <li>{mernAuth.user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
                         <NavLink to='/login'>Login</NavLink>
                     </button>}</li>
                 </ul>

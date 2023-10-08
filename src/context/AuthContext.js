@@ -15,25 +15,37 @@ export const AuthContextProvider = ({ children }) => {
         token: ''
     })
 
-    const [userFromServer, setUserFromServer] = useState()
-    const id = localStorage.getItem("userId")
-
-    const getSingleUser = async () => {
-        const res = await axios.get(`http://localhost:5000/api/users/${id}`)
-            .catch((err) => console.log(err))
-
-        const data = await res.data.user
-        setUserFromServer({
-            ...userFromServer,
-            data
-        })
-        return data
-    }
-
     useEffect(() => {
-        getSingleUser()
-        // .then((data) => setUserFromServer(data))
+        const data = localStorage.getItem('auth')
+        if (data) {
+            const parsedData = JSON.parse(data)
+            setMernAuth({
+                ...mernAuth,
+                user: parsedData.existingUser,
+                token: parsedData.token
+            })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    // const [userFromServer, setUserFromServer] = useState()
+    // const id = localStorage.getItem("userId")
+
+    // const getSingleUser = async () => {
+    //     const res = await axios.get(`http://localhost:5000/api/users/${id}`)
+    //         .catch((err) => console.log(err))
+
+    //     const data = await res.data.user
+    //     setUserFromServer({
+    //         ...userFromServer,
+    //         data
+    //     })
+    //     return data
+    // }
+
+    // useEffect(() => {
+    //     getSingleUser()
+    // }, [])
 
 
 
@@ -68,9 +80,10 @@ export const AuthContextProvider = ({ children }) => {
         user,
         loading,
         updateUser,
-        userFromServer,
+        // userFromServer,
         mernAuth, setMernAuth
     }
+
 
     return (
         <AuthContext.Provider value={authInfo}>

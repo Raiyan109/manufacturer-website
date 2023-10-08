@@ -17,7 +17,7 @@ const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const { signIn, loading } = useContext(AuthContext)
+    const { mernAuth, setMernAuth, loading } = useContext(AuthContext)
 
     // const [
     //     signInWithEmailAndPassword,
@@ -69,10 +69,14 @@ const Login = () => {
         // .then(() => {
         //     navigate('/')
         // })
-        console.log(res.data);
         const data = await res.data.existingUser
-
+        setMernAuth({
+            ...mernAuth,
+            user: res.data.existingUser,
+            token: res.data.token
+        })
         localStorage.setItem('userId', data._id)
+        localStorage.setItem('auth', JSON.stringify(res.data))
         return data
     }
 
