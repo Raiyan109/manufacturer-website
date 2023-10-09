@@ -1,5 +1,5 @@
 import { async } from '@firebase/util';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -9,19 +9,19 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 import PayButton from '../PayButton';
+import { AuthContext } from '../../context/AuthContext';
 
 const Purchase = ({ refetch }) => {
     const { id } = useParams()
     const [purchase, setPurchase] = useState([])
     const [quantityValue, setQuantityValue] = useState(1)
     const [user, loading, error] = useAuthState(auth);
-
+    const { mernAuth } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
-
-    const userOrders = {
-        userName: user.displayName,
-        email: user.email
-    }
+    // const userOrders = {
+    //     userName: user.displayName,
+    //     email: user.email
+    // }
 
     useEffect(() => {
 

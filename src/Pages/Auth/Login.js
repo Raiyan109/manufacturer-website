@@ -66,9 +66,8 @@ const Login = () => {
             email,
             password,
         })
-        // .then(() => {
-        //     navigate('/')
-        // })
+        // navigate(from, { replace: true })
+        navigate(location.state || '/')
         const data = await res.data.existingUser
         setMernAuth({
             ...mernAuth,
