@@ -17,7 +17,7 @@ const Navbar = ({ children }) => {
     // const [user] = useAuthState(auth);
     // const [admin] = UseAdmin()
     const { pathname } = useLocation()
-
+    console.log(mernAuth.user);
     const logout = () => {
         // signOut(auth);
         setMernAuth({
@@ -44,7 +44,7 @@ const Navbar = ({ children }) => {
     // }, [])
 
     return (
-        <div className="drawer drawer-end font-Montserrat">
+        <div className="drawer drawer-end font-Montserrat pt-3">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
 
@@ -73,9 +73,7 @@ const Navbar = ({ children }) => {
                                 <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
                             )} */}
 
-                            {mernAuth.user && (
-                                <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
-                            )}
+
 
 
                             {/* {user ? '' : <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li>} */}
@@ -90,19 +88,33 @@ const Navbar = ({ children }) => {
                                 </Link>
 
                             </div> */}
-                            {mernAuth.user && (<div className="dropdown dropdown-bottom dropdown-end">
-                                <div className="avatar cursor-pointer">
-                                    <div className=" rounded-xl" tabIndex={0}>
-                                        <RxAvatar className='w-12 h-12' />
-                                    </div>
-                                </div>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-profile'>My Profile</NavLink></li>
-                                    <li><NavLink className='w-[190px] mb-1' to='/dashboard/add-review'>Add a review</NavLink></li>
-                                    <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-orders'>My Orders</NavLink></li>
-                                    <li>{mernAuth.user ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
-                                </ul>
-                            </div>)}
+                            {mernAuth.user && (
+                                <details className="dropdown ">
+                                    <summary className="btn">{mernAuth?.user?.name}</summary>
+                                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 space-y-4">
+                                        {mernAuth.user && (
+                                            <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
+                                        )}
+                                        <li> <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Sign out</button></li>
+                                    </ul>
+                                </details>
+                                // <div className="dropdown dropdown-bottom dropdown-end">
+                                //     <div className="avatar cursor-pointer">
+                                //         {/* <div className=" rounded-xl" tabIndex={0}>
+                                //             <RxAvatar className='w-12 h-12' />
+                                //         </div> */}
+                                //         <div className="flex justify-center items-center pt-2" tabIndex={0}>
+                                //             <h1 className='text-xl'>{mernAuth?.user?.name}</h1>
+                                //         </div>
+                                //     </div>
+                                //     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                //         <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-profile'>My Profile</NavLink></li>
+                                //         <li><NavLink className='w-[190px] mb-1' to='/dashboard/add-review'>Add a review</NavLink></li>
+                                //         <li><NavLink className='w-[190px] mb-1' to='/dashboard/my-orders'>My Orders</NavLink></li>
+                                //         <li>{mernAuth.user ? <button className="w-[190px] inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Sign out</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1' to='/login'>Login</NavLink>}</li>
+                                //     </ul>
+                                // </div>
+                            )}
                         </ul>
                     </div>
                 </div>

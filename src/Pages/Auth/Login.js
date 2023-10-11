@@ -154,11 +154,11 @@ const Login = () => {
                     </form>
 
                     <p><small>New to Leviathan? <Link className='text-secondary font-semibold' to='/signup'>Create New Account</Link></small></p>
-                    <div className="divider">OR</div>
+                    {/* <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline"
-                    >Continue with google</button>
+                    >Continue with google</button> */}
 
                     <div className="mt-3">
                         <Link to="/resetPass" className="hover:text-secondary transition-all">Forgot password?</Link>

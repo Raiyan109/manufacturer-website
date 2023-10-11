@@ -10,6 +10,9 @@ import StayConnected from './StayConnected';
 import { Team } from './Team';
 import Testimonial from './Testimonial';
 import Video from './Video';
+import News from './News';
+import Gallery from './Gallery';
+import Timeline from './Timeline';
 
 const Home = () => {
     return (
@@ -22,6 +25,9 @@ const Home = () => {
             {/* <Reviews /> */}
             <Team />
             <Testimonial />
+            <News />
+            <Timeline />
+            <Gallery />
             <CTA />
             <StayConnected />
             <Footer />

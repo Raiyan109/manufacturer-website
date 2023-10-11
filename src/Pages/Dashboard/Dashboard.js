@@ -8,8 +8,8 @@ import { FaGraduationCap } from 'react-icons/fa'
 import { HiLocationMarker } from 'react-icons/hi'
 
 const Dashboard = () => {
-    const { userFromServer } = useContext(AuthContext)
-    console.log(userFromServer);
+    const { mernAuth, setMernAuth } = useContext(AuthContext)
+    console.log(mernAuth);
     const id = localStorage.getItem("userId")
     return (
         <div className="drawer drawer-mobile mt-16">
@@ -34,7 +34,7 @@ const Dashboard = () => {
                                     <div className='flex justify-center items-center'>
                                         <BsFillPersonFill />
                                         <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                            {userFromServer?.data.name}
+                                            {mernAuth?.user?.name}
                                         </div>
                                     </div>
 
@@ -42,14 +42,14 @@ const Dashboard = () => {
                                         <div className='flex justify-center items-center'>
                                             <AiFillMail />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.data.email}
+                                                {mernAuth?.user?.email}
                                             </div>
                                         </div>
 
                                         <div className='flex justify-center items-center'>
                                             <BsFillTelephoneFill />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.data.phone}
+                                                {mernAuth?.user?.phone}
                                             </div>
                                         </div>
                                     </div>
@@ -57,14 +57,14 @@ const Dashboard = () => {
                                         <div className='flex justify-center items-center'>
                                             <FaGraduationCap />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.data.education}
+                                                {mernAuth?.user?.education}
                                             </div>
                                         </div>
 
                                         <div className='flex justify-center items-center'>
                                             <HiLocationMarker />
                                             <div className="w-full p-3 text-sm border-gray-200 rounded-lg">
-                                                {userFromServer?.data.location}
+                                                {mernAuth?.user?.location}
                                             </div>
                                         </div>
                                     </div>
@@ -87,10 +87,14 @@ const Dashboard = () => {
                     <li><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>
                     <li><NavLink to='/dashboard/add-review'>Add a review</NavLink></li>
                     <li><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
-                    <li><NavLink to='/dashboard/manage-orders'>Manage all orders</NavLink></li>
-                    <li><NavLink to='/dashboard/add-product'>Add Product</NavLink></li>
-                    <li><NavLink to='/dashboard/make-admin'>Make Admin</NavLink></li>
-                    <li><NavLink to='/dashboard/manage-products'>Manage products</NavLink></li>
+                    {mernAuth?.user?.role === 1 && (
+                        <>
+                            <li><NavLink to='/dashboard/manage-orders'>Manage all orders</NavLink></li>
+                            <li><NavLink to='/dashboard/add-product'>Add Product</NavLink></li>
+                            <li><NavLink to='/dashboard/make-admin'>Make Admin</NavLink></li>
+                            <li><NavLink to='/dashboard/manage-products'>Manage products</NavLink></li>
+                        </>
+                    )}
 
                 </ul>
 

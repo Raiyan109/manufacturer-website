@@ -26,11 +26,8 @@ const AddAProduct = () => {
     const handleUploadImage = (event) => {
         setLoading(true)
         const image = event.target.files[0];
-
         const formData = new FormData()
-
         formData.set('image', image)
-
         axios.post('https://api.imgbb.com/1/upload?key=4cf62e42525cbf72d4c7ec85ca313c4a', formData)
             .then((res) => {
                 setImageUrl(res.data.data.display_url)
