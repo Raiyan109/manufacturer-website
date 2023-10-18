@@ -11,21 +11,18 @@ import axios from 'axios';
 const MyProfile = () => {
     // const [userFromServer, setUserFromServer] = useState()
     const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [phoneNum, setPhoneNum] = useState('')
     const [education, setEducation] = useState('')
     const [location, setLocation] = useState('')
     const [user, loading, error] = useAuthState(auth);
-
-    const { userFromServer } = useContext(AuthContext)
-
+    const { userFromServer, mernAuth, setMernAuth } = useContext(AuthContext)
+    console.log(mernAuth);
     const id = localStorage.getItem("userId")
-
-    const { register, handleSubmit, reset } = useForm();
-
-    const { updateUser } = useContext(AuthContext)
-
     const navigate = useNavigate()
 
+    // const { register, handleSubmit, reset } = useForm();
+    // const { updateUser } = useContext(AuthContext)
     // const getSingleUser = async () => {
     //     const res = await axios.get(`http://localhost:5000/api/users/${id}`)
     //         .catch((err) => console.log(err))
@@ -39,6 +36,17 @@ const MyProfile = () => {
     //         .then((data) => setUserFromServer(data))
     // }, [])
 
+
+    // Get User Data
+    useEffect(() => {
+        // const { name, email } = mernAuth?.user
+        setName(mernAuth?.user?.name)
+        setEmail(mernAuth?.user?.email)
+        setPhoneNum(mernAuth?.user?.phone)
+        setEducation(mernAuth?.user?.education)
+        setLocation(mernAuth?.user?.location)
+    }, [mernAuth?.user])
+
     const handleUpdate = async (e) => {
         e.preventDefault()
         const res = await axios.patch(`http://localhost:5000/api/users/update/${id}`, {
@@ -48,10 +56,56 @@ const MyProfile = () => {
             location: location
         })
             .catch((err) => console.log(err))
+
         toast("Profile Updated successfully!");
         const data = await res.data.user
-        // console.log(data);
+        if (data?.error) {
+            toast(data?.error)
+        }
+        else {
+            setMernAuth({
+                ...mernAuth,
+                user: data?.user
+            })
+            let ls = localStorage.getItem('auth')
+            ls = JSON.parse(ls)
+            ls.user = data?.updatedUser
+            localStorage.setItem('auth', JSON.stringify(ls))
+            toast('Profile Updated Successfully')
+        }
         return data
+
+        // try {
+        //     const res = await axios.put('http://localhost:5000/api/users/profile', {
+        //         name: name,
+        //         email: email,
+        //         phone: phoneNum,
+        //         education: education,
+        //         location: location
+        //     })
+        //     const data = await res.data.existingUser
+
+        //     if (data?.error) {
+        //         toast(data?.error)
+        //     }
+        //     else {
+        //         setMernAuth({
+        //             ...mernAuth,
+        //             user: data?.updatedUser
+        //         })
+        //         let ls = localStorage.getItem('auth')
+        //         ls = JSON.parse(ls)
+        //         ls.user = data?.updatedUser
+        //         localStorage.setItem('auth', JSON.stringify(ls))
+        //         toast('Profile Updated Successfully')
+        //     }
+
+        //     return data
+
+        // } catch (error) {
+        //     console.log(error);
+        //     toast('Something went wrong')
+        // }
     }
 
 
@@ -59,31 +113,18 @@ const MyProfile = () => {
     const onSubmit = async (data) => {
         // const res = await fetcher.post('userInfo', data)
         // console.log(res);
-        const userOtherInfo = {
-            education: data.education,
-            location: data.location
-        }
-        updateUser(userOtherInfo)
-            .then(() => {
-                console.log(userOtherInfo);
-                console.log(user);
-                toast("Successfully Signed up!");
-            })
-            .catch(err => console.log(err))
+        // const userOtherInfo = {
+        //     education: data.education,
+        //     location: data.location
+        // }
+        // updateUser(userOtherInfo)
+        //     .then(() => {
+        //         console.log(userOtherInfo);
+        //         console.log(user);
+        //         toast("Successfully Signed up!");
+        //     })
+        //     .catch(err => console.log(err))
 
-        // const res = await axios.put('http://localhost:5000/api/users/update/', {
-        //     name: data.name,
-        //     email: data.email,
-        //     password: data.password,
-
-        // })
-
-
-        // const result = await res.result
-        // console.log(data);
-        // localStorage.getItem('userId')
-        // return result
-        // reset()
     }
 
     return (
@@ -125,7 +166,7 @@ const MyProfile = () => {
                                             // value={user?.email || ''}
                                             // type="email"
                                             // id="email"
-                                            value={userFromServer?.email || ''}
+                                            value={email}
                                             type="email"
                                             id="email"
                                         />

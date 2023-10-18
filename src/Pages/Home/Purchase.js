@@ -119,6 +119,7 @@ const Purchase = ({ refetch }) => {
                             <div className='my-6'
                                 onClick={() => {
                                     setCart([...cart, purchase])
+                                    localStorage.setItem('cart', JSON.stringify([...cart, purchase]))
                                     toast("Item added to cart");
                                 }}
                             >
