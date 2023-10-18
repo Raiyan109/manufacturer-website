@@ -3,13 +3,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import fetcher from '../../api';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import PayButton from '../PayButton';
 import { AuthContext } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
 
 const Purchase = ({ refetch }) => {
     const { id } = useParams()
@@ -17,6 +18,7 @@ const Purchase = ({ refetch }) => {
     const [quantityValue, setQuantityValue] = useState(1)
     const [user, loading, error] = useAuthState(auth);
     const { mernAuth } = useContext(AuthContext)
+    const [cart, setCart] = useCart()
     const { register, handleSubmit, reset } = useForm();
     // const userOrders = {
     //     userName: user.displayName,
@@ -24,12 +26,12 @@ const Purchase = ({ refetch }) => {
     // }
 
     useEffect(() => {
-
         fetch(`https://manufacturer-app-server.vercel.app/api/parts/${id}`)
             .then(res => res.json())
             .then(data => setPurchase(data))
     }, [])
 
+    console.log(cart);
     // const [increaseQuantity, setIncreaseQuantity] = useState('')
 
     const onSubmit = async (event, data) => {
@@ -86,7 +88,7 @@ const Purchase = ({ refetch }) => {
                 <div className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <img alt={purchase.name} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={purchase.img} />
-                        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-col">
 
                             <h1 className="text-gray-900 text-3xl title-font font-bold mb-1">{purchase.name}</h1>
                             <h2 className="title-font font-medium text-2xl text-gray-900 mt-3">${purchase.price}</h2>
@@ -114,10 +116,13 @@ const Purchase = ({ refetch }) => {
                                         {...register("quantity")} />
                                 </form>
                             </div>
-                            <div className="flex">
-
-                                <button className="flex ml-auto text-primary bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded uppercase">Add to cart ${purchase.price}</button>
-
+                            <div className='my-6'
+                                onClick={() => {
+                                    setCart([...cart, purchase])
+                                    toast("Item added to cart");
+                                }}
+                            >
+                                <button className="ml-auto text-primary bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded uppercase">Add to cart ${purchase.price}</button>
                             </div>
                         </div>
                     </div>
@@ -125,7 +130,7 @@ const Purchase = ({ refetch }) => {
             </section>
 
 
-            <section className="bg-gray-100">
+            {/* <section className="bg-gray-100">
                 <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
                         <div className="lg:py-12 lg:col-span-2">
@@ -171,9 +176,9 @@ const Purchase = ({ refetch }) => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
-
+            <ToastContainer autoClose={1200} />
         </div>
 
 

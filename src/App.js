@@ -27,6 +27,7 @@ import GetQuote from './Pages/GetQuote/GetQuote';
 import CheckoutSuccess from './Pages/CheckoutSuccess';
 import AllProducts from './Pages/Home/AllProduct/AllProducts';
 import ResetPass from './Pages/Auth/ResetPass';
+import Cart from './Pages/Home/Cart';
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
           <Route path='/allProduct' element={<AllProducts />}></Route>
           <Route path='/myPortfolio' element={<MyPortfolio />}></Route>
           <Route path='/part' element={<Purchase />}></Route>
+          <Route path='/cart' element={<Cart />}></Route>
           <Route path='checkout-success' element={<CheckoutSuccess />}></Route>
 
           <Route path='api/parts/:id' element={
@@ -68,7 +70,18 @@ function App() {
           </Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
-        <ToastContainer />
+        <ToastContainer
+          position="top-right"
+          autoClose={1200}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
 
       </Navbar>
       <CookieConsent
