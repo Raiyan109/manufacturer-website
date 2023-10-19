@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import PayButton from '../PayButton';
 import { AuthContext } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
+import axios from 'axios';
 
 const Purchase = ({ refetch }) => {
     const { id } = useParams()
@@ -31,7 +32,17 @@ const Purchase = ({ refetch }) => {
             .then(data => setPurchase(data))
     }, [])
 
-    console.log(cart);
+    const createCart = async (e) => {
+        e.preventDefault()
+        try {
+            const { data } = await axios.post('https://manufacturer-app-server-raiyan109.vercel.app/api/parts/cart', {
+                cart, mernAuth
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
     // const [increaseQuantity, setIncreaseQuantity] = useState('')
 
     const onSubmit = async (event, data) => {

@@ -62,13 +62,13 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        const res = await axios.post('http://localhost:5000/api/users/login', {
+        const res = await axios.post('https://manufacturer-app-server-raiyan109.vercel.app/api/users/login', {
             email,
             password,
         })
         // navigate(from, { replace: true })
         navigate(location.state || '/')
-        const data = await res.data.existingUser
+        const data = await res.data.user
         setMernAuth({
             ...mernAuth,
             user: res.data.user,

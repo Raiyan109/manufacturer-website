@@ -21,7 +21,7 @@ export const AuthContextProvider = ({ children }) => {
             const parsedData = JSON.parse(data)
             setMernAuth({
                 ...mernAuth,
-                user: parsedData.existingUser,
+                user: parsedData.user,
                 token: parsedData.token
             })
         }

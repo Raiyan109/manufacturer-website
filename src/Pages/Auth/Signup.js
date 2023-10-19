@@ -92,7 +92,7 @@ const Signup = () => {
 
     const handleSignupSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.post('http://localhost:5000/api/users/signup', {
+        const res = await axios.post('https://manufacturer-app-server-raiyan109.vercel.app/api/users/signup', {
             name,
             email,
             password,
