@@ -71,7 +71,7 @@ const Login = () => {
         const data = await res.data.existingUser
         setMernAuth({
             ...mernAuth,
-            user: res.data.existingUser,
+            user: res.data.user,
             token: res.data.token
         })
         localStorage.setItem('userId', data._id)

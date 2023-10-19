@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { AiOutlineDelete } from 'react-icons/ai'
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
+import DropIn from "braintree-web-drop-in-react";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
+    const { mernAuth, setMernAuth } = useContext(AuthContext)
     const [cart, setCart] = useCart()
+    const [clientToken, setClientToken] = useState('')
+    const [instance, setInstance] = useState('')
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const totalPrice = () => {
         try {
@@ -31,6 +41,41 @@ const Cart = () => {
             console.log(error);
         }
     }
+
+    // Get payment gateway token
+    const getToken = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/parts/braintree/token')
+            setClientToken(data?.clientToken)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getToken()
+    }, [mernAuth?.token])
+
+    // handle payments
+    const handlePayment = async () => {
+        try {
+            setLoading(true)
+            const { nonce } = await instance.requestPaymentMethod()
+            const { data } = await axios.post('http://localhost:5000/api/parts/braintree/payment', {
+                nonce, cart
+            })
+            setLoading(false)
+            localStorage.removeItem('cart')
+            setCart([])
+            navigate('/dashboard/manage-orders')
+            toast('Payment done')
+        } catch (error) {
+            console.log(error);
+            setLoading(false)
+        }
+    }
+
+    console.log(mernAuth.user._id);
     return (
         <div>
             <section>
@@ -142,13 +187,40 @@ const Cart = () => {
                                         </div> */}
 
                                         <div class="flex justify-end">
+                                            {
+                                                !clientToken || !cart?.length ?
+                                                    ("") :
+                                                    (
+                                                        <>
+                                                            <div>
+                                                                <DropIn
+                                                                    options={{
+                                                                        authorization: clientToken,
+                                                                        paypal: {
+                                                                            flow: 'vault'
+                                                                        }
+                                                                    }}
+                                                                    onInstance={instance => setInstance(instance)}
+                                                                />
+                                                                <button className='block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600'
+                                                                    onClick={handlePayment}
+                                                                    disabled={loading || !instance}
+                                                                >
+                                                                    {loading ? 'Processing...' : 'Make Payment'}
+                                                                </button>
+                                                            </div>
+                                                        </>
+                                                    )
+                                            }
+                                        </div>
+                                        {/* <div class="flex justify-end">
                                             <a
                                                 href="#"
                                                 class="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                                             >
                                                 Checkout
                                             </a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
