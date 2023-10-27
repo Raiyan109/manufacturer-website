@@ -79,57 +79,57 @@ const Cart = () => {
     return (
         <div>
             <section>
-                <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                    <div class="mx-auto max-w-3xl">
-                        <header class="text-center">
-                            <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
+                <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+                    <div className="mx-auto max-w-3xl">
+                        <header className="text-center">
+                            <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
                         </header>
 
                         {cart?.length >= 1 ? (
-                            <div class="mt-8">
-                                <ul class="space-y-4">
+                            <div className="mt-8">
+                                <ul className="space-y-4">
 
                                     {cart?.map((item) => (
-                                        <li class="flex items-center gap-4">
+                                        <li className="flex items-center gap-4">
                                             <img
                                                 src={item.img}
                                                 alt=""
-                                                class="h-16 w-16 rounded object-cover"
+                                                className="h-16 w-16 rounded object-cover"
                                             />
 
                                             <div>
-                                                <h3 class="text-sm text-gray-900">{item.name}</h3>
+                                                <h3 className="text-sm text-gray-900">{item.name}</h3>
 
-                                                <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
+                                                <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                                                     <div>
-                                                        <dt class="inline">Price:</dt>
-                                                        <dd class="inline">{item.price}</dd>
+                                                        <dt className="inline">Price:</dt>
+                                                        <dd className="inline">{item.price}</dd>
                                                     </div>
 
                                                     {/* <div>
-                                                        <dt class="inline">Color:</dt>
-                                                        <dd class="inline">White</dd>
+                                                        <dt className="inline">Color:</dt>
+                                                        <dd className="inline">White</dd>
                                                     </div> */}
                                                 </dl>
                                             </div>
 
-                                            <div class="flex flex-1 items-center justify-end gap-2">
+                                            <div className="flex flex-1 items-center justify-end gap-2">
                                                 <form>
-                                                    <label for="Line1Qty" class="sr-only"> Quantity </label>
+                                                    <label htmlFor="Line1Qty" className="sr-only"> Quantity </label>
 
                                                     <input
                                                         type="number"
                                                         min="1"
                                                         value="1"
                                                         id="Line1Qty"
-                                                        class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                                                        className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                                                     />
                                                 </form>
 
                                                 <button
                                                     onClick={() => removeCartItem(item._id)}
-                                                    class="text-gray-600 transition hover:text-red-600">
-                                                    <span class="sr-only">Remove item</span>
+                                                    className="text-gray-600 transition hover:text-red-600">
+                                                    <span className="sr-only">Remove item</span>
 
                                                     <AiOutlineDelete />
                                                 </button>
@@ -139,33 +139,33 @@ const Cart = () => {
 
                                 </ul>
 
-                                <div class="mt-8 flex justify-end border-t border-gray-100 pt-8">
-                                    <div class="w-screen max-w-lg space-y-4">
-                                        <dl class="space-y-0.5 text-sm text-gray-700">
-                                            <div class="flex justify-between">
+                                <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
+                                    <div className="w-screen max-w-lg space-y-4">
+                                        <dl className="space-y-0.5 text-sm text-gray-700">
+                                            <div className="flex justify-between">
                                                 <dt>Subtotal</dt>
                                                 <dd>{totalPrice()}</dd>
                                             </div>
 
-                                            {/* <div class="flex justify-between">
+                                            {/* <div className="flex justify-between">
                                                 <dt>VAT</dt>
                                                 <dd>£25</dd>
                                             </div>
 
-                                            <div class="flex justify-between">
+                                            <div className="flex justify-between">
                                                 <dt>Discount</dt>
                                                 <dd>-£20</dd>
                                             </div>
 
-                                            <div class="flex justify-between !text-base font-medium">
+                                            <div className="flex justify-between !text-base font-medium">
                                                 <dt>Total</dt>
                                                 <dd>£200</dd>
                                             </div> */}
                                         </dl>
 
-                                        {/* <div class="flex justify-end">
+                                        {/* <div className="flex justify-end">
                                             <span
-                                                class="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700"
+                                                className="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +173,7 @@ const Cart = () => {
                                                     viewBox="0 0 24 24"
                                                     stroke-width="1.5"
                                                     stroke="currentColor"
-                                                    class="-ms-1 me-1.5 h-4 w-4"
+                                                    className="-ms-1 me-1.5 h-4 w-4"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -182,11 +182,11 @@ const Cart = () => {
                                                     />
                                                 </svg>
 
-                                                <p class="whitespace-nowrap text-xs">2 Discounts Applied</p>
+                                                <p className="whitespace-nowrap text-xs">2 Discounts Applied</p>
                                             </span>
                                         </div> */}
 
-                                        <div class="flex justify-end">
+                                        <div className="flex justify-end">
                                             {
                                                 !clientToken || !cart?.length ?
                                                     ("") :
@@ -213,10 +213,10 @@ const Cart = () => {
                                                     )
                                             }
                                         </div>
-                                        {/* <div class="flex justify-end">
+                                        {/* <div className="flex justify-end">
                                             <a
                                                 href="#"
-                                                class="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+                                                className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                                             >
                                                 Checkout
                                             </a>

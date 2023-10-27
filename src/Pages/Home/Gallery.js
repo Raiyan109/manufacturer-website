@@ -16,25 +16,25 @@ const Gallery = () => {
                  
 
                 </div> */}
-                <div class="gallery-container">
+                <div className="gallery-container">
 
                     {/* <!-- BUTTONS (input/labels) --> */}
-                    <input type="radio" name="slider" id="slide-1-trigger" class="trigger" checked />
-                    <label class="gallery-btn" for="slide-1-trigger"></label>
-                    <input type="radio" name="slider" id="slide-2-trigger" class="trigger" />
-                    <label class="gallery-btn" for="slide-2-trigger"></label>
-                    <input type="radio" name="slider" id="slide-3-trigger" class="trigger" />
-                    <label class="gallery-btn" for="slide-3-trigger"></label>
-                    <input type="radio" name="slider" id="slide-4-trigger" class="trigger" />
-                    <label class="gallery-btn" for="slide-4-trigger"></label>
+                    <input type="radio" name="slider" id="slide-1-trigger" className="trigger" checked />
+                    <label className="gallery-btn" htmlFor="slide-1-trigger"></label>
+                    <input type="radio" name="slider" id="slide-2-trigger" className="trigger" />
+                    <label className="gallery-btn" htmlFor="slide-2-trigger"></label>
+                    <input type="radio" name="slider" id="slide-3-trigger" className="trigger" />
+                    <label className="gallery-btn" htmlFor="slide-3-trigger"></label>
+                    <input type="radio" name="slider" id="slide-4-trigger" className="trigger" />
+                    <label className="gallery-btn" htmlFor="slide-4-trigger"></label>
 
                     {/* <!-- SLIDES --> */}
-                    <div class="slide-wrapper">
+                    <div className="slide-wrapper">
                         <div id="slide-role">
-                            <div class="slide slide-1"></div>
-                            <div class="slide slide-2"></div>
-                            <div class="slide slide-3"></div>
-                            <div class="slide slide-4"></div>
+                            <div className="slide slide-1"></div>
+                            <div className="slide slide-2"></div>
+                            <div className="slide slide-3"></div>
+                            <div className="slide slide-4"></div>
                         </div>
                     </div>
 

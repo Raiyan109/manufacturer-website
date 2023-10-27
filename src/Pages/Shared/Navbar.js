@@ -55,7 +55,7 @@ const Navbar = ({ children }) => {
 
                     {/* Drawer button is here */}
 
-                    {pathname.includes('dashboard') && (<label tabindex="0" htmlFor="my-drawer-2" className="btn btn-ghost btn-circle lg:hidden">
+                    {pathname.includes('dashboard') && (<label tabIndex="0" htmlFor="my-drawer-2" className="btn btn-ghost btn-circle lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>)}
@@ -150,7 +150,8 @@ const Navbar = ({ children }) => {
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
                     <li><NavLink className='rounded-lg mb-1' to='/'>Home</NavLink></li>
-                    <li><NavLink className='rounded-lg mb-1' to='/allProduct'>Products</NavLink></li>
+                    <li><Link to='/allProduct' className='rounded-lg mb-1' >Products</Link></li>
+
                     {/* {user && (
                         <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
                     )} */}

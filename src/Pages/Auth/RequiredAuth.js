@@ -32,7 +32,7 @@ const RequiredAuth = ({ children }) => {
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get('https://manufacturer-app-server-raiyan109.vercel.app/api/users/user-auth', {
+            const res = await axios.get('http://localhost:5000/api/users/user-auth', {
                 headers: {
                     'Authorization': mernAuth?.token
                 }

@@ -34,7 +34,7 @@ const AddReview = () => {
                                 <input type="text" {...register("name")} placeholder="Your Name" className="input input-bordered input-info w-full max-w-xs" />
                             </div>
                             <div>
-                                <label className="sr-only" for="message">Review</label>
+                                <label className="sr-only" htmlFor="message">Review</label>
                                 <textarea
                                     {...register("review")}
                                     className="w-full p-3 text-sm border-gray-200 rounded-lg"

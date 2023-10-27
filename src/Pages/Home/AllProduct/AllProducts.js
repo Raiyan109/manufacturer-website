@@ -6,7 +6,7 @@ import AllProduct from './AllProduct';
 
 const AllProducts = () => {
 
-    const { loading } = useContext(AuthContext)
+    // const { loading } = useContext(AuthContext)
     const [parts, setParts] = useState([])
 
     useEffect(() => {
@@ -17,9 +17,9 @@ const AllProducts = () => {
         })()
     }, [])
 
-    if (loading) {
-        return <Loading></Loading>
-    }
+    // if (loading) {
+    //     return <Loading></Loading>
+    // }
     return (
         <div className='container mx-auto  px-5 py-16 '>
             {/* Title */}

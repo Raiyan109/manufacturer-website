@@ -9,56 +9,12 @@ import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 
 const Login = () => {
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-
-    const { register, formState: { errors }, handleSubmit } = useForm();
-
     const { mernAuth, setMernAuth, loading } = useContext(AuthContext)
-
-    // const [
-    //     signInWithEmailAndPassword,
-    //     user,
-    //     loading,
-    //     error,
-    // ] = useSignInWithEmailAndPassword(auth);
-
-    // const [token] = useToken(user || gUser)
-
-    let signInError
-
     const navigate = useNavigate()
     const location = useLocation()
-    let from = location.state?.from?.pathname || "/";
 
-    // useEffect(() => {
-    //     if (token) {
-    //         // navigate(from, { replace: true })
-    //         navigate('/')
-    //     }
-    // }, [token, from, navigate])
-
-    if (loading || gLoading) {
-        return <Loading></Loading>
-    }
-
-    // if (error || gError) {
-    //     signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
-    // }
-
-    // const onSubmit = data => {
-    //     console.log(data.email)
-    //     signIn(data.email, data.password)
-    //         .then(res => {
-    //             const user = res.user
-    //             console.log(user);
-    //             navigate(from, { replace: true })
-    //         })
-    //         .catch(err => console.log(err))
-    // };
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -66,7 +22,6 @@ const Login = () => {
             email,
             password,
         })
-        // navigate(from, { replace: true })
         navigate(location.state || '/')
         const data = await res.data.user
         setMernAuth({
@@ -89,8 +44,8 @@ const Login = () => {
                     <h2 className="text-center text-2xl font-bold">Login</h2>
 
                     <form
-                        // onSubmit={handleSubmit(onSubmit)}
                         onSubmit={handleLogin}
+                        className='space-y-5'
                     >
 
                         <div className="form-control w-full max-w-xs">
@@ -102,23 +57,10 @@ const Login = () => {
                                 type="email"
                                 placeholder="Your email"
                                 className="input input-bordered w-full max-w-xs"
-                                // {...register("email", {
-                                //     required: {
-                                //         value: true,
-                                //         message: 'Email is Required'
-                                //     },
-                                //     pattern: {
-                                //         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                //         message: 'Provide a valid email'
-                                //     }
-                                // })}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            <label className="label">
-                                {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
-                                {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
-                            </label>
+
                         </div>
 
                         <div className="form-control w-full max-w-xs">
@@ -130,25 +72,11 @@ const Login = () => {
                                 type="password"
                                 placeholder="Your password"
                                 className="input input-bordered w-full max-w-xs"
-                                // {...register("password", {
-                                //     required: {
-                                //         value: true,
-                                //         message: 'password is Required'
-                                //     },
-                                //     minLength: {
-                                //         value: 6,
-                                //         message: 'Must be 6 characters or longer'
-                                //     }
-                                // })}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <label className="label">
-                                {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}
-                                {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}
-                            </label>
+
                         </div>
-                        {signInError}
 
                         <input className='btn w-full max-w-xs font-OpenSans' value='login' type="submit" />
                     </form>
