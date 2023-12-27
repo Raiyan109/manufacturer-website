@@ -6,7 +6,7 @@ import EstoniaSub from '../../assets/images/estonia sub.jpg'
 
 const News = () => {
     return (
-        <div className='my-20'>
+        <div className='my-20 px-2'>
 
 
             <h1 className='text-5xl text-primary font-bold text-center'>News & Insights</h1>
