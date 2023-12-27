@@ -39,9 +39,9 @@ const Banner = () => {
         <section className="text-black body-font mb-28">
             <div className="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
                 <div className="lg:flex-grow flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                    <h1 className="title-font tracking-wide sm:text-4xl md:text-6xl xl:text-7xl mb-4 font-bold mt-4 font-Montserrat">Precision Parts for Your Submarine
+                    <h1 className="title-font tracking-wide text-6xl md:text-6xl xl:text-8xl mb-4 font-bold mt-4 font-Montserrat">Precision Parts for Your Submarine
                     </h1>
-                    <p className="mb-8 leading-relaxed opacity-50 font-Montserrat ">Delivering Precision-Crafted Submarine Parts with Quality, Durability, and Performance Built to Withstand the Depths of the Ocean - Providing Safe and Reliable Solutions for Your Submarine Needs. </p>
+                    <p className="mb-8 leading-relaxed opacity-50 font-Montserrat text-sm lg:text-lg">Delivering Precision-Crafted Submarine Parts with Quality, Durability, and Performance Built to Withstand the Depths of the Ocean - Providing Safe and Reliable Solutions for Your Submarine Needs. </p>
                     <div className="flex justify-center">
                         <Link to='/getQuote'>
                             <button className="inline-flex text-primary font-OpenSans btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg">Get Quote</button>

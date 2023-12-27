@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Footer = () => {
+    const year = new Date().getFullYear()
+
     return (
         <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
             <div className="grid grid-flow-col gap-4">
@@ -17,7 +19,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <p>Copyright © 2022 - All right reserved by Leviathan Ltd</p>
+                <p>Copyright © {year} - All right reserved by Leviathan Ltd.</p>
             </div>
         </footer>
     );
