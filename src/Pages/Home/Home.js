@@ -13,6 +13,7 @@ import Video from './Video';
 import News from './News';
 import Gallery from './Gallery';
 import Timeline from './Timeline';
+import Slider from './Slider';
 
 const Home = () => {
     return (
@@ -27,7 +28,8 @@ const Home = () => {
             <Testimonial />
             <News />
             <Timeline />
-            <Gallery />
+            {/* <Gallery /> */}
+            <Slider />
             <CTA />
             <StayConnected />
             <Footer />
