@@ -6,12 +6,15 @@ import { AiFillMail } from 'react-icons/ai'
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { FaGraduationCap } from 'react-icons/fa'
 import { HiLocationMarker } from 'react-icons/hi'
+import DashHome from './DashHome';
+
 
 const Dashboard = () => {
     const { mernAuth, setMernAuth } = useContext(AuthContext)
     const id = localStorage.getItem("userId")
     const location = useLocation()
-    console.log(location);
+
+
     return (
         <div className="drawer drawer-mobile mt-16">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -19,7 +22,7 @@ const Dashboard = () => {
                 {/* <!-- Page content here --> */}
 
                 <Outlet />
-                {location.pathname === '/dashboard' && <p className='text-center text-4xl text-red-700'>dashboard</p>}
+                {location.pathname === '/dashboard' && <DashHome />}
                 {/* <section className="bg-gray-100">
                     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">

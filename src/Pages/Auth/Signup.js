@@ -7,6 +7,8 @@ import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
@@ -14,6 +16,7 @@ const Signup = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const MySwal = withReactContent(Swal)
 
     // const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
@@ -101,6 +104,11 @@ const Signup = () => {
         const data = await res.data.user
 
         localStorage.setItem('userId', data._id)
+        MySwal.fire({
+            title: "Sign up successfully! ",
+            text: "Redirecting to Login page",
+            icon: "success"
+        })
         navigate('/login')
         return data
     }
