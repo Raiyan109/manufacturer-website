@@ -17,7 +17,6 @@ const MyProfile = () => {
     const [location, setLocation] = useState('')
     const [user, loading, error] = useAuthState(auth);
     const { userFromServer, mernAuth, setMernAuth } = useContext(AuthContext)
-    console.log(mernAuth);
     const id = localStorage.getItem("userId")
     const navigate = useNavigate()
 
