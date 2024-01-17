@@ -99,9 +99,9 @@ const Signup = () => {
         })
 
         const data = await res.data.user
-        console.log(data._id);
 
         localStorage.setItem('userId', data._id)
+        navigate('/login')
         return data
     }
 
