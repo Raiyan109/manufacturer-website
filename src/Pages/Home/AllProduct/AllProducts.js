@@ -12,7 +12,7 @@ const AllProducts = () => {
     useEffect(() => {
         (async () => {
             const res = await fetcher.get('api/parts')
-            console.log(res);
+            // console.log(res);
             setParts(res.data)
         })()
     }, [])

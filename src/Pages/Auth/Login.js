@@ -23,6 +23,7 @@ const Login = () => {
             password,
         })
         navigate(location.state || '/')
+        console.log(location.state);
         const data = await res.data.user
         setMernAuth({
             ...mernAuth,

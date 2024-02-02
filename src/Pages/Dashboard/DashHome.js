@@ -3,7 +3,6 @@ import { AuthContext } from '../../context/AuthContext';
 
 const DashHome = () => {
     const { mernAuth, setMernAuth } = useContext(AuthContext)
-    console.log(mernAuth.user.name);
     return (
         <div>
             <h1 className='text-4xl text-blue-700 font-medium text-center'>Welcome <span className='font-bold'>{mernAuth?.user?.name}</span> !</h1>
