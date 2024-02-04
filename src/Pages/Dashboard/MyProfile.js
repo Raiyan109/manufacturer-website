@@ -7,6 +7,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const MyProfile = () => {
     // const [userFromServer, setUserFromServer] = useState()
@@ -74,37 +75,7 @@ const MyProfile = () => {
         }
         return data
 
-        // try {
-        //     const res = await axios.put('http://localhost:5000/api/users/profile', {
-        //         name: name,
-        //         email: email,
-        //         phone: phoneNum,
-        //         education: education,
-        //         location: location
-        //     })
-        //     const data = await res.data.existingUser
 
-        //     if (data?.error) {
-        //         toast(data?.error)
-        //     }
-        //     else {
-        //         setMernAuth({
-        //             ...mernAuth,
-        //             user: data?.updatedUser
-        //         })
-        //         let ls = localStorage.getItem('auth')
-        //         ls = JSON.parse(ls)
-        //         ls.user = data?.updatedUser
-        //         localStorage.setItem('auth', JSON.stringify(ls))
-        //         toast('Profile Updated Successfully')
-        //     }
-
-        //     return data
-
-        // } catch (error) {
-        //     console.log(error);
-        //     toast('Something went wrong')
-        // }
     }
 
 
@@ -129,6 +100,9 @@ const MyProfile = () => {
     return (
         <div>
             <section className="bg-gray-100">
+                <div className='p-5'>
+                    <Breadcrumb />
+                </div>
                 <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
                         <div className="lg:py-12 lg:col-span-2">

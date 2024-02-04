@@ -28,6 +28,7 @@ import CheckoutSuccess from './Pages/CheckoutSuccess';
 import AllProducts from './Pages/Home/AllProduct/AllProducts';
 import ResetPass from './Pages/Auth/ResetPass';
 import Cart from './Pages/Home/Cart';
+import Breadcrumb from './components/Breadcrumb';
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
   return (
     <div className="App">
       <Navbar>
+        {/* <Breadcrumb /> */}
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>

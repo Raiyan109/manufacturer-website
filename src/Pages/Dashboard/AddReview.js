@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import fetcher from '../../api';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const AddReview = () => {
 
@@ -16,6 +17,9 @@ const AddReview = () => {
 
 
         <section className="bg-gray-100">
+            <div className='p-5'>
+                <Breadcrumb />
+            </div>
             <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
                     <div className="lg:py-12 lg:col-span-2">

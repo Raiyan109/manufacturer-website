@@ -9,6 +9,7 @@ import { HiLocationMarker } from 'react-icons/hi'
 import DashHome from './DashHome';
 
 
+
 const Dashboard = () => {
     const { mernAuth, setMernAuth } = useContext(AuthContext)
     const id = localStorage.getItem("userId")
@@ -17,6 +18,7 @@ const Dashboard = () => {
 
     return (
         <div className="drawer drawer-mobile mt-16">
+
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 {/* <!-- Page content here --> */}
