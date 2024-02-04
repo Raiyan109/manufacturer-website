@@ -4,32 +4,34 @@ export const CartContext = createContext()
 
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
+    const [cartTotal, setCartTotal] = useState('')
 
     useEffect(() => {
         let existingCartItem = localStorage.getItem('cart')
         if (existingCartItem) setCart(JSON.parse(existingCartItem))
 
-        const totalPrice = () => {
-            try {
-                let total = 0
-                cart?.map(item => {
-                    total = total + item.price
-                })
-                return total.toLocaleString("en-US", {
-                    style: 'currency',
-                    currency: "USD"
-                })
-            } catch (error) {
-                console.log(error);
-            }
-        }
+
     }, [])
 
-    const info = {
 
-    }
+    useEffect(() => {
+        calculateTotalPrice();
+    }, [cart]);
+
+    const calculateTotalPrice = () => {
+        try {
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+            });
+            setCartTotal(total);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    console.log(cartTotal);
     return (
-        <CartContext.Provider value={[cart, setCart]}>
+        <CartContext.Provider value={[cart, setCart, cartTotal]}>
             {children}
         </CartContext.Provider>
     )

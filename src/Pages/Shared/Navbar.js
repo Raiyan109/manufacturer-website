@@ -12,13 +12,11 @@ import { useCart } from '../../context/CartContext';
 
 
 const Navbar = ({ children }) => {
-    // const [userFromServer, setUserFromServer] = useState()
     const navigate = useNavigate()
     // const id = localStorage.getItem("userId")
     const { mernAuth, setMernAuth } = useContext(AuthContext)
-    const [cart] = useCart()
-    // const [user] = useAuthState(auth);
-    // const [admin] = UseAdmin()
+    const [cart, setCart, cartTotal] = useCart()
+
     const { pathname } = useLocation()
 
     const logout = () => {
@@ -179,7 +177,7 @@ const Navbar = ({ children }) => {
                             <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
                                 <div className="card-body">
                                     <span className="font-bold text-lg">{cart?.length} Items</span>
-                                    <span className="text-info">Subtotal: $999</span>
+                                    <span className="text-info">Subtotal: ${cartTotal}</span>
                                     <div className="card-actions">
                                         <Link to='/cart' className="btn btn-primary btn-block">View cart</Link>
                                     </div>

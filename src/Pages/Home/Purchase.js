@@ -21,10 +21,7 @@ const Purchase = ({ refetch }) => {
     const { mernAuth } = useContext(AuthContext)
     const [cart, setCart] = useCart()
     const { register, handleSubmit, reset } = useForm();
-    // const userOrders = {
-    //     userName: user.displayName,
-    //     email: user.email
-    // }
+
 
     useEffect(() => {
         fetch(`https://leviathan-server.vercel.app/api/parts/${id}`)
@@ -43,58 +40,18 @@ const Purchase = ({ refetch }) => {
             console.log(error);
         }
     }
-    // const [increaseQuantity, setIncreaseQuantity] = useState('')
+
 
     const onSubmit = async (event, data) => {
         const res = await fetcher.post(`api/parts/${id}`, data)
-        // console.log(res);
         setPurchase(user)
-        // const minimumOrderQuantity = 100
-        // let updatedQuantity = parseInt(event.target.value)
-        // const availableQuantity = minimumOrderQuantity + updatedQuantity
-        // reset()
+
     }
 
 
-    // fetch('https://stormy-sea-79672.herokuapp.com/userOrders', {
-    //     method: 'POST',
-    //     headers: {
-    //         'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(userOrders)
-    // })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         if (data.success) {
-    //             toast(`Dear ${user.name}, Your Order has been placed successfully`)
-    //         }
-    //         else {
-    //             toast.error('You already have this order')
-    //         }
-    //         refetch()
 
-    //     })
-
-    // useEffect(() => {
-
-    // }, [])
-
-    // const url = `http://localhost:5000/part/${id}`
-    // const { data, isloading } = useQuery(['part', id], () => fetch(url, {
-    //     method: 'GET',
-    //     headers: {
-    //         'content-type': 'application/json'
-    //     }
-    // }).then(res => res.json()))
-
-    // if (isloading) {
-    //     return <Loading></Loading>
-    // }
     return (
         <div className='scrollbar-hide'>
-            {/* <p className='text-xl mt-2'>User's Name: {user?.displayName}</p>
-                <p className='text-xl mt-2'>User's Email: {user?.email}</p> */}
-
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -128,13 +85,15 @@ const Purchase = ({ refetch }) => {
                                 </form>
                             </div>
                             <div className='my-6'
-                                onClick={() => {
-                                    setCart([...cart, purchase])
-                                    localStorage.setItem('cart', JSON.stringify([...cart, purchase]))
-                                    toast("Item added to cart");
-                                }}
+
                             >
-                                <button className="ml-auto text-primary bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded uppercase">Add to cart ${purchase.price}</button>
+                                <button
+                                    onClick={() => {
+                                        setCart([...cart, purchase])
+                                        localStorage.setItem('cart', JSON.stringify([...cart, purchase]))
+                                        toast("Item added to cart");
+                                    }}
+                                    className="ml-auto text-primary bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded uppercase">Add to cart ${purchase.price}</button>
                             </div>
                         </div>
                     </div>
@@ -142,53 +101,7 @@ const Purchase = ({ refetch }) => {
             </section>
 
 
-            {/* <section className="bg-gray-100">
-                <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-                        <div className="lg:py-12 lg:col-span-2">
-                            <div className="mt-8">
-                                <a href="" className="text-2xl font-bold text-pink-600"> Proceed to checkout by giving your detailed information </a>
-                            </div>
-                        </div>
 
-                        <div className="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
-                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                                <div>
-                                    <label className="sr-only" htmlFor="name">Name</label>
-                                    <input className="w-full p-3 text-sm border-gray-200 rounded-lg" placeholder="Name" type="text" id="name" />
-                                </div>
-
-                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                    <div>
-                                        <label className="sr-only" htmlFor="email">Email</label>
-                                        <input
-                                            className="w-full p-3 text-sm border-gray-200 rounded-lg"
-                                            placeholder="Email address"
-                                            type="email"
-                                            id="email"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="sr-only" htmlFor="phone">Phone</label>
-                                        <input
-                                            className="w-full p-3 text-sm border-gray-200 rounded-lg"
-                                            placeholder="Phone Number"
-                                            type="tel"
-                                            id="phone"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-control">
-                                    <PayButton
-                                        purchase={purchase}
-                                    />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
 
             <ToastContainer autoClose={1200} />
         </div>
