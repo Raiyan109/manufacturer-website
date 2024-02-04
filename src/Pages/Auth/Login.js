@@ -18,12 +18,11 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        const res = await axios.post('https://manufacturer-app-server-raiyan109.vercel.app/api/users/login', {
+        const res = await axios.post('https://leviathan-server.vercel.app/api/users/login', {
             email,
             password,
         })
         navigate(location.state || '/')
-        console.log(location.state);
         const data = await res.data.user
         setMernAuth({
             ...mernAuth,

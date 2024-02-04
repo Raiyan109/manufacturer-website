@@ -30,7 +30,7 @@ const MakeAdmin = () => {
     }
 
     const getUsers = async () => {
-        const res = await axios.get('http://localhost:5000/api/users')
+        const res = await axios.get('https://leviathan-server.vercel.app/api/users')
             .catch((err) => console.log(err))
 
         const data = await res.data.users

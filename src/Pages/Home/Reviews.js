@@ -5,7 +5,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        const url = 'https://manufacturer-app-server.vercel.app/api/reviews'
+        const url = 'https://leviathan-server.vercel.app/api/reviews'
         fetch(url)
             .then(res => res.json())
             .then(data => setReviews(data))

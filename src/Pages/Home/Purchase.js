@@ -27,7 +27,7 @@ const Purchase = ({ refetch }) => {
     // }
 
     useEffect(() => {
-        fetch(`https://manufacturer-app-server.vercel.app/api/parts/${id}`)
+        fetch(`https://leviathan-server.vercel.app/api/parts/${id}`)
             .then(res => res.json())
             .then(data => setPurchase(data))
     }, [])
@@ -35,7 +35,7 @@ const Purchase = ({ refetch }) => {
     const createCart = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post('https://manufacturer-app-server-raiyan109.vercel.app/api/parts/cart', {
+            const { data } = await axios.post('https://leviathan-server.vercel.app/api/parts/cart', {
                 cart, mernAuth
             })
 
