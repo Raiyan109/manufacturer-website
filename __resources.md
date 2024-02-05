@@ -4,3 +4,7 @@
 [Pricing](https://codepen.io/rhythm19/pen/NWxggEZ)
 [3D rotating used in warehouse](https://codepen.io/arjancodes/pen/VwpVqL)
 [list used in warehouse](https://tailwindcomponents.com/component/projects-table)
+
+[Product details color picker](https://www.youtube.com/watch?v=VXO57cff8O8&list=PLwGdqUZWnOp0f3nfgWGbk3_fe8hoMIYpA&index=23)
+[Product details](https://www.youtube.com/watch?v=fqhtAGko91g&t=49s)
+[Product details page complete](https://www.youtube.com/watch?v=ztz2omtuyxg)

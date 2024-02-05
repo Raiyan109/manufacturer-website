@@ -12,6 +12,7 @@ import PayButton from '../PayButton';
 import { AuthContext } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import axios from 'axios';
+import ReactImageMagnify from 'react-image-magnify';
 
 const Purchase = ({ refetch }) => {
     const { id } = useParams()
@@ -54,8 +55,22 @@ const Purchase = ({ refetch }) => {
         <div className='scrollbar-hide'>
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-24 mx-auto">
-                    <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        <img alt={purchase.name} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={purchase.img} />
+                    <div className="lg:w-4/5 mx-auto flex">
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: purchase.name,
+                                // isFluidWidth: true,
+                                src: purchase.img,
+                                width: 500,
+                                height: 300
+                            },
+                            largeImage: {
+                                src: purchase.img,
+                                width: 1200,
+                                height: 1500
+                            }
+                        }} />
+                        {/* <img alt={purchase.name} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={purchase.img} /> */}
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-col">
 
                             <h1 className="text-gray-900 text-3xl title-font font-bold mb-1">{purchase.name}</h1>
