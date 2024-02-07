@@ -7,6 +7,7 @@ import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
+import fetcher from '../../api';
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -18,18 +19,19 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        const res = await axios.post('https://leviathan-server.vercel.app/api/users/login', {
+        const res = await fetcher.post('api/users/login', {
             email,
             password,
         })
         navigate(location.state || '/')
-        const data = await res.data.user
+        const data = await res.data
+        console.log(data);
         setMernAuth({
             ...mernAuth,
-            user: res.data.user,
-            token: res.data.token
+            user: data.user,
+            token: data.access_token
         })
-        localStorage.setItem('userId', data._id)
+        localStorage.setItem('userId', data.user._id)
         localStorage.setItem('auth', JSON.stringify(res.data))
         return data
     }

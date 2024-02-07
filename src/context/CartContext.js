@@ -29,7 +29,6 @@ export const CartContextProvider = ({ children }) => {
             console.log(error);
         }
     };
-    console.log(cartTotal);
     return (
         <CartContext.Provider value={[cart, setCart, cartTotal]}>
             {children}

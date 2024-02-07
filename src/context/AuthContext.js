@@ -22,12 +22,12 @@ export const AuthContextProvider = ({ children }) => {
             setMernAuth({
                 ...mernAuth,
                 user: parsedData.user,
-                token: parsedData.token
+                token: parsedData.access_token
             })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+    console.log(mernAuth);
     // const [userFromServer, setUserFromServer] = useState()
     // const id = localStorage.getItem("userId")
 

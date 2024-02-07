@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
+import fetcher from '../../api';
 
 const RequiredAuth = ({ children }) => {
 
@@ -32,9 +33,14 @@ const RequiredAuth = ({ children }) => {
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get('https://leviathan-server.vercel.app/api/users/user-auth', {
+            // const res = await axios.get('https://leviathan-server.vercel.app/api/users/user-auth', {
+            //     headers: {
+            //         'Authorization': mernAuth?.token
+            //     }
+            // })
+            const res = await fetcher.get('api/users/user-auth', {
                 headers: {
-                    'Authorization': mernAuth?.token
+                    "Authorization": `Bearer ${mernAuth?.token}`
                 }
             })
             if (res.data.ok) {

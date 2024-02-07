@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import fetcher from '../../api';
 import axios from "axios";
+import { AuthContext } from '../../context/AuthContext';
+
 
 const AddAProduct = () => {
     const [imageUrl, setImageUrl] = useState('')
@@ -13,6 +15,7 @@ const AddAProduct = () => {
     const [price, setPrice] = useState('')
     const [file, setFile] = useState(null)
     const [showFiles, setShowFiles] = useState([])
+    const { mernAuth, setMernAuth } = useContext(AuthContext)
 
     const { register, handleSubmit, reset } = useForm();
 
@@ -38,12 +41,14 @@ const AddAProduct = () => {
         formData.append('order', order);
         formData.append('price', price);
         formData.append('photo', file);
+        formData.append('user', mernAuth?.user?._id)
 
         try {
             setLoading(true);
             const res = await fetcher.post('api/parts/create', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    "Authorization": `Bearer ${mernAuth?.token}`
                 }
             })
 

@@ -29,7 +29,7 @@ const Purchase = ({ refetch }) => {
             .then(res => res.json())
             .then(data => setPurchase(data))
     }, [])
-
+    console.log(purchase);
     const createCart = async (e) => {
         e.preventDefault()
         try {
@@ -49,7 +49,7 @@ const Purchase = ({ refetch }) => {
 
     }
 
-
+    const purchaseImage = `http://localhost:5000/${purchase.photo}`
 
     return (
         <div className='scrollbar-hide'>
@@ -60,12 +60,12 @@ const Purchase = ({ refetch }) => {
                             smallImage: {
                                 alt: purchase.name,
                                 // isFluidWidth: true,
-                                src: purchase.img,
+                                src: purchaseImage,
                                 width: 500,
                                 height: 300
                             },
                             largeImage: {
-                                src: purchase.img,
+                                src: purchaseImage,
                                 width: 1200,
                                 height: 1500
                             }
@@ -80,11 +80,11 @@ const Purchase = ({ refetch }) => {
 
                             <div className="flex border-t border-gray-200 py-2">
                                 <span className="text-gray-500">Min. Order Quantity: </span>
-                                <span className="ml-auto text-gray-900">{purchase.minimumOrderQuantity}</span>
+                                <span className="ml-auto text-gray-900">{purchase.order}</span>
                             </div>
                             <div className="flex border-t border-b mb-6 border-gray-200 py-2">
                                 <span className="text-gray-500">Available Quantity</span>
-                                <span className="ml-auto text-gray-900">{purchase.availableQuantity}</span>
+                                <span className="ml-auto text-gray-900">{purchase.available}</span>
                             </div>
 
                             {/* Quantity */}

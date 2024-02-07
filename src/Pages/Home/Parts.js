@@ -12,7 +12,6 @@ const Parts = () => {
             const res = await fetcher.get('api/parts')
             // console.log(res);
             setParts(res.data.data)
-            console.log(res.data.data);
         })()
     }, [])
     return (
