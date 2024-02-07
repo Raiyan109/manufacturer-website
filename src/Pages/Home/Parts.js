@@ -11,7 +11,8 @@ const Parts = () => {
         (async () => {
             const res = await fetcher.get('api/parts')
             // console.log(res);
-            setParts(res.data)
+            setParts(res.data.data)
+            console.log(res.data.data);
         })()
     }, [])
     return (
@@ -20,7 +21,7 @@ const Parts = () => {
             <h1 className='text-5xl text-primary font-bold text-center font-Montserrat'> Our Fragments</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 m-10 space-y-8'>
                 {
-                    parts?.map(part => <Part
+                    parts && parts?.map(part => <Part
                         key={part._id}
                         part={part}
                     />)

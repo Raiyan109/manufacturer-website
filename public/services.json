@@ -1,56 +1,75 @@
 [
     {
-        "_id": 1,
-        "name": "Pressure hull",
-        "price": 10000,
-        "img": "https://i.ibb.co/8KLSVmx/pressure-hull.jpg",
-        "description": "The term pressure hull is used to describe the inner hull of a submarine, which holds the difference between outside and inside pressurefdfdf.",
-        "minimum order quantity": 100,
-        "available quantity": 200
+        "_id": "6403f25af763c525646b51e5",
+        "name": "Ballast Tanks",
+        "price": 20,
+        "desc": "Ballast on a submarine is essentially weight, in the form of water, which controls the depth and trim (angle) of the boat. Filling the main ballast tanks at the bow and stern of the boat with water allows the submarine to surface or dive.",
+        "createdAt": "2023-03-05T01:37:30.119Z",
+        "updatedAt": "2023-10-07T08:05:41.485Z",
+        "__v": 0,
+        "availableQuantity": 30,
+        "img": "https://i.ibb.co/4TQw6mv/item-balla.jpg",
+        "minimumOrderQuantity": 20,
+        "user": "65205ffe0210bffa94b14e20"
     },
     {
-        "_id": 2,
-        "name": "Ballast Tank",
-        "price": 10700,
-        "img": "https://i.ibb.co/BGMVdTJ/pexels-cottonbro-5532845.jpg",
-        "description": "Ballast on a submarine is essentially weight, in the form of water, which controls the depth and trim (angle) of the boat. Filling the main ballast tanks at the bow and stern of the boat with water allows the submarine to surface or dive.",
-        "minimum order quantity": 100,
-        "available quantity": 300
-    },
-    {
-        "_id": 3,
-        "name": "Rudder",
-        "price": 20000,
-        "img": "https://i.ibb.co/jhpmwgh/jametlene-reskp-a-EJv-Ad-Qm-QTU-unsplash.jpg",
-        "description": "A rudder is a primary control surface used to steer a ship, boat, submarine, hovercraft, aircraft, or other conveyance that moves through a fluid medium (generally air or water).",
-        "minimum order quantity": 100,
-        "available quantity": 400
-    },
-    {
-        "_id": 4,
-        "name": "Diving Planes",
-        "price": 4000,
-        "img": "https://i.ibb.co/S6SmWXg/diving-planes.jpg",
-        "description": "Diving planes, also known as hydroplanes, are control surfaces found on a submarine which allow the vessel to pitch its bow and stern up or down to assist in the process of submerging or surfacing the boat.",
-        "minimum order quantity": 100,
-        "available quantity": 500
-    },
-    {
-        "_id": 5,
-        "name": "Engine",
-        "price": 22500,
-        "img": "https://i.ibb.co/6wMzZfY/damon-janis-hp-BESFIlmyo-unsplash.jpg",
-        "description": "Submarines have been powered by mtu diesel engines for more than 50 years. Globally.",
-        "minimum order quantity": 100,
-        "available quantity": 600
-    },
-    {
-        "_id": 1,
+        "_id": "63e72dd6bffccd1125ad46bd",
         "name": "Sail",
-        "price": 8000,
-        "img": "https://i.ibb.co/sJ2spGb/sail.jpg",
-        "description": "In naval parlance, the sail or fin (also known as a fair water) of a submarine is the tower-like structure found on the dorsal (topside) surface of submarines.",
-        "minimum order quantity": 100,
-        "available quantity": 700
+        "price": 25,
+        "desc": "In naval parlance, the sail or fin (also known as a fair water) of a submarine is the tower-like structure found on the dorsal (topside) surface of submarines.",
+        "createdAt": "2023-02-11T05:55:34.143Z",
+        "updatedAt": "2023-02-11T05:55:34.143Z",
+        "__v": 0,
+        "availableQuantity": 70,
+        "img": "https://i.ibb.co/jTKjSkY/item-sail.jpg",
+        "minimumOrderQuantity": 20
+    },
+    {
+        "_id": "63e72676bffccd1125ad46bb",
+        "name": "Diving Planes",
+        "price": 30,
+        "desc": "Diving planes, also known as hydroplanes, are control surfaces found on a submarine which allow the vessel to pitch its bow and stern up or down to assist in the process of submerging or surfacing the boat.",
+        "createdAt": "2023-02-11T05:24:06.204Z",
+        "updatedAt": "2023-02-11T05:24:06.204Z",
+        "__v": 0,
+        "availableQuantity": 50,
+        "img": "https://i.ibb.co/ckCzz0j/item-diving.jpg",
+        "minimumOrderQuantity": 20
+    },
+    {
+        "_id": "63e72650909aef5c8ac47067",
+        "name": "pressure hull",
+        "price": 35,
+        "desc": "The term pressure hull is used to describe the inner hull of a submarine, which holds the difference between outside and inside pressure.",
+        "createdAt": "2023-02-11T05:23:28.156Z",
+        "updatedAt": "2023-02-11T05:23:28.156Z",
+        "__v": 0,
+        "availableQuantity": 27,
+        "img": "https://i.ibb.co/rdKT1gT/item-hull.jpg",
+        "minimumOrderQuantity": 20
+    },
+    {
+        "_id": "63e72611ab1428beb39e2495",
+        "name": "Rudder",
+        "price": 45,
+        "desc": "A rudder is a primary control surface used to steer a ship, boat, submarine, hovercraft, aircraft, or other conveyance that moves through a fluid medium (generally air or water).",
+        "createdAt": "2023-02-11T05:22:25.714Z",
+        "updatedAt": "2023-02-11T05:22:25.714Z",
+        "__v": 0,
+        "availableQuantity": 40,
+        "img": "https://i.ibb.co/0JNrGgN/item-rudd.jpg",
+        "minimumOrderQuantity": 20
+    },
+    {
+        "_id": "63e725ee6718f4263b7e2e28",
+        "name": "Engine",
+        "price": 40,
+        "desc": "Submarines have been powered by mtu diesel engines for more than 50 years. Globally.",
+        "createdAt": "2023-02-11T05:21:50.043Z",
+        "updatedAt": "2023-02-11T05:21:50.043Z",
+        "__v": 0,
+        "availableQuantity": 600,
+        "img": "https://i.ibb.co/rbbzB1R/item-eng.jpg",
+        "minimumOrderQuantity": 20
     }
 ]
