@@ -132,7 +132,12 @@ const AddAProduct = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        {/* <input type="file" {...register('file')} /> */}
+                        {file && (
+                            <div className='flex flex-col justify-center items-center py-1'>
+                                <h3 className='text-center font-semibold'>Preview</h3>
+                                <img src={URL.createObjectURL(file)} alt="" className='w-44 h-40 object-contain ' />
+                            </div>
+                        )}
                         {/* <input className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4'
                             type="submit" value='Add' /> */}
                         <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4' disabled={loading}>
