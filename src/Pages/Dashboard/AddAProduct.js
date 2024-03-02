@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import fetcher from '../../api';
 import axios from "axios";
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddAProduct = () => {
@@ -19,6 +20,7 @@ const AddAProduct = () => {
 
     const { register, handleSubmit, reset } = useForm();
 
+    const navigate = useNavigate()
     const handleChange = (e) => {
         setFile(e.target.files[0])
         console.log(e.target.files[0]);
@@ -61,6 +63,7 @@ const AddAProduct = () => {
             setOrder('');
             setPrice('');
             setFile(null);
+            navigate('/dashboard/manage-products')
         } catch (error) {
             console.log(error);
             setLoading(false);
