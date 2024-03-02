@@ -95,7 +95,7 @@ const Signup = () => {
 
     const handleSignupSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.post('https://leviathan-server.vercel.app/api/users/signup', {
+        const res = await axios.post('https://leviathan-server-1.onrender.com/api/users/signup', {
             name,
             email,
             password,

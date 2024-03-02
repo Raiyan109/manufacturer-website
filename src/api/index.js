@@ -6,7 +6,8 @@ switch (process.env.REACT_APP_ENVIRONMENT) {
         URL = 'http://localhost:5000/';
         break;
     case "PRODUCTION":
-        URL = 'https://leviathan-server.vercel.app/';
+        URL = 'https://leviathan-server-1.onrender.com/';
+        // URL = 'https://leviathan-server.vercel.app/';
         break;
     default:
         URL = 'http://localhost:5000/';

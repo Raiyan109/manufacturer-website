@@ -25,7 +25,7 @@ const Purchase = ({ refetch }) => {
 
 
     useEffect(() => {
-        fetch(`https://leviathan-server.vercel.app/api/parts/${id}`)
+        fetch(`https://leviathan-server-1.onrender.com/api/parts/${id}`)
             .then(res => res.json())
             .then(data => setPurchase(data))
     }, [])
@@ -33,7 +33,7 @@ const Purchase = ({ refetch }) => {
     const createCart = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post('https://leviathan-server.vercel.app/api/parts/cart', {
+            const { data } = await axios.post('https://leviathan-server-1.onrender.com/api/parts/cart', {
                 cart, mernAuth
             })
 
@@ -49,7 +49,7 @@ const Purchase = ({ refetch }) => {
 
     }
 
-    const purchaseImage = `http://localhost:5000/${purchase.photo}`
+    const purchaseImage = `https://leviathan-server-1.onrender.com/${purchase.photo}`
 
     return (
         <div className='scrollbar-hide'>

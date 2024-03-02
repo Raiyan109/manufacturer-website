@@ -45,7 +45,7 @@ const Cart = () => {
     // Get payment gateway token
     const getToken = async () => {
         try {
-            const { data } = await axios.get('https://leviathan-server.vercel.app/api/parts/braintree/token')
+            const { data } = await axios.get('https://leviathan-server-1.onrender.com/api/parts/braintree/token')
             setClientToken(data?.clientToken)
         } catch (error) {
             console.log(error);
@@ -61,7 +61,7 @@ const Cart = () => {
         try {
             setLoading(true)
             const { nonce } = await instance.requestPaymentMethod()
-            const { data } = await axios.post('https://leviathan-server.vercel.app/api/parts/braintree/payment', {
+            const { data } = await axios.post('https://leviathan-server-1.onrender.com/api/parts/braintree/payment', {
                 nonce, cart
             })
             setLoading(false)

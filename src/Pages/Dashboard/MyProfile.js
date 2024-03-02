@@ -49,7 +49,7 @@ const MyProfile = () => {
 
     const handleUpdate = async (e) => {
         e.preventDefault()
-        const res = await axios.patch(`https://leviathan-server.vercel.app/api/users/update/${id}`, {
+        const res = await axios.patch(`https://leviathan-server-1.onrender.com/api/users/update/${id}`, {
             name: name,
             phone: phoneNum,
             education: education,

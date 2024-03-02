@@ -19,7 +19,7 @@ const MakeAdmin = () => {
 
     const makeAdmin = async (e) => {
         e.preventDefault()
-        const res = await axios.put(`http://localhost:5000/api/users/update/${id}`, {
+        const res = await axios.put(`https://leviathan-server-1.onrender.com/api/users/update/${id}`, {
             role
         })
             .catch((err) => console.log(err))
@@ -30,7 +30,7 @@ const MakeAdmin = () => {
     }
 
     const getUsers = async () => {
-        const res = await axios.get('https://leviathan-server.vercel.app/api/users')
+        const res = await axios.get('https://leviathan-server-1.onrender.com/api/users')
             .catch((err) => console.log(err))
 
         const data = await res.data.users
