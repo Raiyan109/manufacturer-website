@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MdEdit, MdOutlineRemoveRedEye, MdDelete } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import fetcher from "../../api";
+import moment from "moment";
 
 const ManageProductTable = ({ part }) => {
     const [partDetails, setPartDetails] = useState([])
@@ -52,7 +53,12 @@ const ManageProductTable = ({ part }) => {
                 <br />
                 {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
             </td>
-            {/* <td>Purple</td> */}
+            <td>
+                {part.category}
+            </td>
+            <td>
+                {moment(part.createdAt).format('MMMM Do YYYY, h a')}
+            </td>
             <th>
                 <button className="btn btn-ghost btn-xs" onClick={goToPurchase}>
                     <MdOutlineRemoveRedEye size={20} />

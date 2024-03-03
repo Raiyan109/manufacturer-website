@@ -88,7 +88,13 @@ const ManageProducts = () => {
             {parts.length > 0 ?
                 (
                     <div>
-                        <Filter value={searchText} handleChange={handleChange} handleCategoryChange={handleCategoryChange} minPrice={minPrice} maxPrice={maxPrice} handlePriceChange={handlePriceChange} />
+                        <Filter value={searchText} handleChange={handleChange} handleCategoryChange={handleCategoryChange} minPrice={minPrice} maxPrice={maxPrice} handlePriceChange={handlePriceChange}
+                            setSelectedCategory={setSelectedCategory}
+                            setSortedList={setSortedList}
+                            setMinPrice={setMinPrice}
+                            setMaxPrice={setMaxPrice}
+                            setSearchText={setSearchText}
+                        />
                         <table className="table w-full">
                             {/* head */}
                             <thead>
@@ -98,8 +104,10 @@ const ManageProducts = () => {
                                             <input type="checkbox" className="checkbox" />
                                         </label>
                                     </th>
-                                    <th>Product Name</th>
+                                    <th>Part Name</th>
                                     <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Created At</th>
                                     <th className='pl-12'>Action</th>
                                     <th></th>
                                 </tr>

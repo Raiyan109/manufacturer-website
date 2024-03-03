@@ -1,10 +1,17 @@
 import { FaFilter } from "react-icons/fa";
 
-const Filter = ({ value, handleChange, handleCategoryChange, minPrice, maxPrice, handlePriceChange }) => {
+const Filter = ({ value, handleChange, handleCategoryChange, minPrice, maxPrice, handlePriceChange, setSelectedCategory, setMinPrice, setMaxPrice, setSearchText }) => {
+    const handleResetFilters = () => {
+        // Reset all filter states to their initial values
+        setSelectedCategory(null);
+        setMinPrice(0);
+        setMaxPrice(1000);
+        setSearchText('');
+    };
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <h1 className="text-xl font-semibold">All Items</h1>
+                <h1 className="text-xl font-semibold">All Parts</h1>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control">
@@ -12,6 +19,9 @@ const Filter = ({ value, handleChange, handleCategoryChange, minPrice, maxPrice,
                         value={value}
                         onChange={handleChange}
                         placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+                </div>
+                <div>
+                    <button className="btn btn-primary" onClick={handleResetFilters}>Reset Filters</button>
                 </div>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
