@@ -1,6 +1,6 @@
 import { FaFilter } from "react-icons/fa";
 
-const Filter = ({ value, handleChange }) => {
+const Filter = ({ value, handleChange, handleCategoryChange, minPrice, maxPrice, handlePriceChange }) => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
@@ -21,12 +21,30 @@ const Filter = ({ value, handleChange }) => {
                     </div>
                     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                         <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
+                            <select className="select select-bordered max-w-xs"
+                                // value={category}
+                                onChange={handleCategoryChange}
+                            >
+                                <option disabled selected>Filter by category</option>
+                                <option value='ballistic'>Ballistic</option>
+                                <option value='cruise'>Cruise missile</option>
+                                <option value='nuclear'>Nuclear</option>
+                                <option value='non-nuclear'>Non-nuclear</option>
+                                <option value='midget'>Midget</option>
+                            </select>
                         </li>
-                        <li><a>Settings</a></li>
+                        {/* <li> */}
+                        {/* Filter by price */}
+                        <div>
+                            <h1 className='p-2 text-xs text-primary'>Filter By Price : ${minPrice} - ${maxPrice}</h1>
+                            <input type="range"
+                                onChange={handlePriceChange}
+                                min='0'
+                                max='1000'
+                                value={maxPrice}
+                                className="range range-primary" />
+                        </div>
+                        {/* </li> */}
                         <li><a>Logout</a></li>
                     </ul>
                 </div>

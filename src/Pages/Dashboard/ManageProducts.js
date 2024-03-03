@@ -8,6 +8,10 @@ import Filter from '../../components/Filter';
 const ManageProducts = () => {
     const [parts, setParts] = useState([])
     const [searchText, setSearchText] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [sortedList, setSortedList] = useState(null);
+    const [minPrice, setMinPrice] = useState(0)
+    const [maxPrice, setMaxPrice] = useState(1000)
     const { mernAuth, setMernAuth } = useContext(AuthContext)
 
     useEffect(() => {
@@ -27,6 +31,18 @@ const ManageProducts = () => {
         })()
     }, [mernAuth?.token])
 
+    // Radio filter handler
+    const handleCategoryChange = (event) => {
+        console.log(event.target.value);
+        setSelectedCategory(event.target.value);
+    };
+
+    // Range filter handler
+    const handlePriceChange = (e) => {
+        setMaxPrice(e.target.value)
+    }
+
+    // Search filter
     const handleChange = (e) => {
         setSearchText(e.target.value)
         console.log(searchText);
@@ -41,12 +57,38 @@ const ManageProducts = () => {
 
     //Applying our search filter function to our array of countries recieved from the API
     const filtered = searchFilter(parts)
+
+    function filteredData(parts, selected) {
+        let filteredProducts = parts
+
+        if (selected) {
+            filteredProducts = filteredProducts.filter(
+                ({ category }) =>
+                    category === selected
+            )
+        }
+
+        console.log(selected);
+
+        const priceFilter = filteredProducts.filter(
+            (item) => item.price >= minPrice && item.price <= maxPrice
+        )
+        console.log(priceFilter);
+
+        return priceFilter.map(
+            (item) => (
+                <ManageProductTable key={item._id} part={item} />
+            )
+        )
+    }
+
+    const result = filteredData(parts, selectedCategory)
     return (
         <div>
             {parts.length > 0 ?
                 (
                     <div>
-                        <Filter value={searchText} handleChange={handleChange} />
+                        <Filter value={searchText} handleChange={handleChange} handleCategoryChange={handleCategoryChange} minPrice={minPrice} maxPrice={maxPrice} handlePriceChange={handlePriceChange} />
                         <table className="table w-full">
                             {/* head */}
                             <thead>
@@ -63,12 +105,18 @@ const ManageProducts = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
+                                {/* {
                                     filtered.length > 0 ? filtered.map((part) => (
                                         <ManageProductTable key={part._id} part={part} />
                                     )) : <div className='flex justify-center items-center mx-auto p-10'>
                                         <h1 className='text-center text-xl font-medium'>No Result found by {searchText.slice(0, 4)}</h1>
                                     </div>
+                                } */}
+                                {
+                                    result.length > 0 ? result :
+                                        <div className='flex justify-center items-center mx-auto p-10'>
+                                            <h1 className='text-center text-xl font-medium'>No Result found by {searchText ? searchText.slice(0, 4) : selectedCategory ? selectedCategory : 'hi'}</h1>
+                                        </div>
                                 }
                             </tbody>
                         </table>
