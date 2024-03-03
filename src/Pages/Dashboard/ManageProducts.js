@@ -48,18 +48,20 @@ const ManageProducts = () => {
         console.log(searchText);
     }
 
-    //Our search filter function
-    const searchFilter = (array) => {
-        return array.filter(
-            (el) => el.name.toLowerCase().includes(searchText)
-        )
-    }
 
-    //Applying our search filter function to our array of countries recieved from the API
-    const filtered = searchFilter(parts)
 
     function filteredData(parts, selected) {
-        let filteredProducts = parts
+        // let filteredProducts = parts
+
+        //Our search filter function
+        const searchFilter = (array) => {
+            return array.filter(
+                (el) => el.name.toLowerCase().includes(searchText)
+            )
+        }
+
+        //Applying our search filter function to our array of countries recieved from the API
+        let filteredProducts = searchFilter(parts)
 
         if (selected) {
             filteredProducts = filteredProducts.filter(
@@ -67,8 +69,6 @@ const ManageProducts = () => {
                     category === selected
             )
         }
-
-        console.log(selected);
 
         const priceFilter = filteredProducts.filter(
             (item) => item.price >= minPrice && item.price <= maxPrice
