@@ -29,6 +29,7 @@ import AllProducts from './Pages/Home/AllProduct/AllProducts';
 import ResetPass from './Pages/Auth/ResetPass';
 import Cart from './Pages/Home/Cart';
 import Breadcrumb from './components/Breadcrumb';
+import ManageDetails from './Pages/Dashboard/ManageDetails';
 
 function App() {
   useEffect(() => {
@@ -68,7 +69,10 @@ function App() {
             <Route path='manage-orders' element={<ManageAllOrders />}></Route>
             <Route path='add-product' element={<AddAProduct />}></Route>
             <Route path='make-admin' element={<MakeAdmin />}></Route>
-            <Route path='manage-products' element={<ManageProducts />}></Route>
+            <Route path='manage-products' element={<ManageProducts />}>
+              <Route path='parts/:id' element={<ManageDetails />}></Route>
+            </Route>
+
           </Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>

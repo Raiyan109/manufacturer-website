@@ -1,8 +1,32 @@
+import { useEffect, useState } from "react";
 import { MdEdit, MdOutlineRemoveRedEye, MdDelete } from "react-icons/md";
+import { useNavigate, useParams } from "react-router-dom";
+import fetcher from "../../api";
 
 const ManageProductTable = ({ part }) => {
-    console.log(part);
+    const [partDetails, setPartDetails] = useState([])
+    const navigate = useNavigate()
+    const { id } = useParams()
+
+    const goToPurchase = () => {
+        navigate(`parts/${part._id}`)
+    }
     const partImg = `https://leviathan-server-1.onrender.com/${part.photo}`
+
+
+
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await fetcher.get(`api/parts/${part._id}`)
+                console.log(res);
+                // setPartDetails(res.data.data.parts)
+            } catch (error) {
+                console.log(error);
+            }
+        })()
+    }, [])
     return (
         <tr>
             <th>
@@ -30,7 +54,7 @@ const ManageProductTable = ({ part }) => {
             </td>
             {/* <td>Purple</td> */}
             <th>
-                <button className="btn btn-ghost btn-xs">
+                <button className="btn btn-ghost btn-xs" onClick={goToPurchase}>
                     <MdOutlineRemoveRedEye size={20} />
 
                 </button>

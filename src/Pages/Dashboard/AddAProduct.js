@@ -14,6 +14,7 @@ const AddAProduct = () => {
     const [available, setAvailable] = useState('')
     const [order, setOrder] = useState('')
     const [price, setPrice] = useState('')
+    const [category, setCategory] = useState('ballistic')
     const [file, setFile] = useState(null)
     const [showFiles, setShowFiles] = useState([])
     const { mernAuth, setMernAuth } = useContext(AuthContext)
@@ -31,7 +32,7 @@ const AddAProduct = () => {
         // }
         // setShowFiles([...showFiles, ...fileNames])
     }
-
+    console.log(category);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -43,6 +44,8 @@ const AddAProduct = () => {
         formData.append('order', order);
         formData.append('price', price);
         formData.append('photo', file);
+        formData.append('category', category);
+        console.log(category);
         formData.append('user', mernAuth?.user?._id)
 
         try {
@@ -131,14 +134,28 @@ const AddAProduct = () => {
                                 value={order} onChange={(e) => setOrder(e.target.value)}
                             />
                         </div>
-                        <div className="form-control">
-                            <label className=''>Upload Image </label>
-                            <input placeholder='Photo' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3'
-                                type="file"
-                                // name='file'
-                                // {...register('file')}
-                                onChange={handleChange}
-                            />
+                        <div className="form-control flex flex-row lg:flex-row items-center gap-2 mb-2">
+                            <select className="select select-bordered max-w-xs"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
+                                <option disabled selected>Category</option>
+                                <option value='ballistic'>Ballistic</option>
+                                <option value='cruise'>Cruise missile</option>
+                                <option value='nuclear'>Nuclear</option>
+                                <option value='non-nuclear'>Non-nuclear</option>
+                                <option value='midget'>Midget</option>
+                            </select>
+                            <div>
+                                {/* <label className=''>Upload Image </label> */}
+                                <input placeholder='Photo' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-2 px-3 lg:px-3 w-56'
+                                    type="file"
+                                    // name='file'
+                                    // {...register('file')}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
                         </div>
                         {file && (
                             <div className='flex flex-col justify-center items-center py-1'>
