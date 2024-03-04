@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import ManageProductTable from './ManageProductTable';
 import Custom404 from '../../components/Custom404';
 import Filter from '../../components/Filter';
+import Pagination from '../../components/Pagination';
 
 const ManageProducts = () => {
     const [parts, setParts] = useState([])
@@ -12,7 +13,13 @@ const ManageProducts = () => {
     const [sortedList, setSortedList] = useState(null);
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(1000)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postPerPage, setPostPerPage] = useState(2)
     const { mernAuth, setMernAuth } = useContext(AuthContext)
+
+    const lastPostIndex = currentPage * postPerPage
+    const firstPostIndex = lastPostIndex - postPerPage
+
 
     useEffect(() => {
         (async () => {
@@ -83,6 +90,7 @@ const ManageProducts = () => {
     }
 
     const result = filteredData(parts, selectedCategory)
+    const currentResults = result.slice(firstPostIndex, lastPostIndex)
     return (
         <div>
             {parts.length > 0 ?
@@ -121,13 +129,14 @@ const ManageProducts = () => {
                                     </div>
                                 } */}
                                 {
-                                    result.length > 0 ? result :
+                                    result.length > 0 ? currentResults :
                                         <div className='flex justify-center items-center mx-auto p-10'>
                                             <h1 className='text-center text-xl font-medium'>No Result found by {searchText ? searchText.slice(0, 4) : selectedCategory ? selectedCategory : 'hi'}</h1>
                                         </div>
                                 }
                             </tbody>
                         </table>
+                        <Pagination totalPosts={result.length} postsPerPage={postPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     </div>)
                 :
                 (
