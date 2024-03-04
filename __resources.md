@@ -10,3 +10,4 @@
 [Product details page complete](https://www.youtube.com/watch?v=ztz2omtuyxg)
 [Product details Image Magnify](https://www.youtube.com/watch?v=LjZvsT07Km8)
 [Multer image retrieve](https://www.youtube.com/watch?v=jfZyqZycjmA)
+[Pagination](https://www.youtube.com/watch?v=wAGIOCqS8tk)

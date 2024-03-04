@@ -45,6 +45,17 @@ const Login = () => {
                 <div className="card-body">
                     <h2 className="text-center text-2xl font-bold">Login</h2>
 
+                    <div className="collapse bg-base-200">
+                        <input type="checkbox" className="peer" />
+                        <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                            Click to see Admin Credentials
+                        </div>
+                        <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                            <p>Email: admin@g.com</p>
+                            <p> Password: 123456</p>
+                        </div>
+                    </div>
+
                     <form
                         onSubmit={handleLogin}
                         className='space-y-5'
