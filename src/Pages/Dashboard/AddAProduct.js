@@ -50,7 +50,7 @@ const AddAProduct = () => {
 
         try {
             setLoading(true);
-            const res = await fetcher.post('api/parts/create', formData, {
+            const res = await axios.post('https://leviathan-server-1.onrender.com/api/parts/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${mernAuth?.token}`
@@ -68,7 +68,7 @@ const AddAProduct = () => {
             setFile(null);
             navigate('/dashboard/manage-products')
         } catch (error) {
-            console.log(error);
+            console.log(error, 'Error during adding part');
             setLoading(false);
         }
     }
