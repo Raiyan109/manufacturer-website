@@ -50,7 +50,7 @@ const AddAProduct = () => {
 
         try {
             setLoading(true);
-            const res = await axios.post('https://leviathan-server-1.onrender.com/api/parts/create', formData, {
+            const res = await fetcher.post('api/parts/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${mernAuth?.token}`
