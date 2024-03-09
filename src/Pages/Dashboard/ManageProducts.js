@@ -14,7 +14,7 @@ const ManageProducts = () => {
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(1000)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(2)
+    const [postPerPage, setPostPerPage] = useState(5)
     const { mernAuth, setMernAuth } = useContext(AuthContext)
 
     const lastPostIndex = currentPage * postPerPage
