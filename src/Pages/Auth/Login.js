@@ -21,6 +21,7 @@ const Login = () => {
             password,
         })
 
+        setLoading(false);
         navigate(location.state || '/')
         const data = await res.data
         console.log(data);
@@ -31,7 +32,6 @@ const Login = () => {
         })
         localStorage.setItem('userId', data.user._id)
         localStorage.setItem('auth', JSON.stringify(res.data))
-        setLoading(false);
         return data
     }
 

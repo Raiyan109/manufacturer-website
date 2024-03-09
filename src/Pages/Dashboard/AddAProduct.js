@@ -24,7 +24,7 @@ const AddAProduct = () => {
     const navigate = useNavigate()
     const handleChange = (e) => {
         setFile(e.target.files[0])
-        console.log(e.target.files[0]);
+
         // const filesList = e.target.files
         // const fileNames = []
         // for (let i = 0; i < filesList.length; i++) {
@@ -55,7 +55,6 @@ const AddAProduct = () => {
                 }
             })
 
-            console.log(res);
             setLoading(false);
             // Reset form fields
             setName('');
