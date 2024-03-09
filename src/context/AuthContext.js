@@ -79,6 +79,7 @@ export const AuthContextProvider = ({ children }) => {
         signIn,
         user,
         loading,
+        setLoading,
         updateUser,
         // userFromServer,
         mernAuth, setMernAuth

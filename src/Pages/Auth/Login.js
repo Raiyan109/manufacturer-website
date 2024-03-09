@@ -1,28 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
-import { useForm } from "react-hook-form";
+import React, { useContext, useState } from 'react';
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Loading from '../Shared/Loading';
-import useToken from '../../hooks/useToken';
+
 import { AuthContext } from '../../context/AuthContext';
-import axios from 'axios';
 import fetcher from '../../api';
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { mernAuth, setMernAuth, loading } = useContext(AuthContext)
+    const { mernAuth, setMernAuth, loading, setLoading } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        setLoading(true);
         const res = await fetcher.post('api/users/login', {
             email,
             password,
         })
+
         navigate(location.state || '/')
         const data = await res.data
         console.log(data);
@@ -33,6 +31,7 @@ const Login = () => {
         })
         localStorage.setItem('userId', data.user._id)
         localStorage.setItem('auth', JSON.stringify(res.data))
+        setLoading(false);
         return data
     }
 
@@ -91,7 +90,9 @@ const Login = () => {
 
                         </div>
 
-                        <input className='btn w-full max-w-xs font-OpenSans' value='login' type="submit" />
+                        <button className='btn w-full max-w-xs font-OpenSans' type="submit" disabled={loading}>
+                            {loading ? 'Logging in...' : 'Log in'}
+                        </button>
                     </form>
 
                     <p><small>New to Leviathan? <Link className='text-secondary font-semibold' to='/signup'>Create New Account</Link></small></p>

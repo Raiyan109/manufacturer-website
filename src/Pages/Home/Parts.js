@@ -9,7 +9,7 @@ const Parts = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetcher.get('api/parts')
+            const res = await fetcher.get('api/parts/submarine-parts')
             // console.log(res);
             setParts(res.data.data)
         })()
