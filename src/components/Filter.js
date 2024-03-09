@@ -36,6 +36,7 @@ const Filter = ({ value, handleChange, handleCategoryChange, minPrice, maxPrice,
                                 onChange={handleCategoryChange}
                             >
                                 <option disabled selected>Filter by category</option>
+                                <option value='submarine-parts'>Submarine Parts</option>
                                 <option value='ballistic'>Ballistic</option>
                                 <option value='cruise'>Cruise missile</option>
                                 <option value='nuclear'>Nuclear</option>

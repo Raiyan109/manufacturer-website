@@ -140,6 +140,7 @@ const AddAProduct = () => {
                                 onChange={(e) => setCategory(e.target.value)}
                             >
                                 <option disabled selected>Category</option>
+                                <option value='submarine-parts'>Submarine Parts</option>
                                 <option value='ballistic'>Ballistic</option>
                                 <option value='cruise'>Cruise missile</option>
                                 <option value='nuclear'>Nuclear</option>
