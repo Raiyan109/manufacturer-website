@@ -154,25 +154,26 @@ const Navbar = ({ children }) => {
                         <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
                     )} */}
                     {mernAuth.user && (
-                        <li><NavLink className='rounded-lg' to='/dashboard'>Dashboard</NavLink></li>
+                        <li><NavLink className='rounded-lg mb-1' to='/dashboard'>Dashboard</NavLink></li>
                     )}
 
                     {/* <li>{user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <NavLink className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans' to='/login'>Login</NavLink>}</li> */}
 
-                    <li>{mernAuth.user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Signout</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
+                    <li>{mernAuth.user ? <button className="inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans mb-1" onClick={logout}>Signout</button> : <button className='inline-flex text-primary btn btn-secondary border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
                         <NavLink to='/login'>Login</NavLink>
                     </button>}</li>
 
                     <li>
                         {/* Cart Dropdown */}
                         <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle flex">
                                 <div className="indicator">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                                     <span className="badge badge-sm indicator-item">
                                         {cart?.length}
                                     </span>
                                 </div>
+                                cart
                             </label>
                             <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
                                 <div className="card-body">
