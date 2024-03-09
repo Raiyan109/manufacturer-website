@@ -12,7 +12,7 @@ const ManageProducts = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [sortedList, setSortedList] = useState(null);
     const [minPrice, setMinPrice] = useState(0)
-    const [maxPrice, setMaxPrice] = useState(1000)
+    const [maxPrice, setMaxPrice] = useState(100)
     const [currentPage, setCurrentPage] = useState(1)
     const [postPerPage, setPostPerPage] = useState(5)
     const { mernAuth, setMernAuth } = useContext(AuthContext)
