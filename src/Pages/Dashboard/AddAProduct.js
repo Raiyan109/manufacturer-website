@@ -32,21 +32,19 @@ const AddAProduct = () => {
         // }
         // setShowFiles([...showFiles, ...fileNames])
     }
-    console.log(category);
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
         formData.append('name', name);
-        formData.append('desc', desc);
-        formData.append('available', available);
-        formData.append('order', order);
         formData.append('price', price);
+        formData.append('desc', desc);
+        formData.append('order', order);
+        formData.append('available', available);
+        formData.append('user', mernAuth?.user?._id)
         formData.append('photo', file);
         formData.append('category', category);
-        console.log(category);
-        formData.append('user', mernAuth?.user?._id)
 
         try {
             setLoading(true);
@@ -151,6 +149,7 @@ const AddAProduct = () => {
                                 {/* <label className=''>Upload Image </label> */}
                                 <input placeholder='Photo' className='text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-2 px-3 lg:px-3 w-56'
                                     type="file"
+                                    name='photo'
                                     // name='file'
                                     // {...register('file')}
                                     onChange={handleChange}

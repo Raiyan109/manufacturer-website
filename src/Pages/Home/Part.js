@@ -9,6 +9,7 @@ const Part = ({ part }) => {
     }
 
     const { _id, name, photo, price, desc, available, order } = part
+    console.log(photo);
     return (
         <>
             <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
