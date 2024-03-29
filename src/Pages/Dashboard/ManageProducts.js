@@ -30,7 +30,7 @@ const ManageProducts = () => {
                         "Authorization": `Bearer ${mernAuth?.token}`
                     }
                 })
-                console.log(res.data.data.parts);
+                // console.log(res.data.data.parts);
                 setParts(res.data.data.parts)
             } catch (error) {
                 console.log(error);
@@ -80,7 +80,7 @@ const ManageProducts = () => {
         const priceFilter = filteredProducts.filter(
             (item) => item.price >= minPrice && item.price <= maxPrice
         )
-        console.log(priceFilter);
+        // console.log(priceFilter);
 
         return priceFilter.map(
             (item) => (

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const ManageDetails = () => {
+const Details = () => {
     const [purchase, setPurchase] = useState([])
-    const { id } = useParams()
-    console.log(id);
+    const params = useParams();
+    console.log(params._id);
     useEffect(() => {
-        fetch(`https://leviathan-server-1.onrender.com/api/parts/${id}`)
+        fetch(`https://leviathan-server-1.onrender.com/api/parts/${params._id}`)
             .then(res => res.json())
             .then(data => setPurchase(data))
     }, [])
@@ -18,4 +18,4 @@ const ManageDetails = () => {
     );
 };
 
-export default ManageDetails;
+export default Details;

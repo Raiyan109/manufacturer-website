@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { MdEdit, MdOutlineRemoveRedEye, MdDelete } from "react-icons/md";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import fetcher from "../../api";
 import moment from "moment";
 
 const ManageProductTable = ({ part }) => {
     const [partDetails, setPartDetails] = useState([])
     const navigate = useNavigate()
-    const { id } = useParams()
+
 
     const goToPurchase = () => {
-        navigate(`parts/${part._id}`)
+        navigate(`${part._id}`)
     }
     const partImg = `https://leviathan-server-1.onrender.com/${part.photo}`
 
@@ -21,7 +21,7 @@ const ManageProductTable = ({ part }) => {
         (async () => {
             try {
                 const res = await fetcher.get(`api/parts/${part._id}`)
-                console.log(res);
+                // console.log(res);
                 // setPartDetails(res.data.data.parts)
             } catch (error) {
                 console.log(error);

@@ -30,19 +30,20 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content space-y-2">
 
                     <li><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>
-                    <li><NavLink to='/dashboard/add-review'>Add a review</NavLink></li>
-                    <li><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
                     {mernAuth?.user?.role === 1 && (
                         <>
-                            <li><NavLink to='/dashboard/manage-orders'>Manage all orders</NavLink></li>
                             <li><NavLink to='/dashboard/add-product'>Add Product</NavLink></li>
+                            <li><NavLink to='manage-products'>Manage products</NavLink></li>
+                            <li><NavLink to='/dashboard/manage-orders'>Manage all orders</NavLink></li>
                             <li><NavLink to='/dashboard/make-admin'>Make Admin</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-products'>Manage products</NavLink></li>
                         </>
                     )}
+                    <li><NavLink to='/dashboard/add-review'>Add a review</NavLink></li>
+                    <li><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
+
 
                 </ul>
 

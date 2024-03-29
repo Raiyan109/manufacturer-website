@@ -29,7 +29,8 @@ import AllProducts from './Pages/Home/AllProduct/AllProducts';
 import ResetPass from './Pages/Auth/ResetPass';
 import Cart from './Pages/Home/Cart';
 import Breadcrumb from './components/Breadcrumb';
-import ManageDetails from './Pages/Dashboard/ManageDetails';
+import Details from './Pages/Dashboard/Details';
+
 
 function App() {
   useEffect(() => {
@@ -70,7 +71,7 @@ function App() {
             <Route path='add-product' element={<AddAProduct />}></Route>
             <Route path='make-admin' element={<MakeAdmin />}></Route>
             <Route path='manage-products' element={<ManageProducts />}>
-              <Route path='parts/:id' element={<ManageDetails />}></Route>
+              <Route path=':id' element={<Details />}></Route>
             </Route>
 
           </Route>
