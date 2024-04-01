@@ -103,7 +103,7 @@ const ManageProducts = () => {
                             setMaxPrice={setMaxPrice}
                             setSearchText={setSearchText}
                         />
-                        <table className="table w-full">
+                        <table className="table w-full z-0">
                             {/* head */}
                             <thead>
                                 <tr>

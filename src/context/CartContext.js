@@ -1,6 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const CartContext = createContext()
+// {
+//     items: [],
+//     getProductQuantity: () => { },
+//     addToCart: () => { },
+//     removeFromCart: () => { },
+//     deleteFromCart: () => { },
+//     getTotalCost: () => { }
+// }
 
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
@@ -29,7 +37,19 @@ export const CartContextProvider = ({ children }) => {
             console.log(error);
         }
     };
+
+    // const value = {
+    //     items: cart,
+    //     getProductQuantity,
+    //     addToCart,
+    //     removeFromCart,
+    //     deleteFromCart,
+    //     getTotalCost
+    // }
     return (
+        // <CartContext.Provider value={value}>
+        //     {children}
+        // </CartContext.Provider>
         <CartContext.Provider value={[cart, setCart, cartTotal]}>
             {children}
         </CartContext.Provider>

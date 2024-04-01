@@ -17,10 +17,10 @@ const Dashboard = () => {
 
 
     return (
-        <div className="drawer drawer-mobile mt-16">
+        <div className="drawer drawer-mobile mt-16 z-0">
 
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
+            <div className="drawer-content z-0">
                 {/* <!-- Page content here --> */}
 
                 <Outlet />
