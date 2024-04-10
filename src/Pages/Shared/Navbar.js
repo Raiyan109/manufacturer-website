@@ -45,11 +45,11 @@ const Navbar = ({ children }) => {
     // }, [])
 
     return (
-        <div className="drawer drawer-end font-Montserrat pt-3">
+        <div className="drawer drawer-end font-Montserrat pt-10">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
 
-                <div className="w-full navbar bg-base-100 px-20">
+                <div className="w-full navbar bg-base-100 px-10 md:px-20 lg:px-48">
 
                     {/* Drawer button is here */}
 

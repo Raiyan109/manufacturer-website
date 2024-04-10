@@ -4,13 +4,18 @@ import fetcher from "../../api";
 import moment from "moment";
 import { AnimatePresence, motion } from 'framer-motion'
 import Modal from "./Modal";
+import EditModal from "./EditModal";
 
 const ManageProductTable = ({ part }) => {
     const [itemId, setItemId] = useState('')
     const [modalOpen, setModalOpen] = useState(false);
+    const [editModalOpen, setEditModalOpen] = useState(false);
+
+
     const close = () => setModalOpen(false);
     const open = () => setModalOpen(true);
-
+    const editClose = () => setEditModalOpen(false);
+    const editOpen = () => setEditModalOpen(true);
 
     const showModal = (id) => {
         setItemId(id)
@@ -20,6 +25,16 @@ const ManageProductTable = ({ part }) => {
         }
         else {
             open()
+        }
+    }
+    const showEditModal = (id) => {
+        setItemId(id)
+        if (editModalOpen) {
+            editClose()
+            console.log(id);
+        }
+        else {
+            editOpen()
         }
     }
 
@@ -77,9 +92,15 @@ const ManageProductTable = ({ part }) => {
                         <MdOutlineRemoveRedEye size={20} />
 
                     </motion.button>
-                    <button className="btn btn-ghost btn-xs">
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+
+                        onClick={() => showEditModal(part?._id)} className="btn btn-ghost btn-xs" >
                         <MdEdit size={20} />
-                    </button>
+
+                    </motion.button>
+
                     <button className="btn btn-ghost btn-xs">
 
                         <MdDelete size={20} />
@@ -101,6 +122,23 @@ const ManageProductTable = ({ part }) => {
             >
                 {
                     modalOpen && <Modal modalOpen={modalOpen} handleClose={close} itemId={itemId}
+                    />
+                }
+            </AnimatePresence>
+            <AnimatePresence
+                // Disable any initial animations on children that
+                // are present when the component is first rendered
+                initial={false}
+                // Only render one component at a time.
+                // The exiting component will finish its exit
+                // animation before entering component is rendered
+                // exitBeforeEnter={true}
+                mode='wait'
+                // Fires when all exiting nodes have completed animating out
+                onExitComplete={() => null}
+            >
+                {
+                    editModalOpen && <EditModal editModalOpen={editModalOpen} handleClose={editClose} itemId={itemId}
                     />
                 }
             </AnimatePresence>

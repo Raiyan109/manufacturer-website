@@ -21,22 +21,6 @@ const MyProfile = () => {
     const id = localStorage.getItem("userId")
     const navigate = useNavigate()
 
-    // const { register, handleSubmit, reset } = useForm();
-    // const { updateUser } = useContext(AuthContext)
-    // const getSingleUser = async () => {
-    //     const res = await axios.get(`http://localhost:5000/api/users/${id}`)
-    //         .catch((err) => console.log(err))
-
-    //     const data = await res.data.user
-    //     return data
-    // }
-
-    // useEffect(() => {
-    //     getSingleUser()
-    //         .then((data) => setUserFromServer(data))
-    // }, [])
-
-
     // Get User Data
     useEffect(() => {
         // const { name, email } = mernAuth?.user

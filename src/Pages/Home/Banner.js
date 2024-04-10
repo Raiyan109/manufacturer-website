@@ -36,7 +36,7 @@ const Banner = () => {
         //         </div>
         //     </div>
         // </section>
-        <section className="text-black body-font mb-28">
+        <section className="text-black body-font mb-28 mt-5">
             <div className="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
                 <div className="lg:flex-grow flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                     <h1 className="title-font tracking-wide text-6xl md:text-6xl xl:text-8xl mb-4 font-bold mt-4 font-Montserrat">Precision Parts for Your Submarine

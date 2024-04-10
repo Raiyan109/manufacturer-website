@@ -109,7 +109,7 @@ const ManageProducts = () => {
                                 <tr>
                                     <th>
                                         <label>
-                                            <input type="checkbox" className="checkbox" />
+                                            <input type="checkbox" className="checkbox z-0" />
                                         </label>
                                     </th>
                                     <th>Part Name</th>
