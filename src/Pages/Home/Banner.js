@@ -52,23 +52,23 @@ const Banner = () => {
                 <div id="pattern" className="w-32 sm:w-40 lg:max-w-xl lg:w-full md:w-32 xl:w-5/6 bg-contain bg-no-repeat md:ml-40 xl:mr-16 mt-6">
                     <div className="w-full flex gap-3 justify-center ">
 
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={bg} />
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={auvsImg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={bg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={auvsImg} />
                     </div>
                     <div className="w-full h- flex gap-2 justify-center items-center my-2">
 
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={seasoreImg} />
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={sentryImg} />
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={nereidImg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={seasoreImg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={sentryImg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={nereidImg} />
                     </div>
                     <div className="w-full flex gap-3 justify-center">
 
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={camperImg} />
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={challengerImg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={camperImg} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={challengerImg} />
                     </div>
                     <div className="w-full flex gap-3 justify-center my-2">
 
-                        <img className="object-cover object-center rounded-xl h-40 w-96" alt="hero" src={bg2} />
+                        <img className="object-cover object-center rounded-xl h-40 w-[100px] md:w-96" alt="hero" src={bg2} />
                     </div>
                 </div>
             </div>

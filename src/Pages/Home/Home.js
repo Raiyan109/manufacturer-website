@@ -29,7 +29,7 @@ const Home = () => {
             <News />
             <Timeline />
             {/* <Gallery /> */}
-            <Slider />
+            {/* <Slider /> */}
             <CTA />
             <StayConnected />
             <Footer />
