@@ -10,6 +10,7 @@ import {
 } from 'react-query'
 import { AuthContextProvider } from './context/AuthContext';
 import { CartContextProvider } from './context/CartContext';
+import { FilterContextProvider } from './context/FilterContext';
 
 const queryClient = new QueryClient()
 
@@ -18,11 +19,13 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <CartContextProvider>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </QueryClientProvider>
+        <FilterContextProvider>
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </QueryClientProvider>
+        </FilterContextProvider>
       </CartContextProvider>
     </AuthContextProvider>
 

@@ -95,7 +95,7 @@ const ManageProducts = () => {
         <div>
             {parts.length > 0 ?
                 (
-                    <div>
+                    <div className='p-4'>
                         <Filter value={searchText} handleChange={handleChange} handleCategoryChange={handleCategoryChange} minPrice={minPrice} maxPrice={maxPrice} handlePriceChange={handlePriceChange}
                             setSelectedCategory={setSelectedCategory}
                             setSortedList={setSortedList}
@@ -107,11 +107,11 @@ const ManageProducts = () => {
                             {/* head */}
                             <thead>
                                 <tr>
-                                    <th>
+                                    {/* <th>
                                         <label>
                                             <input type="checkbox" className="checkbox z-0" />
                                         </label>
-                                    </th>
+                                    </th> */}
                                     <th>Part Name</th>
                                     <th>Price</th>
                                     <th>Category</th>
