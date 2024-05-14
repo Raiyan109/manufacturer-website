@@ -38,6 +38,21 @@ const ManageProductTable = ({ part }) => {
         }
     }
 
+    // DELETE
+    console.log(part._id);
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+
+        if (confirmDelete) {
+            try {
+                const response = await fetcher.delete(`api/parts/${id}`);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error deleting item:', error);
+            }
+        }
+    };
+
     const partImg = `https://leviathan-server-1.onrender.com/${part.photo}`
 
     useEffect(() => {
