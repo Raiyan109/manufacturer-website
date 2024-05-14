@@ -4,6 +4,7 @@ import { AuthContext } from '../../../context/AuthContext';
 import Loading from '../../Shared/Loading';
 import AllProduct from './AllProduct';
 import ProductsFilter from '../../../components/ProductsFilter';
+import Pagination from '../../../components/Pagination';
 
 const AllProducts = () => {
 
@@ -15,7 +16,7 @@ const AllProducts = () => {
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(1000)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(5)
+    const [postPerPage, setPostPerPage] = useState(6)
 
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
@@ -104,12 +105,13 @@ const AllProducts = () => {
                 />
                 <div className='mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6  md:grid-cols-2 lg:grid-cols-3'>
                     {
-                        parts?.map(part => <AllProduct
-                            key={part._id}
-                            part={part}
-                        />)
+                        result.length > 0 ? currentResults :
+                            <div className='flex justify-center items-center mx-auto p-10'>
+                                <h1 className='text-center text-xl font-medium'>No Result found by {searchText ? searchText.slice(0, 4) : selectedCategory ? selectedCategory : 'hi'}</h1>
+                            </div>
                     }
                 </div>
+                <Pagination totalPosts={result.length} postsPerPage={postPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </section>
         </div>
     );
