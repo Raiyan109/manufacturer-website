@@ -13,40 +13,21 @@ const AllProduct = ({ part }) => {
 
     const partImg = `https://leviathan-server-1.onrender.com/${photo}`
     return (
-        <div>
-            <article className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+        <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
+            <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{ backgroundImage: `url(${`https://leviathan-server-1.onrender.com/${photo}`})` }}></div>
 
-                <div className="relative flex items-end overflow-hidden rounded-xl">
-                    <img src={partImg} alt={name} />
-                    <div className="flex items-center space-x-1.5 rounded-lg bg-pink-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                        </svg>
+            <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+                <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">{name}</h3>
 
-                        <button className="text-sm">Add to cart</button>
+                <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+                    <span className="font-bold text-gray-800 dark:text-gray-200">${price}</span>
+                    <br />
+                    <div className='tooltip' data-tip="Available Quantity">
+                        <span className="font-bold text-gray-800 dark:text-gray-200">{availableQuantity}</span>
                     </div>
+                    <button className="px-2 py-1 text-xs font-semibold font-OpenSans text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none" onClick={goToPurchase}>Purchase</button>
                 </div>
-
-                <div className="mt-1 p-2">
-                    <h2 className="text-slate-700">{name}</h2>
-                    <p className="mt-1 text-sm text-slate-400">{availableQuantity}</p>
-
-                    <div className="mt-3 flex items-end justify-between">
-                        <p className="text-lg font-bold text-blue-500">${price}</p>
-
-                        <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-
-                            <button
-                                onClick={goToPurchase}
-                                className="text-sm">Purchase</button>
-                        </div>
-                    </div>
-                </div>
-
-            </article>
+            </div>
         </div>
     );
 };
