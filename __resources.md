@@ -11,3 +11,5 @@
 [Product details Image Magnify](https://www.youtube.com/watch?v=LjZvsT07Km8)
 [Multer image retrieve](https://www.youtube.com/watch?v=jfZyqZycjmA)
 [Pagination](https://www.youtube.com/watch?v=wAGIOCqS8tk)
+
+[Filter by Ascending, Descending, rating](https://www.youtube.com/watch?v=HptuMAUaNGk) watch full
