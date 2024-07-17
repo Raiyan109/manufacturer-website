@@ -1,27 +1,23 @@
-import { async } from '@firebase/util';
 import React, { useContext, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import fetcher from '../../api';
 import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
 import { ToastContainer, toast } from 'react-toastify';
-import PayButton from '../PayButton';
 import { AuthContext } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import axios from 'axios';
-import ReactImageMagnify from 'react-image-magnify';
+// import ReactImageMagnify from 'react-image-magnify';
 
 const Purchase = ({ refetch }) => {
     const { id } = useParams()
     const [purchase, setPurchase] = useState([])
-    const [quantityValue, setQuantityValue] = useState(1)
-    const [user, loading, error] = useAuthState(auth);
+    const [quantityValue] = useState(1)
+    const [user] = useAuthState(auth);
     const { mernAuth } = useContext(AuthContext)
     const [cart, setCart] = useCart()
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
 
 
     useEffect(() => {
@@ -56,7 +52,7 @@ const Purchase = ({ refetch }) => {
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex">
-                        <ReactImageMagnify {...{
+                        {/* <ReactImageMagnify {...{
                             smallImage: {
                                 alt: purchase.name,
                                 // isFluidWidth: true,
@@ -69,7 +65,7 @@ const Purchase = ({ refetch }) => {
                                 width: 1200,
                                 height: 1500
                             }
-                        }} />
+                        }} /> */}
                         {/* <img alt={purchase.name} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={purchase.img} /> */}
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-col">
 
